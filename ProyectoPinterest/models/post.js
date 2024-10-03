@@ -4,8 +4,7 @@ const postSchema = new mongoose.Schema({
     
     idPostOriginal:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post',
-        required: false
+        ref: 'Post'
     },
     idUsuario:{
         type: mongoose.Schema.Types.ObjectId,
@@ -16,9 +15,11 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Post'  
     }],
-    contenido: [{
-        type: Buffer
-    }]
+    contenido: 
+        {
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'PostContenido'  
+        }
     ,
     tags: [{
         type: String

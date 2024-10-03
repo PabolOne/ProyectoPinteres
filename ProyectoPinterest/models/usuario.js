@@ -17,7 +17,8 @@ const usuarioSchema = new mongoose.Schema({
         match: [/^\S+@\S+\.\S+$/, 'Por favor, ingresa un correo electrónico válido']
     },
     avatar:{
-        type: Buffer,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UsuarioImg',
         required: true
     }
 });
