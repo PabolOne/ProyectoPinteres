@@ -99,6 +99,13 @@ async function main() {
         ).catch(error => {
             console.log('Error', error);
         });
+        //Busqueda filtrada por tag
+        await PostDAO.obtenerPostsPorTag("luis").then(respuesta => {
+            console.log('Exito', respuesta);
+        }
+        ).catch(error => {
+            console.log('Error', error);
+        });
 
         await db.desconectar();
         console.log('desconexion establecida con exito');

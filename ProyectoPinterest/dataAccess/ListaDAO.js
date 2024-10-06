@@ -33,29 +33,6 @@ class ListaDAO{
         }
     }
 
-        async agregarPostsALista(id, posts){
-        try{
-            const lista = Lista.findById(id);
-            if(!lista){
-                throw new Error('No se encontró la lista.')
-            }
-
-            lista.posts.push(...posts.map(post =>({
-                idPostOriginal: post.idPostOriginal,
-                idUsuario: post.idUsuario,
-                posts: post.posts,
-                contenido: post.contenido,
-                tags: post.tags,
-                fechaHora: post.fechaHora,
-                likes: post.likes
-            })));
-
-            return await lista.save();
-        } catch (error){
-            throw error;
-        }
-    }
-
     async obtenerListaPorId(id){
         try{
             return await Lista.findById(id);

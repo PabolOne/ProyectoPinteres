@@ -66,6 +66,14 @@ class PostDAO{
         }
     }
 
+    async obtenerPostsPorTag(tag) {
+        try {
+            return await Post.find({ tags: tag });
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async actualizarPostPorId(id, postData){
         try{
             return await Post.findByIdAndUpdate(id, postData, {new:true});
