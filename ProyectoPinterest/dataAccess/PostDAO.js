@@ -35,18 +35,18 @@ class PostDAO{
         }
     }
 
-/*    async agregarTagsAPost(id, tags){
+  async agregarTagsAPost(id, tags){
         try{
             const post = Post.findById(id);
             if(!post){
                 throw new Error('No se encontró el post.')
             }
-            post.tags.push(...tags.map(tag=>({
-                
-            })));
+            post.tags.push(tags);
+        }catch (error){
+            throw error;
         }
     }
-*/
+
 
 
 
