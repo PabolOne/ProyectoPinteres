@@ -43,6 +43,10 @@ class UsuarioDAO{
             throw error;
         }
     }
+
+    async encontrarUsuarioPorEmail(correo) {
+        return await Usuario.findOne({ correo });
+    }
 }
 
 module.exports = new UsuarioDAO();

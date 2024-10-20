@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const usuarioSchema = new mongoose.Schema({
-    
     username: {
         type: String,
         required: true
@@ -9,16 +8,19 @@ const usuarioSchema = new mongoose.Schema({
     nombre: {
         type: String,
         required: true
-    }
-    ,
-    correo:{
+    },
+    correo: {
         type: String,
         required: true,
         match: [/^\S+@\S+\.\S+$/, 'Por favor, ingresa un correo electrónico válido']
     },
-    avatar:{
+    avatar: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'UsuarioImg',
+        required: true
+    },
+    password: {
+        type: String,
         required: true
     }
 });
