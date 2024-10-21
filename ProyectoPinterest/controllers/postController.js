@@ -5,19 +5,10 @@ const { AppError } = require('../utils/appError');
 class postController {
     static async crearPost(req, res, next) {
         try {
-            const { idPostOriginal, idUsuario,posts, contenido, tags,fechaHora, likes} = req.body;
+            const { idPostOriginal, idUsuario,posts, contenido, tags, fechaHora, likes} = req.body;
 
-            if (!idPostOriginal) {
-                next(new AppError('El campo PostOriginal es requerido'))
-            }
             if (!idUsuario) {
                 next(new AppError('El campo Usuario es requerido'))
-            }
-            if (!posts) {
-                next(new AppError('El campo posts es requerido'))
-            }
-            if (!contenido) {
-                next(new AppError('El campo contenido es requerido'))
             }
             if (!tags) {
                 next(new AppError('El campo tags es requerido'))

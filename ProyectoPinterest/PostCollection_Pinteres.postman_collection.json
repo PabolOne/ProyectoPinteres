@@ -1,0 +1,612 @@
+{
+	"info": {
+		"_postman_id": "ea134d6a-cef8-4a76-aa59-3cc0e5de7b37",
+		"name": "PostCollection_Pinteres",
+		"description": "Colección del avance 3, ordenada por recursos para poder interactuar con la API REST.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28391194"
+	},
+	"item": [
+		{
+			"name": "crearUsuarioAvatar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"avatar\": \"./img/FotoparaTICxd.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/usuarioAvatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarioAvatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar por idUsuarioAvatar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/usuarioAvatar/6715bfedc9889789af5fbfdb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarioAvatar",
+						"6715bfedc9889789af5fbfdb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todos UsuarioAvatar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/usuarioAvatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarioAvatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar usuarioAvatar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"avatar\": \"./img/FotoNomas.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/usuarioAvatar/6715bfedc9889789af5fbfdb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarioAvatar",
+						"6715bfedc9889789af5fbfdb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar usuarioAvatar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/usuarioAvatar/671598b65829ecf1e6bd01dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarioAvatar",
+						"671598b65829ecf1e6bd01dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"asiedad\",\r\n    \"nombre\": \"Marcos Toledo\",\r\n    \"correo\": \"asiedad@gmail.com\",\r\n    \"avatar\": \"671598b65829ecf1e6bd01dc\",\r\n    \"password\": \"hola123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar idUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/usuarios/6715c4258cb28cfbc577c622",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarios",
+						"6715c4258cb28cfbc577c622"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todos los Usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Usuario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Scrg\",\r\n    \"nombre\": \"Juan Diego\",\r\n    \"correo\": \"asiedad@gmail.com\",\r\n    \"avatar\": \"671598b65829ecf1e6bd01dc\",\r\n    \"password\": \"hola123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/usuarios/6715cd8fd6eeeccb7ba0fef3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarios",
+						"6715cd8fd6eeeccb7ba0fef3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/usuarios/6715c4258cb28cfbc577c622",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"usuarios",
+						"6715c4258cb28cfbc577c622"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearListas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idUsuario\": \"ID\",\r\n    \"nombre\": \"Lista de Ejemplo\",\r\n    \"descripcion\": \"Descripción de la lista de ejemplo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/listas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar idLista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/listas/6715c5645b46e12940fbde9a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listas",
+						"6715c5645b46e12940fbde9a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todos las listas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/listas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Lista",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idUsuario\": \"6715bfedc9889789af5fbfdb\",\r\n    \"nombre\": \"Lista de Ejemplo Actualizada\",\r\n    \"descripcion\": \"Descripción de la lista de ejemplo actualizada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/listas/6715c5645b46e12940fbde9a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listas",
+						"6715c5645b46e12940fbde9a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Lista",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/listas/6715c4588cb28cfbc577c624",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listas",
+						"6715c4588cb28cfbc577c624"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Posts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idUsuario\": \"6715c4258cb28cfbc577c622\",\r\n    \"tags\": [\"tag1\", \"tag2\"],\r\n    \"fechaHora\": \"2024-10-20T14:48:00.000Z\",\r\n    \"likes\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar idPosts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/posts/6715c92f0ede658944abe02d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"6715c92f0ede658944abe02d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todos los posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Posts",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idUsuario\": \"6715c4258cb28cfbc577c622\",\r\n    \"tags\": [\"tag1Actualizado\", \"tag2Actualizado\"],\r\n    \"fechaHora\": \"2024-11-20T14:48:00.000Z\",\r\n    \"likes\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/posts/6715c92f0ede658944abe02d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"6715c92f0ede658944abe02d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Posts",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/posts/6715c923743a7b7b01808246",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"6715c923743a7b7b01808246"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear postContenido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contenido\": [\"Post1\", \"Post2\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/postContenido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"postContenido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar idPostContenido",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar PostsContenido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/postContenido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"postContenido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar PostContenido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contenido\": [\"Post2Actualizada\", \"Post5Actualizada\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/postContenido/6715d097a2be2cb7b2d56431",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"postContenido",
+						"6715d097a2be2cb7b2d56431"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar PostContenido",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/postContenido/6715cb47419d0ae7980bd446",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"postContenido",
+						"6715cb47419d0ae7980bd446"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -5,7 +5,7 @@ const { AppError } = require('../utils/appError');
 class UsuarioController {
     static async crearUsuario(req, res, next) {
         try {
-            const { username,nombre,correo,avatar } = req.body;
+            const { username,nombre,correo,avatar,password } = req.body;
 
             if (!username) {
                 next(new AppError('El campo username es requerido'))
@@ -19,7 +19,10 @@ class UsuarioController {
             if (!avatar) {
                 next(new AppError('El campo avatar es requerido'))
             }
-            const usuarioData = { username,nombre,correo,avatar }
+            if (!password) {
+                next(new AppError('El campo password es requerido'))
+            }
+            const usuarioData = { username,nombre,correo,avatar,password }
             const usuario = await UsuarioDAO.crearUsuario(usuarioData);
             res.status(201).json(usuario);
         } catch (error) {

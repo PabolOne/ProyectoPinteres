@@ -4,3 +4,5 @@
 // npm install morgan -- Para imprimir las peticiones en consola
 // npm install -g nodemon -- Para poder guardar y refrescar automaticamente el servidor
 // npm install dotenv --Para las variables de entorno
+// npm install ajv --Para validar los esquemas
+// npm install ajv-formats --Para validar el formato de datetime

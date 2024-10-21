@@ -47,9 +47,6 @@ class PostDAO{
         }
     }
 
-
-
-
     async obtenerPostPorId(id){
         try{
             return await Post.findById(id);
@@ -60,7 +57,7 @@ class PostDAO{
 
     async obtenerPosts(limit = 10){
         try {
-            return await Post.find().limit(limit);
+            return await Post.find().limit(10);
         } catch(error){
             throw error;
         }

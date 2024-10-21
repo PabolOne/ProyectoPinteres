@@ -11,8 +11,7 @@ const usuarioSchema = new mongoose.Schema({
     },
     correo: {
         type: String,
-        required: true,
-        match: [/^\S+@\S+\.\S+$/, 'Por favor, ingresa un correo electrónico válido']
+        required: true
     },
     avatar: {
         type: mongoose.Schema.Types.ObjectId,

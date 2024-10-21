@@ -18,6 +18,7 @@ class UsuarioAvatarDAO{
         try{
             return await UsuarioAvatar.findById(id);
         } catch(error){
+            console.log('Este es el error ', error);
             throw error;
         }
     }
