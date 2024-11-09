@@ -1,0 +1,17 @@
+section {
+    padding: 10px;
+    font-size: 18px;
+}
+
+.card-container {
+    columns: 7 100px;
+    column-gap: 10px;
+    padding: .5rem;
+}
+
+
+.card-container div {
+    width: 100%;
+    height: auto;
+    display: block;
+}
