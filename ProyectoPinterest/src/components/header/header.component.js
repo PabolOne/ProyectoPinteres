@@ -22,7 +22,7 @@ export class HeaderComponent extends HTMLElement {
 				<div class="search-bar">
 					<input type="text" placeholder="Buscar...">
 				</div>
-				<img src="./imagen_salida.jpg" alt="Perfil" class="profile-icon">
+				<a href="/perfil"><img src="./imagen_salida.jpg" alt="Perfil" class="profile-icon"></a>
 			</nav>
 		</header>
 	  `;

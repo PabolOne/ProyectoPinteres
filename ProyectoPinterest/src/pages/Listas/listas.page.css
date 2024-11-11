@@ -4,6 +4,8 @@
     padding: 20px;
     flex-wrap: wrap;
     align-items: flex-start;
+    margin-top: 10px;
+
 }
 
 .list-card {
