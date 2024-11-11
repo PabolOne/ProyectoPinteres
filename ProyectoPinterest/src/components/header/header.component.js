@@ -18,13 +18,11 @@ export class HeaderComponent extends HTMLElement {
 					<a href="/"><button class="nav-button active">Inicio</button></a>
 					<a href="/crear"><button class="nav-button">Crear</button></a>
 					<a href="/listas"><button class="nav-button">Listas</button></a>
-					<a href="/login"><button class="nav-button">Login</button></a>
-					<a href="/registrar"><button class="nav-button">Registrar</button></a>
 				</div>
 				<div class="search-bar">
 					<input type="text" placeholder="Buscar...">
 				</div>
-				<img src="./imagen_salida.jpg" alt="Perfil" class="profile-icon">
+				<a href="/perfil"><img src="./imagen_salida.jpg" alt="Perfil" class="profile-icon"></a>
 			</nav>
 		</header>
 	  `;

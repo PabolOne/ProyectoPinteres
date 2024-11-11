@@ -6,7 +6,7 @@ class PostDAO{
     async crearPost(post){
         try{
             const nuevoPost = new Post(post);
-            return await nuevoPost.save;
+            return await nuevoPost.save();
         } catch(error){
             throw error;
         }
@@ -35,18 +35,18 @@ class PostDAO{
         }
     }
 
-/*    async agregarTagsAPost(id, tags){
+  async agregarTagsAPost(id, tags){
         try{
             const post = Post.findById(id);
             if(!post){
                 throw new Error('No se encontró el post.')
             }
-            post.tags.push(...tags.map(tag=>({
-                
-            })));
+            post.tags.push(tags);
+        }catch (error){
+            throw error;
         }
     }
-*/
+
 
 
 
@@ -66,6 +66,14 @@ class PostDAO{
         }
     }
 
+    async obtenerPostsPorTag(tag) {
+        try {
+            return await Post.find({ tags: tag });
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async actualizarPostPorId(id, postData){
         try{
             return await Post.findByIdAndUpdate(id, postData, {new:true});
@@ -76,7 +84,7 @@ class PostDAO{
 
     async eliminarPostPorId(id){
         try{
-            return await Post.findByIdAndRemove(id);
+            return await Post.findByIdAndDelete(id);
         } catch (error){
             throw error;
         }

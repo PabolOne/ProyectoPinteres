@@ -8,6 +8,9 @@ import { ListasPage } from "./src/pages/Listas/listas.page.js";
 import { LoginPage } from "./src/pages/Login/login.page.js";
 import { RegistrarPage } from "./src/pages/Registrar/registrar.page.js";
 
+import { PerfilPage } from "./src/pages/Perfil/perfil.page.js";
+import { ConfiguracionPage } from "./src/pages/Configuracion/configuracion.page.js";
+import { PostPage } from "./src/pages/Post/post.page.js";
 document.addEventListener('DOMContentLoaded',function()
 {
     //Configuracion de rutas
@@ -17,6 +20,9 @@ document.addEventListener('DOMContentLoaded',function()
     page('/lista',()=> showContent('lista-page'));
     page('/login',()=> showContent('login-page'));
     page('/registrar',()=> showContent('registrar-page'));
+    page('/perfil',()=> showContent('perfil-page'));
+    page('/post',()=> showContent('post-page'));
+    page('/configuracion',()=> showContent('configuracion-page'));
     page('*',()=> showContent('posts-page'));
     //Inicializar nuestro router
     page();
@@ -48,3 +54,5 @@ window.customElements.define('listas-page', ListasPage);
 window.customElements.define('lista-page', ListaPage);
 window.customElements.define('login-page', LoginPage);
 window.customElements.define('registrar-page', RegistrarPage);
+window.customElements.define('perfil-page', PerfilPage);
+window.customElements.define('configuracion-page', ConfiguracionPage);

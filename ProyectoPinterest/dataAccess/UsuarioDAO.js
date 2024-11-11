@@ -6,7 +6,7 @@ class UsuarioDAO{
     async crearUsuario(usuario){
         try{
             const nuevoUsuario = new Usuario(usuario);
-            return await nuevoUsuario.save;
+            return await nuevoUsuario.save();
         } catch(error){
             throw error;
         }
@@ -38,14 +38,10 @@ class UsuarioDAO{
 
     async eliminarUsuarioPorId(id){
         try{
-            return await Usuario.findByIdAndRemove(id);
+            return await Usuario.findByIdAndDelete(id);
         } catch(error){
             throw error;
         }
-    }
-
-    async encontrarUsuarioPorEmail(correo) {
-        return await Usuario.findOne({ correo });
     }
 }
 

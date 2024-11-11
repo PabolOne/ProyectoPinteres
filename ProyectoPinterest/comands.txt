@@ -1,0 +1,6 @@
+// npm install express --save
+// npm install winston -- Para hacer el logger
+// npm installl express-winston 
+// npm install morgan -- Para imprimir las peticiones en consola
+// npm install -g nodemon -- Para poder guardar y refrescar automaticamente el servidor
+// npm install dotenv --Para las variables de entorno

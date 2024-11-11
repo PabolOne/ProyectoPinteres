@@ -1,0 +1,29 @@
+section {
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+
+}
+
+.card-container {
+    columns: 7 100px;
+    column-gap: 10px;
+    padding: .5rem;
+}
+
+.card-container div {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.icon{
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.tittle{
+    display: grid;
+    grid-template-columns: 3fr .1fr .1fr;
+    font-style: italic;
+}

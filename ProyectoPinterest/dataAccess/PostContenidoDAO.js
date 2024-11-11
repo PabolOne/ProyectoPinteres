@@ -6,7 +6,7 @@ class PostContenidoDAO{
     async crearPostContenido(postContenido){
         try{
             const nuevoPostContenido = new PostContenido(postContenido);
-            return await nuevoPostContenido.save;
+            return await nuevoPostContenido.save();
         } catch (error){
             throw error;
         }
@@ -38,7 +38,7 @@ class PostContenidoDAO{
 
     async eliminarPostContenidoPorId(id){
         try{
-            return await PostContenido.findOneAndRemove(id);
+            return await PostContenido.findByIdAndDelete(id);
         } catch(error){
             throw error; 
         }

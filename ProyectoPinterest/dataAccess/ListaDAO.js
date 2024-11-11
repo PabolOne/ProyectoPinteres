@@ -5,35 +5,12 @@ class ListaDAO{
 
     async crearLista(lista){
         const nuevaLista = new Lista(lista);
-        return await nuevaLista.save;
+        return await nuevaLista.save();
     } catch(error){
         throw error;
     }
 
     async agregarPostsALista(id, posts){
-        try{
-            const lista = Lista.findById(id);
-            if(!lista){
-                throw new Error('No se encontró la lista.')
-            }
-
-            lista.posts.push(...posts.map(post =>({
-                idPostOriginal: post.idPostOriginal,
-                idUsuario: post.idUsuario,
-                posts: post.posts,
-                contenido: post.contenido,
-                tags: post.tags,
-                fechaHora: post.fechaHora,
-                likes: post.likes
-            })));
-
-            return await lista.save();
-        } catch (error){
-            throw error;
-        }
-    }
-
-        async agregarPostsALista(id, posts){
         try{
             const lista = Lista.findById(id);
             if(!lista){
@@ -82,7 +59,7 @@ class ListaDAO{
 
     async eliminarListaPorId(id){
         try{
-            return await Lista.findOneAndRemove(id);
+            return await Lista.findByIdAndDelete(id);
         } catch (error){
             throw error;
         }

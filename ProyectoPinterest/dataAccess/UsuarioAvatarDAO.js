@@ -8,7 +8,7 @@ class UsuarioAvatarDAO{
     async crearUsuarioAvatar(usuarioAvatar){
         try{
             const nuevoUsuarioAvatar = new UsuarioAvatar(usuarioAvatar);
-            return await nuevoUsuarioAvatar.save;
+            return await nuevoUsuarioAvatar.save();
         } catch(error){
             throw error;
         }
@@ -40,7 +40,7 @@ class UsuarioAvatarDAO{
 
     async eliminarUsuarioAvatarPorId(id){
         try{
-            return await UsuarioAvatar.findByIdAndRemove(id);
+            return await UsuarioAvatar.findByIdAndDelete(id);
         } catch(error){
             throw error;
         }
