@@ -1,0 +1,66 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #faf8f3;
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #403f3e;
+}
+.nav-button:hover{
+    border-radius: 20%;
+    background-color: #403f3e;
+    color: #fff;
+    font-weight: bold;
+}
+.nav-button.active {
+    border-radius: 20%;
+    background-color: #403f3e;
+    color: #fff;
+    font-weight: bold;
+}
+
+.search-bar {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.search-bar input {
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    background-color: #d9d4cc;
+    border: 1px solid #d9d4cc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.profile-icon {
+    padding: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.profile-icon:hover{
+    padding: 8px;
+    width: 38px;
+    height: 38px;
+    border-radius: 70%;
+}
