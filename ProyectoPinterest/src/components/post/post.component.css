@@ -1,0 +1,23 @@
+.card {
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    height: auto;
+    text-align: center;
+    transition:  0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10%;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+
