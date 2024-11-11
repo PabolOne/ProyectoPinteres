@@ -10,9 +10,6 @@ class ListaController {
             if (!idUsuario) {
                 next(new AppError('El campo idUsuario es requerido'))
             }
-            if (!posts || !nombre || descripcion) {
-                next(new AppError('El campo posts es requerido'))
-            }
             if (!nombre) {
                 next(new AppError('El campo nombre es requerido'))
             }
@@ -47,7 +44,7 @@ class ListaController {
         try {
 
             const limit = req.query.limit || 10;
-            const listas = await ListasDAO.obtenerListas(limit);
+            const listas = await ListaDAO.obtenerListas(10);
 
             if (!listas) {
                 next(new AppError('Listas no encontradas', 404))
@@ -55,6 +52,8 @@ class ListaController {
 
             res.status(200).json(listas);
         } catch (error) {
+            console.log('Este es el error', error);
+
             next(new AppError('Error al obtener las listas', 500))
         }
     }
@@ -87,7 +86,7 @@ class ListaController {
         try {
             const id = req.params.id;
 
-            const lista = await ListaDAO.eliminarLista(id);
+            const lista = await ListaDAO.eliminarListaPorId(id);
 
             if (!lista) {
                 next(new AppError('No se encontró la lista', 404));

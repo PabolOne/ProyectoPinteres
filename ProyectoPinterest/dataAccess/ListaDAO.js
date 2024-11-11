@@ -43,6 +43,7 @@ class ListaDAO{
 
     async obtenerListas(limit = 10){
         try{
+            console.log('Esta es la lista', Lista.find().limit(limit));
             return await Lista.find().limit(limit);
         } catch(error){
             throw error;
@@ -61,6 +62,7 @@ class ListaDAO{
         try{
             return await Lista.findByIdAndDelete(id);
         } catch (error){
+            console.log('El error es', error);
             throw error;
         }
     }

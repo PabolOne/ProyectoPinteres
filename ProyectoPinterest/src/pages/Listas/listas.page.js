@@ -11,6 +11,7 @@ export class ListasPage extends HTMLElement {
 	connectedCallback() {
 		this.#agregaEstilo(this.shadow);
 		this.#render(this.shadow);
+		this.#setupModal();
 	}
 
 	#render(shadow) {
@@ -27,6 +28,22 @@ export class ListasPage extends HTMLElement {
 					<p>163 fotos</p>
 				</div>
 			</a>
+			<button id="openModalBtn" class="create-list-button">Crear Lista</button>
+		<div id="myModal" class="modal">
+            <!-- Contenido del Modal -->
+            <div class="modal-content">
+			<div class="modal-header">
+				<span id="closeBtn" class="close">&times;</span>
+				<h2>Crear Lista</h2>
+				<img src="./src/assets/images/Logo.png" alt="Logo" class="logo-pequeno">
+			</div>
+				<label for="listName">Nombre</label>
+				<input type="text" id="listName" placeholder="Nombre de la lista">
+				<label for="listDescription">Descripción</label>
+				<textarea id="listDescription" placeholder="Descripción"></textarea>
+				<button>Crear Lista</button>
+            </div>
+        </div>
 		</section>
 		`;
 	}
@@ -47,4 +64,26 @@ export class ListasPage extends HTMLElement {
 		link.setAttribute("href", "./src/pages/listas/listas.page.css");
 		shadow.appendChild(link);
 	}
+
+	#setupModal() {
+		const modal = this.shadow.getElementById("myModal");
+		const btn = this.shadow.getElementById("openModalBtn");
+		const span = this.shadow.getElementById("closeBtn");
+	
+		btn.onclick = (event) => {
+		  event.preventDefault(); 
+		  modal.style.display = "block";
+		}
+	
+		span.onclick = () => {
+		  modal.style.display = "none";
+		}
+	
+		window.onclick = (event) => {
+		  if (event.target === modal) {
+			modal.style.display = "none";
+		  }
+		}
+	}
+
 }

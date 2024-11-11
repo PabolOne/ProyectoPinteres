@@ -8,6 +8,7 @@ class UsuarioDAO{
             const nuevoUsuario = new Usuario(usuario);
             return await nuevoUsuario.save();
         } catch(error){
+            console.log('Este es el error', error);
             throw error;
         }
     }
@@ -42,6 +43,10 @@ class UsuarioDAO{
         } catch(error){
             throw error;
         }
+    }
+
+    async encontrarUsuarioPorEmail(correo) {
+        return await Usuario.findOne({ correo });
     }
 }
 
