@@ -87,4 +87,3 @@ export class RegistrarPage extends HTMLElement {
 	}
 }
 
-customElements.define('registrar-page', RegistrarPage);

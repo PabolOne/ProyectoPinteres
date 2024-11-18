@@ -1,5 +1,8 @@
 import { PostMockup } from "../models/postMockup.js";
-
+const API_URL = 'http://localhost:3000/';
+const URL_POST = 'api/posts/';
+const URL_POST_CONTENIDO = 'api/postContenido/';
+//import { Post } from "../models/post.js";
 export class PostService{
     static getPosts(){
         const postList = [
@@ -16,5 +19,17 @@ export class PostService{
 
         ];
         return postList;
+    }
+    static createPost(post){
+        return fetch(`${API_URL}${URL_POST}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
+            body: JSON.stringify({})
+        }).then(response => response.json())
+          .then(data => data);
+
     }
 }
