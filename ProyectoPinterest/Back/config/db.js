@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 require('dotenv').config({path: './variables.env'});
 
+
 const config = {
-    url: process.env.URL_MONGO,
+    url: "mongodb://127.0.0.1:27017/pinterest",
     options: {}
 }
 
 class db {
 
     static async conectar() {
+        console.log(process.env.URL_MONGO)
         try {
             await mongoose.connect(config.url, config.options);
             console.log('Conectado a MongoDB');
@@ -49,4 +51,7 @@ class db {
             throw new Error('Error en la operación de base de datos.');
         }
     }
+
 }
+
+module.exports = db;

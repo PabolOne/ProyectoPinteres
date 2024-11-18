@@ -1,5 +1,8 @@
 const UsuarioDAO = require('../dataAccess/UsuarioDAO');
 const { AppError } = require('../utils/appError');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 
 
 class UsuarioController {
@@ -22,9 +25,12 @@ class UsuarioController {
             if (!password) {
                 next(new AppError('El campo password es requerido'))
             }
-            const usuarioData = { username,nombre,correo,avatar,password }
+
+            const usuarioData = { username,nombre,correo,avatar,password: password }
             const usuario = await UsuarioDAO.crearUsuario(usuarioData);
-            res.status(201).json(usuario);
+            const token = UsuarioController.generarToken(usuario._id);
+
+            res.status(201).json({ usuario, token });
         } catch (error) {
             next(new AppError('Error al crear usuario ', 500))
         }
@@ -88,19 +94,72 @@ class UsuarioController {
     static async eliminarUsuarioPorId(req, res, next) {
         try {
             const id = req.params.id;
-
-            const usuario = await UsuarioDAO.eliminarUsuarioPorId(id);
-
-            if (!usuario) {
-                next(new AppError('No se encontró el usuario ', 404));
+            console.log('ID recibido:', id);
+    
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+                console.log('ID inválido');
+                return next(new AppError('ID de usuario inválido', 400));
             }
-
-            res.status(200).json({ mensaje: 'Usuario  eliminado correctamente' });
+    
+            const usuario = await UsuarioDAO.eliminarUsuarioPorId(id);
+            console.log('Resultado de la eliminación:', usuario);
+    
+            if (!usuario) {
+                console.log('Usuario no encontrado');
+                return next(new AppError('No se encontró el usuario', 404));
+            }
+    
+            res.status(200).json({ 
+                status: 'success', 
+                mensaje: 'Usuario eliminado correctamente' 
+            });
         } catch (error) {
-            next(new AppError('Error al eliminar el usuario ', 500))
+            console.error('Error capturado:', error);
+            next(new AppError('Error al eliminar el usuario', 500));
         }
     }
+    
+    
 
+    static generarToken(userId){
+        return jwt.sign({ id: userId }, "CLAVESECRETA", { expiresIn: '1h' });
+
+    }
+
+    static async login(req, res, next) {
+        try {
+            const { correo, password } = req.body;
+
+            const usuario = await UsuarioDAO.encontrarUsuarioPorEmail(correo);
+
+            if (!usuario) {
+                return res.status(401).json({
+                    status: 'fail',
+                    message: 'Correo incorrecto',
+                });
+            }
+
+            if (password !== usuario.password) {
+                return res.status(401).json({
+                    status: 'fail',
+                    message: 'Contraseña incorrecta',
+                });
+            }
+
+
+            const token = UsuarioController.generarToken(usuario._id);
+
+
+            return res.status(200).json({
+                status: 'success',
+                message: 'Login exitoso',
+                usuario: { _id: usuario._id, nombre: usuario.nombre, correo: usuario.correo },
+                token,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 module.exports = UsuarioController;

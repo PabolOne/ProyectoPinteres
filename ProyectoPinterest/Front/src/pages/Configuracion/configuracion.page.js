@@ -27,7 +27,7 @@ export class ConfiguracionPage extends HTMLElement {
 				<div class="password-field">
 					<input type="password" value="********">
 					<button class="toggle-password">
-						<span class="eye-icon"><img class="password-img"  src="./src/assets/images/oculto.png"></span>
+						<span class="eye-icon"><img class="password-img"  src="../Front/src/assets/images/oculto.png"></span>
 					</button>
 				</div>
 
@@ -35,7 +35,7 @@ export class ConfiguracionPage extends HTMLElement {
 			</div>
 
 			<div class="profile-picture">
-				<img src="./imagen_salida.jpg" alt="Foto de perfil">
+				<img src="../Front/src/assets/images/imagen_salida.jpg" alt="Foto de perfil">
 				<p>Foto de perfil</p>
 				<button class="change-button">Cambiar</button>
 			</div>
@@ -49,7 +49,7 @@ export class ConfiguracionPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "./src/pages/configuracion/configuracion.page.css");
+		link.setAttribute("href", "../Front/src/pages/configuracion/configuracion.page.css");
 		shadow.appendChild(link);
 	}
 }

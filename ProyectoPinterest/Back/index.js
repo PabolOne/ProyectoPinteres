@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const morgan = require('morgan');
 const { globalErrorHandler, AppError } = require('./utils/appError');
@@ -11,12 +12,17 @@ const postContenidoRouter = require('./routes/postContenidoRouter');
 const usuarioAvatarRouter = require('./routes/usuarioAvatarRouter');
 const fs = require('fs');
 
+
+
 // Conectar a la base de datos
 db.conectar();
-
 // Middlewares
 app.use(express.json());
 app.use(morgan('combined'));
+app.use(cors({
+    origin: 'http://127.0.0.1:5500', 
+}));
+
 
 // Definir las rutas
 app.use('/api/listas', listaRouter);
@@ -24,6 +30,10 @@ app.use('/api/posts', postRouter);
 app.use('/api/usuarios', usuarioRouter);
 app.use('/api/postContenido', postContenidoRouter);
 app.use('/api/usuarioAvatar', usuarioAvatarRouter);
+
+app.get('/', (req, res) => {
+    res.send('Servidor de Backend');
+});
 
 // Manejo de rutas no encontradas
 app.all('*', (req, res, next) => {

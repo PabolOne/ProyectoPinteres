@@ -35,7 +35,7 @@ export class ListasPage extends HTMLElement {
 			<div class="modal-header">
 				<span id="closeBtn" class="close">&times;</span>
 				<h2>Crear Lista</h2>
-				<img src="./src/assets/images/Logo.png" alt="Logo" class="logo-pequeno">
+				<img src="../Front/src/assets/images/Logo.png" alt="Logo" class="logo-pequeno">
 			</div>
 				<label for="listName">Nombre</label>
 				<input type="text" id="listName" placeholder="Nombre de la lista">
@@ -61,7 +61,7 @@ export class ListasPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "./src/pages/listas/listas.page.css");
+		link.setAttribute("href", "../Front/src/pages/listas/listas.page.css");
 		shadow.appendChild(link);
 	}
 

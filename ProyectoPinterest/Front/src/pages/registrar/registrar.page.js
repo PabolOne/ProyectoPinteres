@@ -60,7 +60,7 @@ export class RegistrarPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "./src/pages/registrar/registrar.page.css");
+		link.setAttribute("href", "../Front/src/pages/registrar/registrar.page.css");
 		shadow.appendChild(link);
 	}
 

@@ -15,7 +15,7 @@ export class HeaderComponent extends HTMLElement {
 			<nav class="navbar">
 				<div class="navbar-buttons">
 				
-					<a href="/"><button class="nav-button active">Inicio</button></a>
+					<a href="/posts"><button class="nav-button active">Inicio</button></a>
 					<a href="/crear"><button class="nav-button">Crear</button></a>
 					<a href="/listas"><button class="nav-button">Listas</button></a>
 				</div>

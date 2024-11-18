@@ -17,6 +17,7 @@ export class LoginPage extends HTMLElement {
 	#render(shadow) {
 		shadow.innerHTML += `
 		<section class="login-container">
+		
 			
 			<form id="loginForm">
             <img src="${this.logo}" alt="Logo" class="login-image">
@@ -48,7 +49,7 @@ export class LoginPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "./src/pages/login/login.page.css");
+		link.setAttribute("href", "./src/pages/Login/login.page.css");
 		shadow.appendChild(link);
 	}
 
@@ -63,12 +64,31 @@ export class LoginPage extends HTMLElement {
 	}
 
 	#handleLogin(email, password) {
-		if (email === "admin@example.com" && password === "password123") {
-			alert("Login successful");
-		} else {
-			const errorMessage = this.shadow.querySelector('#error-message');
-			errorMessage.classList.remove('hidden');
-		}
+		fetch('http://localhost:3000/api/usuarios/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ correo: email, password: password }),
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.status === 'success') {
+				localStorage.setItem('authToken', data.token);
+				alert('Login exitoso');
+				page('/posts')
+			} else {
+
+				const errorMessage = this.shadow.querySelector('#error-message');
+				if (errorMessage) {
+					errorMessage.classList.remove('hidden');
+				}
+			}
+		})
+		.catch(error => {
+			console.error('Error al realizar el login:', error);
+			alert('Hubo un problema al iniciar sesión. Inténtalo nuevamente.');
+		});
 	}
 }
 

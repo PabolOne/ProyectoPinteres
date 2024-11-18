@@ -14,7 +14,7 @@ export class PostPage extends HTMLElement {
 		shadow.innerHTML += `
 		<div class="post-container">
 			<div class="post-image">
-				<img src="./imagen_salida.jpg" alt="Publicación">
+				<img src="../Front/src/assets/images/imagen_salida.jpg" alt="Publicación">
 				<div class="controls">
 					<button class="prev">&lt;</button>
 					<button class="play">&#9654;</button>
@@ -24,8 +24,8 @@ export class PostPage extends HTMLElement {
 			
 			<div class="post-details">
 				<div class="post-info">
-					<span class="time"><i><img class="post-icons" src="./src/assets/images/time.png"></i> 1:32</span>
-					<span class="likes"><i><img class="post-icons" src="./src/assets/images/like.png"></i> 123</span>
+					<span class="time"><i><img class="post-icons" src="../Front/src/assets/images/time.png"></i> 1:32</span>
+					<span class="likes"><i><img class="post-icons" src="../Front/src/assets/images/like.png"></i> 123</span>
 					<button class="save-button">Guardar</button>
 				</div>
 
@@ -33,13 +33,13 @@ export class PostPage extends HTMLElement {
 				
 				<div class="comments">
 					<div class="comment">
-						<img src="./imagen_salida.jpg" alt="PabloOne" class="comment-avatar">
+						<img src="../Front/src/assets/images/imagen_salida.jpg" alt="PabloOne" class="comment-avatar">
 						<span>PabloOne</span>
 					</div>
 					<div class="comment">
-						<img src="./imagen_salida.jpg" alt="PabloTwo" class="comment-avatar">
+						<img src="../Front/src/assets/images/imagen_salida.jpg" alt="PabloTwo" class="comment-avatar">
 						<span>PabloTwo</span>
-						<img src="./imagen_salida.jpg" alt="Dibujo" class="comment-image">
+						<img src="../Front/src/assets/images/imagen_salida.jpg" alt="Dibujo" class="comment-image">
 					</div>
 				</div>
 				

@@ -52,7 +52,7 @@ export class ListaPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "./src/pages/lista/lista.page.css");
+		link.setAttribute("href", "../Front/src/pages/lista/lista.page.css");
 		shadow.appendChild(link);
 	}
 

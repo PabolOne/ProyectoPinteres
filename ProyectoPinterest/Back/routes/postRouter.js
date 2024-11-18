@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const verificarToken = require('../utils/Token/auth')
 const PostController = require('../controllers/postController')
 const router = express.Router();
 const { validatePost } = require('../utils/validadorJSON');
@@ -18,8 +19,10 @@ function validarPost(req, res, next) {
 
 router.get('/', PostController.obtenerPosts);
 router.get('/:id', PostController.obtenerPostPorId);
-router.post('/', validarPost, PostController.crearPost);
-router.put('/:id', validarPost, PostController.actualizarPost);
-router.delete('/:id', PostController.eliminarPostPorId);
+
+
+router.post('/', verificarToken, validarPost, PostController.crearPost);
+router.put('/:id', verificarToken, validarPost, PostController.actualizarPost);
+router.delete('/:id', verificarToken, PostController.eliminarPostPorId);
 
 module.exports = router;

@@ -19,7 +19,7 @@ export class PerfilPage extends HTMLElement {
 			<div class="profile-header">
 				<img src="./imagen_salida.jpg" alt="Foto de perfil" class="profile-pic">
 				<h2 class="username">PabloOne</h2>
-				<a href="/configuracion"><img class="settings-btn" src="./src/assets/images/Config.png"></a>
+				<a href="/configuracion"><img class="settings-btn" src="../Front/src/assets/images/Config.png"></a>
 			</div>
 			
 			<div class="card-container">
@@ -36,7 +36,7 @@ export class PerfilPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "./src/pages/perfil/perfil.page.css");
+		link.setAttribute("href", "../Front/src/pages/perfil/perfil.page.css");
 		shadow.appendChild(link);
 	}
 }

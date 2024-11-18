@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const UsuarioDAO = require('./dataAccess/UsuarioDAO');
+const UsuarioDAO = require('../../dataAccess/UsuarioDAO');
+const verificarToken = require('./auth');
 
 const app = express();
 const PORT = 3000;
@@ -56,8 +57,8 @@ app.post('/login', async (req, res) => {
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        console.log(`Intentando iniciar sesión con ${correo} y contraseña ${password}. Contraseña REAL: ${user.password}`); // Agregar log
-        console.log(`Contraseña válida: ${isPasswordValid}`); // Log del resultado de la comparación
+        console.log(`Intentando iniciar sesión con ${correo} y contraseña ${password}. Contraseña REAL: ${user.password}`); 
+        console.log(`Contraseña válida: ${isPasswordValid}`); 
         if (!isPasswordValid) {
             return res.status(400).json({ message: "Contraseña incorrecta" });
         }
@@ -74,24 +75,11 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/protected', verifyToken, (req, res) => {
+app.get('/protected', verificarToken    , (req, res) => {
     res.json({ message: "Acceso a la ruta protegida concedido", user: req.user });
 });
 
-function verifyToken(req, res, next) {
-    const token = req.headers['authorization'];
-    if (!token) {
-        return res.status(403).json({ message: "Token no proporcionado" });
-    }
 
-    jwt.verify(token, SECRET_KEY, (err, decoded) => {
-        if (err) {
-            return res.status(401).json({ message: "Token inválido" });
-        }
-        req.user = decoded;
-        next();
-    });
-}
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

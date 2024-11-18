@@ -33,7 +33,7 @@ export class CrearPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "./src/pages/crear/crear.page.css");
+		link.setAttribute("href", "../Front/src/pages/Crear/crear.page.css");
 		shadow.appendChild(link);
 	}
 	#seleccionarImagen(shadow) {
