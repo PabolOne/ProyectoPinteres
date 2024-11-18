@@ -17,12 +17,13 @@ export class CrearPage extends HTMLElement {
 		shadow.innerHTML += `
 		<div class="create-container" id="dropContainer">
 			<div class="upload-box" id="dropArea">
+				<img class="upload-icon" src = "./src/assets/images/Subir.png">
 			</div>
 			<div class="form-container">
 				<label for="description">Descripción</label>
 				<input type="text" id="description" placeholder="Descripción">
 				<label for="tags">Tags</label>
-				<input type="text" id="tags" placeholder="Tags">
+				<input type="text" id="tags" placeholder="Tag-1,Tag-2,...">
 				
 				<button class="publish-button" id="saveButton">Publicar</button>
 			</div>
@@ -47,22 +48,17 @@ export class CrearPage extends HTMLElement {
 	
 		const filesArray = [];
 	
-		// Agrega eventos al área de arrastrar y soltar
 		dropArea.addEventListener('dragover', handleDragOver);
 		dropArea.addEventListener('drop', handleDrop);
 		
 	
-		saveButton.addEventListener('click', saveFileToLocalStorage);
+		saveButton.addEventListener('click', publicar);
 	
-		// Función para manejar el evento de arrastrar sobre el área
 		function handleDragOver(event) {
-			// para evitar el comportamiento predeterminado de un evento
 			event.preventDefault();
-			// Agrega una clase para resaltar visualmente el área de soltar
 			dropArea.classList.add('drag-over');
 		}
 	
-		// Función para manejar el evento de soltar archivos en el área
 		function handleDrop(event) {
 			event.preventDefault();
 			dropArea.classList.remove('drag-over');
@@ -93,9 +89,9 @@ export class CrearPage extends HTMLElement {
 				img.style.maxHeight = '100%';
 				img.style.objectFit = 'cover';
 	
-				dropArea.innerHTML = ''; // Limpia cualquier contenido previo
-				dropArea.appendChild(img); // Muestra la nueva imagen
-				currentFile = file; // Almacena el archivo seleccionado
+				dropArea.innerHTML = ''; 
+				dropArea.appendChild(img); 
+				currentFile = file;
 			};
 			reader.readAsDataURL(file);
 		}
@@ -106,25 +102,53 @@ export class CrearPage extends HTMLElement {
 		
 		
 	
-		// Función para guardar la lista de archivos en localStorage
-		function saveFileToLocalStorage() {
+		function publicar() {
 			if (!currentFile) {
 				alert('No se ha agregado ninguna imagen.');
 				return;
 			}
-
-			// Convierte el archivo a base64 y lo guarda en localStorage
+		
+			const description = String(shadow.getElementById('description').value);
+			const tagsInput = shadow.getElementById('tags').value;
+		
+			const tags = tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag);
+		
+			if (tags.length === 0) {
+				alert('Por favor, añade al menos un tag.');
+				return;
+			}
+		
 			const reader = new FileReader();
 			reader.onload = function (event) {
 				const base64Content = event.target.result.split(',')[1];
-				PostService.createPost(new Post('67020ca70f10be185fbdf768',"descripcion",base64Content,"tagstataxzfdas"));
-				alert('Imagen guardada en localStorage.');
-			};			
-			
-			
-
+		
+				PostService.createPostContenido(base64Content, '6715c4258cb28cfbc577c699', description, tags)
+					.then(idContenido => {
+						console.log('ID del contenido creado:', idContenido);
+						
+						limpiarCampos();
+					})
+					.catch(error => {
+						console.error('Error al crear el contenido:', error);
+					});
+			};
+		
 			reader.readAsDataURL(currentFile);
 		}
+		
+		function limpiarCampos() {
+			
+			shadow.getElementById('description').value = '';
+			
+			shadow.getElementById('tags').value = '';
+			
+			dropArea.innerHTML = `
+				<img class="upload-icon" src = "./src/assets/images/Subir.png">
+			`;
+			currentFile = null; 
+		}
+		
+		
 	}
 	
 	

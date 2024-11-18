@@ -1,5 +1,5 @@
 const express = require('express');
-const app = express();
+const cors = require('cors'); // Middleware para manejar CORS
 const morgan = require('morgan');
 const { globalErrorHandler, AppError } = require('./utils/appError');
 require('dotenv').config({ path: './variables.env' });
@@ -12,7 +12,17 @@ const usuarioAvatarRouter = require('./routes/usuarioAvatarRouter');
 const fs = require('fs');
 
 // Conectar a la base de datos
-db.conectar();
+ db.conectar();
+
+// Crear la aplicación Express
+const app = express();
+
+// Configurar CORS
+app.use(cors({
+    origin: '*', // Permite cualquier origen. Para mayor seguridad, especifica los dominios permitidos.
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos HTTP permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'], // Headers permitidos
+}));
 
 // Middlewares
 app.use(express.json());
@@ -35,7 +45,7 @@ app.all('*', (req, res, next) => {
 app.use(globalErrorHandler);
 
 // Configuración del puerto y arranque del servidor
-const port = process.env.PORT || 3000;
+const port =  3001;
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);

@@ -29,6 +29,7 @@ const postSchema = {
             type: 'array',
             items: { type: 'string', pattern: '^[0-9a-fA-F]{24}$' }
         },
+        descripcion: { type: 'string'},
         contenido: { type: 'string', pattern: '^[0-9a-fA-F]{24}$' },
         tags: {
             type: 'array',
@@ -37,7 +38,7 @@ const postSchema = {
         fechaHora: { type: 'string', format: 'date-time' }, // Soportado gracias a ajv-formats
         likes: { type: 'integer', minimum: 0 }
     },
-    required: ['idUsuario', 'fechaHora', 'likes'],
+    required: [],
     additionalProperties: false
 };
 
@@ -45,8 +46,7 @@ const postContenidoSchema = {
     type: 'object',
     properties: {
         contenido: {
-            type: 'array',
-            items: { type: 'string' }
+            type: 'string' 
         }
     },
     required: ['contenido'],

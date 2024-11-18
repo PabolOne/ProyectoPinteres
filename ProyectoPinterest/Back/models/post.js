@@ -9,7 +9,7 @@ const postSchema = new mongoose.Schema({
     idUsuario:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Usuario',
-        required: true
+        required: false
     },
     posts: [{
         type: mongoose.Schema.Types.ObjectId, 
@@ -21,16 +21,19 @@ const postSchema = new mongoose.Schema({
             ref: 'PostContenido'  
         }
     ,
+    descripcion: {
+        type: String
+    },
     tags: [{
         type: String
     }],
     fechaHora:{
         type: Date,
-        required: true
+        default: Date.now()
     },
     likes:{
         type: Number,
-        required: true
+        default: 0
     }
 });
 

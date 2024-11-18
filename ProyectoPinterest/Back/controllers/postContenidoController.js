@@ -8,7 +8,7 @@ class postContenidoController {
             const { contenido } = req.body;
 
             if (!contenido) {
-                next(new AppError('El campo avatar es requerido'))
+                next(new AppError('El campo contenido es requerido'))
             }
             
             
