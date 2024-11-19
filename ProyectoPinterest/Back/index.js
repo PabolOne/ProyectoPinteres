@@ -10,9 +10,10 @@ const usuarioRouter = require('./routes/usuarioRouter');
 const postContenidoRouter = require('./routes/postContenidoRouter');
 const usuarioAvatarRouter = require('./routes/usuarioAvatarRouter');
 const fs = require('fs');
+const path = require('path');
 
 // Conectar a la base de datos
- db.conectar();
+db.conectar();
 
 // Crear la aplicación Express
 const app = express();
@@ -34,6 +35,7 @@ app.use('/api/posts', postRouter);
 app.use('/api/usuarios', usuarioRouter);
 app.use('/api/postContenido', postContenidoRouter);
 app.use('/api/usuarioAvatar', usuarioAvatarRouter);
+app.use('/api/imagenes', express.static(path.join(__dirname, './img/PostContenido')));
 
 // Manejo de rutas no encontradas
 app.all('*', (req, res, next) => {
@@ -45,7 +47,7 @@ app.all('*', (req, res, next) => {
 app.use(globalErrorHandler);
 
 // Configuración del puerto y arranque del servidor
-const port =  3001;
+const port = 3001;
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
