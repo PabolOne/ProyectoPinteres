@@ -49,7 +49,7 @@ export class ConfiguracionPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "../Front/src/pages/configuracion/configuracion.page.css");
+		link.setAttribute("href", "../src/pages/configuracion/configuracion.page.css");
 		shadow.appendChild(link);
 	}
 }

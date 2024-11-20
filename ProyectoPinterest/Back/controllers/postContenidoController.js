@@ -1,6 +1,8 @@
 const PostContenidoDAO = require('../dataAccess/PostContenidoDAO');
 const { AppError } = require('../utils/appError');
-
+const path = require('path');
+const fs = require('fs');
+const { setHeapSnapshotNearHeapLimit } = require('v8');
 
 class postContenidoController {
     static async crearPostContenido(req, res, next) {
@@ -8,13 +10,16 @@ class postContenidoController {
             const { contenido } = req.body;
 
             if (!contenido) {
-                next(new AppError('El campo avatar es requerido'))
+                next(new AppError('El campo contenido es requerido'))
             }
-            
-            
-            const postContenidoData = { contenido}
+
+            const postContenidoData = { contenido }
             const postContenido = await PostContenidoDAO.crearPostContenido(postContenidoData);
+
+            postContenidoController.crearImagenBack(contenido, postContenido._id);
+
             res.status(201).json(postContenido);
+
         } catch (error) {
             next(new AppError('Error al crear post contenido', 500))
         }
@@ -38,7 +43,7 @@ class postContenidoController {
     static async obtenerPostContenidos(req, res, next) {
         try {
 
-            const limit = req.query.limit || 10;
+            const limit = req.query.limit || 16;
             const postContenidos = await PostContenidoDAO.obtenerPostContenidos(limit);
 
             if (!postContenidos) {
@@ -89,6 +94,29 @@ class postContenidoController {
         } catch (error) {
             next(new AppError('Error al eliminar el post contenido', 500))
         }
+    }
+
+    static crearImagenBack(contenido, id) {
+        
+        const base64Image = contenido; 
+
+        const buffer = Buffer.from(base64Image, 'base64');
+
+        const dirPath = path.join(__dirname, '../img/PostContenido');
+
+        if (!fs.existsSync(dirPath)) {
+         fs.mkdirSync(dirPath, { recursive: true });
+        }
+
+        const nombreArchivo = `${id}.jpg`
+
+        fs.writeFile(path.join(dirPath, nombreArchivo), buffer, (err) => {
+            if (err) {
+                console.error('Error al escribir la imagen:', err);
+                return;
+            }
+            console.log('Imagen guardada con éxito:');
+        });
     }
 
 }

@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 
 const postContenidoSchema = new mongoose.Schema({
-    contenido: [{
+    contenido: {
         type: String
-    }]
+    }
 });
 
-module.exports = mongoose.model('PostContenido', postContenidoSchema);
+
+const PostContenido = mongoose.model('PostContenido', postContenidoSchema);
+
+
+module.exports = PostContenido;

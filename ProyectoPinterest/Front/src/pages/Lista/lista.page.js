@@ -4,13 +4,19 @@ export class ListaPage extends HTMLElement {
 	constructor() {
 		super();
 		this.shadow = this.attachShadow({ mode: "open" });
-		this.posts = PostService.getPosts();
+		this.posts = [];
 	}
 
 	connectedCallback() {
+		this.#cargarPosts();
 		this.#agregaEstilo(this.shadow);
 		this.#render(this.shadow);
 		this.#setupModal();
+	}
+
+	async #cargarPosts() {
+		
+		this.posts = await PostService.getPosts();
 	}
 
 	#render(shadow) {
@@ -52,7 +58,7 @@ export class ListaPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "../Front/src/pages/lista/lista.page.css");
+		link.setAttribute("href", "../src/pages/lista/lista.page.css");
 		shadow.appendChild(link);
 	}
 

@@ -12,7 +12,7 @@ export class FooterComponent extends HTMLElement {
 	#render(shadow) {
 		shadow.innerHTML += `
 		<footer>
-    		<p>&copy; 2024 LITTLE SHOP ONLINE</p>
+    		<p>&copy; 2024 PabolOne - Scrg - Asiedad</p>
 		</footer>
 		`;
 	}

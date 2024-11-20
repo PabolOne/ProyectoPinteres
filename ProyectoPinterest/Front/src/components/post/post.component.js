@@ -26,7 +26,7 @@ export class PostComponent extends HTMLElement{
     #addStyles(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "../Front/src/components/post/post.component.css");
+		link.setAttribute("href", "../src/components/post/post.component.css");
 		shadow.appendChild(link);
 	}
 }

@@ -61,9 +61,10 @@ button {
 }
 
 .login-image {
-	width: 100px; 
-	height: auto;
-	margin-bottom: 1rem; 
+    display: block;
+    margin: 0 auto 20px; 
+    width: 100px; 
+    height: auto;
 }
 
 button:hover {

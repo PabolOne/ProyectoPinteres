@@ -15,6 +15,13 @@ header {
 }
 
 
+.register-image {
+    display: block;
+    margin: 0 auto 20px; 
+    width: 100px; 
+    height: auto;
+}
+
 
 
 .register-image {

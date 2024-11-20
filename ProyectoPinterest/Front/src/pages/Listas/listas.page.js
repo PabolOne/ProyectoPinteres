@@ -9,6 +9,7 @@ export class ListasPage extends HTMLElement {
 	}
 
 	connectedCallback() {
+		this.#verificarToken();
 		this.#agregaEstilo(this.shadow);
 		this.#render(this.shadow);
 		this.#setupModal();
@@ -61,7 +62,7 @@ export class ListasPage extends HTMLElement {
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "../Front/src/pages/listas/listas.page.css");
+		link.setAttribute("href", "../src/pages/listas/listas.page.css");
 		shadow.appendChild(link);
 	}
 
@@ -84,6 +85,17 @@ export class ListasPage extends HTMLElement {
 			modal.style.display = "none";
 		  }
 		}
+	}
+
+	#verificarToken() {
+		const token = localStorage.getItem('token'); 
+	
+		if (!token) {
+			alert('No estás autenticado. Serás redirigido al inicio de sesión.');
+			window.location.href = '/'; 
+			return;
+		}
+	
 	}
 
 }

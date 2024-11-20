@@ -9,6 +9,7 @@ export class LoginPage extends HTMLElement {
 	}
 
 	connectedCallback() {
+		//this.#verificarToken();
 		this.#agregaEstilo(this.shadow);
 		this.#render(this.shadow);
 		this.#addEventListeners();
@@ -64,7 +65,7 @@ export class LoginPage extends HTMLElement {
 	}
 
 	#handleLogin(email, password) {
-		fetch('http://localhost:3000/api/usuarios/login', {
+		fetch('http://localhost:3001/api/usuarios/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -74,7 +75,7 @@ export class LoginPage extends HTMLElement {
 		.then(response => response.json())
 		.then(data => {
 			if (data.status === 'success') {
-				localStorage.setItem('authToken', data.token);
+				localStorage.setItem('token', data.token);
 				alert('Login exitoso');
 				page('/posts')
 			} else {
@@ -90,5 +91,8 @@ export class LoginPage extends HTMLElement {
 			alert('Hubo un problema al iniciar sesión. Inténtalo nuevamente.');
 		});
 	}
+
+
+
 }
 

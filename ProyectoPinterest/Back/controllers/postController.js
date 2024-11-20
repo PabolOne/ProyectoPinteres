@@ -5,27 +5,22 @@ const { AppError } = require('../utils/appError');
 class postController {
     static async crearPost(req, res, next) {
         try {
-            const { idPostOriginal, idUsuario,posts, contenido, tags, fechaHora, likes} = req.body;
-
+            const { idPostOriginal, idUsuario, posts,descripcion, contenido, tags, fechaHora, likes } = req.body;
+    
             if (!idUsuario) {
-                next(new AppError('El campo Usuario es requerido'))
+                return next(new AppError('El campo Usuario es requerido', 400));
             }
-            if (!tags) {
-                next(new AppError('El campo tags es requerido'))
-            }
-            if (!fechaHora) {
-                next(new AppError('El campo fechaHora es requerido'))
-            }
-            if (!likes) {
-                next(new AppError('El campo likes es requerido'))
-            }
-            const postData = { idPostOriginal, idUsuario,posts, contenido, tags,fechaHora, likes}
+    
+            const postData = { idPostOriginal, idUsuario, posts,descripcion, contenido, tags, fechaHora, likes };
             const post = await PostDAO.crearPost(postData);
+    
             res.status(201).json(post);
         } catch (error) {
-            next(new AppError('Error al crear post ', 500))
-        }
+            console.log(error);
+            next(new AppError('Error al crear post', 500)); 
     }
+    }
+    
 
     static async obtenerPostPorId(req, res, next) {
         try {
