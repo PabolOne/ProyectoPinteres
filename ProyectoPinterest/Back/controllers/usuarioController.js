@@ -160,6 +160,62 @@ class UsuarioController {
             next(error);
         }
     }
+    
+
+
+    static async register(req, res, next) {
+        try {
+            const { username, firstName, lastName, email, password } = req.body;
+    
+            const DEFAULT_AVATAR_ID = new mongoose.Types.ObjectId("67021684d2b71182f580eaf6");
+    
+            if (!username || !firstName || !lastName || !email || !password) {
+                return res.status(400).json({
+                    status: 'fail',
+                    message: 'Todos los campos son obligatorios: usuario, nombre, apellidos, correo y contraseña',
+                });
+            }
+    
+            const usuarioExistente = await UsuarioDAO.encontrarUsuarioPorEmail(email);
+            if (usuarioExistente) {
+                return res.status(409).json({
+                    status: 'fail',
+                    message: 'El correo ya está registrado',
+                });
+            }
+    
+            const nombreCompleto = `${firstName} ${lastName}`;
+    
+            const nuevoUsuario = await UsuarioDAO.crearUsuario({
+                username,
+                nombre: nombreCompleto,
+                correo: email,
+                avatar: DEFAULT_AVATAR_ID,
+                password,
+            });
+    
+            const token = UsuarioController.generarToken(nuevoUsuario._id);
+    
+            return res.status(201).json({
+                status: 'success',
+                message: 'Registro exitoso',
+                usuario: {
+                    _id: nuevoUsuario._id,
+                    username: nuevoUsuario.username,
+                    nombre: nuevoUsuario.nombre,
+                    correo: nuevoUsuario.correo,
+                    avatar: nuevoUsuario.avatar,
+                },
+                token,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+    
+    
+    
+
 }
 
 module.exports = UsuarioController;

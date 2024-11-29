@@ -73,17 +73,44 @@ export class RegistrarPage extends HTMLElement {
 			const lastName = this.shadow.querySelector('#lastName').value;
 			const email = this.shadow.querySelector('#email').value;
 			const password = this.shadow.querySelector('#password').value;
+	
 			this.#handleRegister(username, firstName, lastName, email, password);
 		});
 	}
-
+	
 	#handleRegister(username, firstName, lastName, email, password) {
-		if (email && password) {
-			alert("Registro exitoso");
-		} else {
-			const errorMessage = this.shadow.querySelector('#error-message');
-			errorMessage.classList.remove('hidden');
-		}
+		fetch('http://localhost:3001/api/usuarios/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ 
+				username, 
+				firstName, 
+				lastName, 
+				email, 
+				password 
+			}),
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.status === 'success') {
+				localStorage.setItem('token', data.token);
+				alert('Registro exitoso');
+				page('/posts'); 
+			} else {
+				const errorMessage = this.shadow.querySelector('#error-message');
+				if (errorMessage) {
+					errorMessage.textContent = data.message || 'Error en el registro';
+					errorMessage.classList.remove('hidden');
+				}
+			}
+		})
+		.catch(error => {
+			console.error('Error al realizar el registro:', error);
+			alert('Hubo un problema al registrarse. Inténtalo nuevamente.');
+		});
 	}
+	
 }
 

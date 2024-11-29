@@ -17,13 +17,12 @@ export class PerfilPage extends HTMLElement {
 	}
 
 	async #cargarPosts() {
-		// Espera a que los posts sean obtenidos
 		try {
 			this.posts = await PostService.getPosts();
 			console.log("Posts cargados:", this.posts);
 		} catch (error) {
 			console.error("Error al cargar los posts:", error);
-			this.posts = []; // Asegúrate de que siempre sea un array
+			this.posts = [];
 		}
 	}
 
@@ -65,11 +64,9 @@ export class PerfilPage extends HTMLElement {
 		}
 	
 		try {
-			// Extraer el payload del token
-			const payloadBase64 = token.split('.')[1]; // El payload está en la segunda parte del token
-			const payload = JSON.parse(atob(payloadBase64)); // Decodificar Base64 y convertir a objeto
+			const payloadBase64 = token.split('.')[1]; 
+			const payload = JSON.parse(atob(payloadBase64)); 
 	
-			// Imprimir el id del usuario en la consola
 			console.log('ID del usuario:', payload.id);
 		} catch (error) {
 			console.error('Error al decodificar el token:', error);
@@ -83,10 +80,8 @@ export class PerfilPage extends HTMLElement {
 		const logoutBtn = this.shadow.querySelector('#logoutBtn');
 		if (logoutBtn) {
 			logoutBtn.addEventListener('click', () => {
-				// Eliminar el token del localStorage
 				localStorage.removeItem('token');
 				
-				// Redirigir al login
 				alert('Has cerrado sesión.');
 				window.location.href = '/';
 			});

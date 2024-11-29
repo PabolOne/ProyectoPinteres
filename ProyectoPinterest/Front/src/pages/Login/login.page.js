@@ -9,7 +9,6 @@ export class LoginPage extends HTMLElement {
 	}
 
 	connectedCallback() {
-		//this.#verificarToken();
 		this.#agregaEstilo(this.shadow);
 		this.#render(this.shadow);
 		this.#addEventListeners();
