@@ -10,7 +10,7 @@ function verificarToken(req, res, next) {
 
     try {
         const decoded = jwt.verify(token, "CLAVESECRETA");
-        req.usuarioId = decoded.id;  
+        req.usuarioId = decoded.id; // Middleware
         next();
     } catch (error) {
         next(new AppError('Token no válido o expirado', 401));
