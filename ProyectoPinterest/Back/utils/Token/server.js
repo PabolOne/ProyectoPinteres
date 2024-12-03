@@ -22,6 +22,8 @@ mongoose.connect('mongodb://localhost/pinterest', {
 app.post('/register', async (req, res) => {
     const { username, nombre, correo, password, avatar } = req.body;
 
+    console.log('Request Body:', req.body); // Agregado para depuración
+
     try {
         const existingUser = await UsuarioDAO.encontrarUsuarioPorEmail(correo);
         if (existingUser) {
@@ -79,7 +81,7 @@ app.get('/protected', verificarToken    , (req, res) => {
     res.json({ message: "Acceso a la ruta protegida concedido", user: req.user });
 });
 
-
+app.get
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

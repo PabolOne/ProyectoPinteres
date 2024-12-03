@@ -12,9 +12,6 @@ const usuarioAvatarRouter = require('./routes/usuarioAvatarRouter');
 const fs = require('fs');
 const path = require('path');
 
-
-
-
 // Conectar a la base de datos
 db.conectar();
 
@@ -31,10 +28,6 @@ app.use(cors({
 // Middlewares
 app.use(express.json());
 app.use(morgan('combined'));
-app.use(cors({
-    origin: 'http://127.0.0.1:5500', 
-}));
-
 
 // Definir las rutas
 app.use('/api/listas', listaRouter);
@@ -43,6 +36,7 @@ app.use('/api/usuarios', usuarioRouter);
 app.use('/api/postContenido', postContenidoRouter);
 app.use('/api/usuarioAvatar', usuarioAvatarRouter);
 app.use('/api/imagenes', express.static(path.join(__dirname, './img/PostContenido')));
+app.use('/api/avatares', express.static(path.join(__dirname, './img/UsuarioAvatar')));
 
 app.get('/', (req, res) => {
     res.send('Servidor de Backend');

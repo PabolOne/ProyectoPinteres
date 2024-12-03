@@ -1,2 +1,27 @@
 {"level":"error","message":"Error al obtener producto"}
 {"level":"error","message":"Lo campos nombre, precio y cantidad son requeridos"}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"No se pudo acceder a la ruta: /favicon.ico en el servicio web"}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"Error al crear usuario avatar"}
+{"level":"error","message":"Error al crear usuario avatar"}
+{"level":"error","message":"Error al crear usuario avatar"}
+{"level":"error","message":"Error al crear usuario avatar"}
+{"level":"error","message":"Error al crear usuario avatar"}
+{"level":"error","message":"Error al crear usuario avatar"}
+{"level":"error","message":"Error al crear usuario avatar"}
+{"level":"error","message":"Error al crear usuario avatar"}
+{"level":"error","message":"Error al crear usuario avatar"}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/usuariosAvatar/6715cd8fd6eeeccb7ba0fef3 en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/usuariosAvatar/674e6c4db3d1597842e43990 en el servicio web"}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"Usuario validation failed: avatar: Cast to ObjectId failed for value \"undefined\" (type string) at path \"avatar\" because of \"BSONError\""}
+{"level":"error","message":"Usuario validation failed: avatar: Path `avatar` is required."}
+{"level":"error","message":"Usuario validation failed: avatar: Path `avatar` is required."}
+{"level":"error","message":"Usuario validation failed: avatar: Path `avatar` is required."}
