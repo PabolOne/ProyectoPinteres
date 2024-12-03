@@ -31,9 +31,6 @@ app.use(cors({
 // Middlewares
 app.use(express.json());
 app.use(morgan('combined'));
-app.use(cors({
-    origin: 'http://127.0.0.1:5500', 
-}));
 
 
 // Definir las rutas

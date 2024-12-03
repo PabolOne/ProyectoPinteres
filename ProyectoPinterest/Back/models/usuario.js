@@ -13,6 +13,10 @@ const usuarioSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Post'  
+    }],
     avatar: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'UsuarioImg',

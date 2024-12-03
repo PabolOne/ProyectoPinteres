@@ -33,11 +33,12 @@ export class PostsPage extends HTMLElement {
 	#renderCard(post) {
 		const imageUrl = PostService.getImageById(post._id);
 		return `
-			<a href="/post/">
+			<a href="/post/${post._id}">
 				<post-info id="${post._id}" image="${imageUrl}" alt="${post._id}"></post-info>
 			</a>
 		`;
 	}
+	
 
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");

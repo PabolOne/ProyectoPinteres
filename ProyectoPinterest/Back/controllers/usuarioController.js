@@ -3,7 +3,8 @@ const { AppError } = require('../utils/appError');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-
+const jwtDecode = require('jwt-decode');
+const postController = require('./postController');
 
 class UsuarioController {
     static async crearUsuario(req, res, next) {
@@ -90,7 +91,38 @@ class UsuarioController {
             next(new AppError('Error al actualizar el usuario ', 500))
         }
     }
+    static async actualizarUsuarioPostLikeados(req, res, next) {
+        try {
+            const idUsuario = req.params.idUsuario;
+            const idPost = req.params.idPost;
+            const usuarioexists = await UsuarioDAO.obtenerUsuarioPorId(idUsuario);
+            let like = 0;
+            if (!usuarioexists) {
+                next(new AppError('Usuario  no encontrado', 404))
+            }
 
+            const usuarioData = usuarioexists;
+            if (!usuarioData.posts.includes(idPost)) {
+                usuarioData.posts.push(idPost); 
+                postController.darPostLikes(idPost);
+                like =1;
+            } else {
+                usuarioData.posts.remove(idPost); 
+                postController.quitarPostLikes(idPost);
+                like=-1;
+            }
+    
+            const usuario = await UsuarioDAO.actualizarUsuarioPorId(idUsuario, usuarioData);
+
+            if (!usuario) {
+                next(new AppError('Usuario  no encontrado', 404));
+            }
+
+            res.status(200).json(like);
+        } catch (error) {
+            next(new AppError('Error al actualizar el usuario ', 500));
+        }
+    }
     static async eliminarUsuarioPorId(req, res, next) {
         try {
             const id = req.params.id;
@@ -125,7 +157,25 @@ class UsuarioController {
         return jwt.sign({ id: userId }, "CLAVESECRETA", { expiresIn: '1h' });
 
     }
-
+    static async obtenerIdToken(req, res, next) {
+        try {
+            const { token } = req.body;
+            console.log(token);
+    
+            const decodedToken = jwt.verify(token, "CLAVESECRETA");
+            const idUsuario = decodedToken.id;
+    
+            console.log(idUsuario);
+            return res.status(200).json({
+                status: 'success',
+                idUsuario: idUsuario
+            });
+        } catch (error) {
+            console.error(error);
+            next(new AppError('Token inválido o error al decodificar.', 400));
+        }
+    }
+    
     static async login(req, res, next) {
         try {
             const { correo, password } = req.body;

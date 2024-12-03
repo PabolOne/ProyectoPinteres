@@ -1,6 +1,6 @@
-/* Contenedor principal */
 .post-container {
     display: flex;
+    flex-direction: column; /* Cambiar disposición a columna */
     background-color: #f8f6f2;
     padding: 20px;
     border-radius: 10px;
@@ -8,27 +8,33 @@
     margin: 0 auto;
     margin-top: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 /* Sección de la imagen */
 .post-image {
-    position: relative;
-    margin-right: 20px;
+    display: flex; /* Usar flexbox para centrar */
+    justify-content: center; /* Centrar horizontalmente */
+    margin-bottom: 20px; /* Añadir espacio debajo de la imagen */
 }
 
+/* Ajustar la imagen */
 .post-image img {
-    width: 250px;
+    
+    width: 50%; /* Hacer que la imagen use todo el ancho de su contenedor */
     border-radius: 10px;
     object-fit: cover;
 }
 
+/* Controles debajo de la imagen */
 .controls {
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    width: 100%;
+    align-items: center;
+    width: 100%; /* Coincidir con el ancho de la imagen */
+    max-width: 250px; /* Mismo ancho que la imagen */
+    margin: 10px auto 0; /* Centrar y añadir margen superior */
+    padding: 0 10px; /* Opcional: Espaciado interno */
 }
 
 .controls button {
@@ -40,14 +46,16 @@
 
 /* Detalles de la publicación */
 .post-details {
-    flex: 1;
+    
     display: flex;
     flex-direction: column;
 }
 
 .post-info {
     display: flex;
-    align-items: center;
+    width: 100%;
+    justify-content: right;
+    align-items: right;
     gap: 10px;
 }
 

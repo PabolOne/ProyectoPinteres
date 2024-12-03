@@ -11,38 +11,40 @@ import { RegistrarPage } from "./src/pages/Registrar/registrar.page.js";
 import { PerfilPage } from "./src/pages/perfil/perfil.page.js";
 import { ConfiguracionPage } from "../src/pages/Configuracion/configuracion.page.js";
 import { PostPage } from "./src/pages/post/post.page.js";
-document.addEventListener('DOMContentLoaded',function()
-{
-    //Configuracion de rutas
-    page('/',()=> showContent('login-page'));
-    page('/posts',()=> showContent('posts-page'));
-    page('/crear',()=> showContent('crear-page'));
-    page('/listas',()=> showContent('listas-page'));
-    page('/lista',()=> showContent('lista-page'));
-    page('/perfil',()=> showContent('perfil-page'));
-    page('/post',()=> showContent('post-page'));
-    page('/configuracion',()=> showContent('configuracion-page'));
-    page('/login',()=> showContent('login-page'));
-    page('/registrar',()=> showContent('registrar-page'));
-    
- 
-    page('*',()=> showContent('login-page'));
-    //Inicializar nuestro router
+document.addEventListener('DOMContentLoaded', function () {
+    // Configuración de rutas
+    page('/', () => showContent('login-page'));
+    page('/posts', () => showContent('posts-page'));
+    page('/crear', () => showContent('crear-page'));
+    page('/listas', () => showContent('listas-page'));
+    page('/lista', () => showContent('lista-page'));
+    page('/perfil', () => showContent('perfil-page'));
+    page('/post/:id', ctx => showPostPage(ctx.params.id)); // Ruta dinámica
+    page('/configuracion', () => showContent('configuracion-page'));
+    page('/login', () => showContent('login-page'));
+    page('/registrar', () => showContent('registrar-page'));
+    page('*', () => showContent('login-page'));
+
+    // Inicializar el router
     page();
 });
 
-function showContent(contentId)
-{
+function showContent(contentId) {
     const contentContainer = document.getElementById('content');
 
-    if(contentId==='posts-page')
-    {
+    if (contentId === 'posts-page') {
         contentContainer.innerHTML = `<${contentId} cantidadProductos=${3}></${contentId}>`;
-        return
+        return;
     }
     contentContainer.innerHTML = `<${contentId}></${contentId}>`;
-
 }
+
+// Nueva función para manejar rutas dinámicas
+function showPostPage(postId) {
+    const contentContainer = document.getElementById('content');
+    contentContainer.innerHTML = `<post-page postId="${postId}"></post-page>`;
+}
+
 
 
 //Components

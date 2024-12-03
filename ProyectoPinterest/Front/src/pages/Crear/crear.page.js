@@ -1,13 +1,17 @@
 import { Post } from "../../models/post.js";
 import { PostService } from "../../services/post.service.js";
-export class CrearPage extends HTMLElement {
+import { UsuarioService } from "../../services/usuario.service.js";
 
+
+export class CrearPage extends HTMLElement {
 	constructor() {
 		super();
 		this.shadow = this.attachShadow({ mode: "open" });
-	}
+		
 
+	}
 	connectedCallback() {
+		
 		this.#verificarToken();
 		this.#agregaEstilo(this.shadow);
 		this.#render(this.shadow);
@@ -52,8 +56,7 @@ export class CrearPage extends HTMLElement {
 		dropArea.addEventListener('dragover', handleDragOver);
 		dropArea.addEventListener('drop', handleDrop);
 		
-	
-		saveButton.addEventListener('click', publicar);
+		saveButton.addEventListener('click', publicar.bind(this));
 	
 		function handleDragOver(event) {
 			event.preventDefault();
@@ -120,13 +123,17 @@ export class CrearPage extends HTMLElement {
 			}
 		
 			const reader = new FileReader();
-			reader.onload = function (event) {
+			reader.onload = (event) => {
 				const base64Content = event.target.result.split(',')[1];
+				console.log("aver",idUsuario);
+				if (!this.idUsuario) {
+					alert('No se pudo identificar al usuario. Intenta iniciar sesión nuevamente.');
+					return;
+				}
 		
-				PostService.createPostContenido(base64Content, '6715c4258cb28cfbc577c699', description, tags)
+				PostService.createPostContenido(base64Content, this.idUsuario, description, tags)
 					.then(idContenido => {
 						console.log('ID del contenido creado:', idContenido);
-						
 						limpiarCampos();
 					})
 					.catch(error => {
@@ -136,6 +143,7 @@ export class CrearPage extends HTMLElement {
 		
 			reader.readAsDataURL(currentFile);
 		}
+		
 		
 		function limpiarCampos() {
 			
@@ -151,15 +159,20 @@ export class CrearPage extends HTMLElement {
 		
 		
 	}
-	#verificarToken() {
-		const token = localStorage.getItem('token'); 
-	
+
+
+	async #verificarToken() {
+		const token = localStorage.getItem('token');
 		if (!token) {
 			alert('No estás autenticado. Serás redirigido al inicio de sesión.');
-			window.location.href = '/'; 
+			window.location.href = '/';
 			return;
 		}
 	
+		const Usuario = await UsuarioService.getIdPorToken(token);
+	
+		this.idUsuario = Usuario; 
+		console.log('ID del Usuario:', this.idUsuario);
 	}
 	
 	

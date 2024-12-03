@@ -65,6 +65,13 @@ class PostDAO{
             throw error;
         }
     }
+    async obtenerPostsPorIdContenido(idContenido) {
+        try {
+            return await Post.findOne({ contenido: idContenido });
+        } catch (error) {
+            throw error;
+        }
+    }
 
     async obtenerPostsPorTag(tag) {
         try {

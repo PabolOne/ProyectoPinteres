@@ -23,6 +23,8 @@ router.post('/', validarUsuario, UsuarioController.crearUsuario);
 router.put('/:id', validarUsuario, UsuarioController.actualizarUsuario);
 router.delete('/:id', verificarToken, UsuarioController.eliminarUsuarioPorId);
 router.post('/login', UsuarioController.login);
+router.post('/token', UsuarioController.obtenerIdToken);
 router.post('/register', UsuarioController.register);
+router.post('/:idUsuario/posts/:idPost', UsuarioController.actualizarUsuarioPostLikeados);
 
 module.exports = router;
