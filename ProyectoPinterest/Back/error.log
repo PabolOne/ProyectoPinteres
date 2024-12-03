@@ -144,3 +144,11 @@
 {"level":"error","message":"Token inválido o error al decodificar."}
 {"level":"error","message":"request entity too large"}
 {"level":"error","message":"Error al actualizar el usuario "}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e515af9af86b6154bbdd2.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e7c83da6f9ae5c12b10b6.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e515af9af86b6154bbdd2.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e7c83da6f9ae5c12b10b6.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e7c83da6f9ae5c12b10b6.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e515af9af86b6154bbdd2.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e515af9af86b6154bbdd2.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e7c83da6f9ae5c12b10b6.jpg en el servicio web"}

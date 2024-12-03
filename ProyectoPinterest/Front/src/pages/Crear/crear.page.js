@@ -125,7 +125,6 @@ export class CrearPage extends HTMLElement {
 			const reader = new FileReader();
 			reader.onload = (event) => {
 				const base64Content = event.target.result.split(',')[1];
-				console.log("aver",idUsuario);
 				if (!this.idUsuario) {
 					alert('No se pudo identificar al usuario. Intenta iniciar sesión nuevamente.');
 					return;
