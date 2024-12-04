@@ -26,5 +26,6 @@ router.post('/login', UsuarioController.login);
 router.post('/token', UsuarioController.obtenerIdToken);
 router.post('/register', UsuarioController.register);
 router.post('/:idUsuario/posts/:idPost', UsuarioController.actualizarUsuarioPostLikeados);
+router.post('/:idUsuario/listas/:idLista', UsuarioController.añadirListaAUsuario)
 
 module.exports = router;

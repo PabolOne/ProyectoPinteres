@@ -24,4 +24,5 @@ router.put('/:id', validarLista, ListaController.actualizarLista);
 router.delete('/:id', ListaController.eliminarListaPorId);
 router.post('/:id/posts/:idPost', ListaController.agregarPostLista);
 
+router.get('/:idUsuario', ListaController.obtenerListasPorUsuario);
 module.exports = router;

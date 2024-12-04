@@ -1,6 +1,7 @@
 import { PostMockup } from "../models/postMockup.js";
 const API_URL = 'http://localhost:3001/';
 const URL_LISTA = 'api/listas';
+const URL_USUARIO = 'api/usuarios';
 const URL_POST_CONTENIDO = 'api/postContenido';
 const URL_POST_IMAGEN = 'api/imagenes';
 
@@ -27,6 +28,8 @@ export class ListasService{
             headers: this.getAuthHeaders()
         }).then(response => response.json());
     }
+
+
     static async guardarPostEnLista(idPost, id) {
         try {
             const response = await fetch(`${API_URL}${URL_LISTA}/${id}/posts/${idPost}`, {
@@ -45,4 +48,40 @@ export class ListasService{
             return null;
         }
     }
+
+    static async guardarListaEnUsuario(idUsuario, idLista){
+
+        try{
+            const response = await fetch(`${API_URL}${URL_USUARIO}/${idUsuario}/listas/${idLista}`, {
+                method: 'POST',
+                headers: this.getAuthHeaders()           
+             });
+        
+        if (!response.ok) {
+            throw new Error('Error al obtener el ID de la lista.');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error al guardar una lista en el usuario:', error);
+        return null;
+    }
+    }
+
+    static async obtenerListasPorUsuario(idUsuario){
+        return fetch(`${API_URL}${URL_LISTA}/${idUsuario}`, {
+            method: 'GET',
+            headers: this.getAuthHeaders()
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Datos obtenidos de obtenerListasPorUsuario:", data);
+                return data;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+    
 }

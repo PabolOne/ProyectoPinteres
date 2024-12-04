@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const jwtDecode = require('jwt-decode');
 const postController = require('./postController');
+const Usuario = require('../models/usuario');
 
 class UsuarioController {
     static async crearUsuario(req, res, next) {
@@ -262,6 +263,38 @@ class UsuarioController {
             next(error);
         }
     }
+
+    static async añadirListaAUsuario(req, res, next) {
+        try {
+            const idUsuario = req.params.idUsuario;
+            const idLista = req.params.idLista;
+            const usuarioexists = await UsuarioDAO.obtenerUsuarioPorId(idUsuario);
+            if (!usuarioexists) {
+                next(new AppError('Usuario  no encontrado', 404))
+            }
+
+            const usuarioData = usuarioexists;
+            if (!usuarioData.listas.includes(idLista)) {
+                usuarioData.listas.push(idLista); 
+            } else {
+                usuarioData.posts.remove(idLista); 
+
+            }
+    
+            const usuario = await UsuarioDAO.actualizarUsuarioPorId(idUsuario, usuarioData);
+
+            if (!usuario) {
+                next(new AppError('Usuario  no encontrado', 404));
+            }
+
+            res.status(200).json(usuario);
+        } catch (error) {
+            next(new AppError('Error al actualizar el usuario ', 500));
+        }
+    }
+    
+    
+    
     
     
     

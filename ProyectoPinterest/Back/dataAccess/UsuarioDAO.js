@@ -14,7 +14,7 @@ class UsuarioDAO{
 
     async obtenerUsuarioPorId(id){
         try{
-            return await Usuario.findById(id);
+            return await Usuario.findById(id).populate('listas');
         } catch (error){
             throw error;
         }
@@ -47,6 +47,16 @@ class UsuarioDAO{
     async encontrarUsuarioPorEmail(correo) {
         return await Usuario.findOne({ correo });
     }
+
+    async obtenerListasPorUsuario(idUsuario){
+        try{
+            const usuario = Usuario.findById(idUsuario);
+        } catch(error){
+            throw error;
+        }
+    }
+
+
 }
 
 module.exports = new UsuarioDAO();

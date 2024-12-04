@@ -1,5 +1,6 @@
 const ListaDAO = require('../dataAccess/ListaDAO');
 const { AppError } = require('../utils/appError');
+const usuarioController = require('./usuarioController');
 
 
 class ListaController {
@@ -13,11 +14,9 @@ class ListaController {
             if (!descripcion) {
                 return next(new AppError('El campo descripcion es requerido', 400));
             }
-    
-            const idUsuario = req.usuarioId;
-    
+
+
             const nuevaLista = {
-                idUsuario,
                 posts: [],
                 nombre,
                 descripcion
@@ -25,6 +24,9 @@ class ListaController {
     
             const lista = await ListaDAO.crearLista(nuevaLista);
     
+        
+
+
             res.status(201).json(lista);
         } catch (error) {
             next(new AppError('Error al crear lista', 500));

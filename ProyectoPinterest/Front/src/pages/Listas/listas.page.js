@@ -1,4 +1,5 @@
 import { ListasService } from "../../services/listas.service.js";
+import { UsuarioService } from "../../services/usuario.service.js";
 
 export class ListasPage extends HTMLElement {
 
@@ -57,7 +58,7 @@ export class ListasPage extends HTMLElement {
 
 	
 		// Función para renderizar las listas del usuario
-		#renderListas(shadow) {
+		async #renderListas(shadow) {
 			const listasContainer = shadow.querySelector('.list-container');
 			
 			this.listas.forEach(lista => {
@@ -70,39 +71,15 @@ export class ListasPage extends HTMLElement {
 			});
 		}
 
-		#obtenerListas() {
+		async #obtenerListas() 
+		{
 			const token = localStorage.getItem('token');
-			if (!token) return; // Si no hay token, no hacemos nada
-		
-			try {
-				const decodedToken = decodeJWT(token); // Decodificar el token manualmente
-				const idUsuario = decodedToken.id;    // Acceder al ID del usuario
-		
-				console.log('ID del Usuario:', idUsuario);
-		
-				fetch(`http://localhost:3001/api/listas/`, {
-					headers: {
-						"Authorization": `Bearer ${token}` // Enviar token en la cabecera
-					}
-				})
-				.then(response => {
-					if (!response.ok) {
-						throw new Error("Error al obtener las listas");
-					}
-					return response.json();
-				})
-				.then(listas => {
-					this.listas = listas; // Guardar las listas
-					this.#renderListas(this.shadow); // Renderizarlas en el DOM
-				})
-				.catch(error => {
-					console.error("Error al obtener las listas", error);
-					alert("Hubo un error al cargar las listas.");
-				});
-			} catch (error) {
-				console.error("Error al decodificar el token", error);
-				alert("Token inválido o corrupto.");
-			}
+			const decodedToken = decodeJWT(token); // Decodificar el token manualmente
+			const idUsuario = decodedToken.id; 
+			this.listas = await UsuarioService.getListasUsuario(idUsuario);
+			await this.#renderListas(this.shadow);
+			this.#agregaEstilo(this.shadow);
+
 		}
 		
 		/*
@@ -186,6 +163,7 @@ export class ListasPage extends HTMLElement {
 	}
 
 	#setupFormulario() {
+		const token = localStorage.getItem('token');
 		const btnCrearLista = this.shadow.getElementById("crearListaBtn");
 		btnCrearLista.addEventListener("click", async (event) => {
 			event.preventDefault(); 
@@ -199,12 +177,18 @@ export class ListasPage extends HTMLElement {
 			}
 
 			try {
+				const decodedToken = decodeJWT(token); // Decodificar el token manualmente
+				const idUsuario = decodedToken.id; 
+				console.log('ID DEL USUARIO ACTIVO: ',idUsuario)
 				const lista = await this.#crearLista({ nombre, descripcion });
+
+				await ListasService.guardarListaEnUsuario(idUsuario, lista._id);
+
 				alert("Lista creada con éxito.");
 				this.shadow.getElementById("myModal").style.display = "none";
 			} catch (error) {
-				console.error("Error al crear la lista", error);
-				alert("Hubo un error al crear la lista.");
+				console.error("Error al crear la lista o asociarla con el usuario", error);
+				alert("Hubo un error con la solicitud.");
 			}
 		});
 	}
