@@ -69,6 +69,7 @@ export class PostService {
                 console.log(error);
             });
     }
+
     static async incrementarLikes(postId) {
         console.log(postId);
         return fetch(`${API_URL}${URL_POST}/${postId}/like`, {

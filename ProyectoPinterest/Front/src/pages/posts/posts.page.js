@@ -39,7 +39,6 @@ export class PostsPage extends HTMLElement {
 		`;
 	}
 	
-
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");

@@ -5,7 +5,7 @@ export class LoginPage extends HTMLElement {
 	constructor() {
 		super();
 		this.shadow = this.attachShadow({ mode: "open" });
-		this.logo = LoginService.getLogo(); 
+		this.logo = LoginService.getLogo();
 	}
 
 	connectedCallback() {
@@ -71,24 +71,28 @@ export class LoginPage extends HTMLElement {
 			},
 			body: JSON.stringify({ correo: email, password: password }),
 		})
-		.then(response => response.json())
-		.then(data => {
-			if (data.status === 'success') {
-				localStorage.setItem('token', data.token);
-				alert('Login exitoso');
-				page('/posts')
-			} else {
+			.then(response => response.json())
+			.then(data => {
+				if (data.status === 'success') {
+					localStorage.setItem('token', data.token);
+					alert('Login exitoso');
+					const headerElement = document.querySelector('header-info');
+					headerElement.remove();
+					const newHeader = document.createElement('header-info');
+					document.body.insertBefore(newHeader, document.getElementById('content'));
+					page('/posts')
+				} else {
 
-				const errorMessage = this.shadow.querySelector('#error-message');
-				if (errorMessage) {
-					errorMessage.classList.remove('hidden');
+					const errorMessage = this.shadow.querySelector('#error-message');
+					if (errorMessage) {
+						errorMessage.classList.remove('hidden');
+					}
 				}
-			}
-		})
-		.catch(error => {
-			console.error('Error al realizar el login:', error);
-			alert('Hubo un problema al iniciar sesión. Inténtalo nuevamente.');
-		});
+			})
+			.catch(error => {
+				console.error('Error al realizar el login:', error);
+				alert('Hubo un problema al iniciar sesión. Inténtalo nuevamente.');
+			});
 	}
 
 

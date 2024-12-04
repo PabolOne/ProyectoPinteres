@@ -6,9 +6,8 @@ import { PostComponent } from "./src/components/post/post.component.js";
 import { ListaPage } from "./src/pages/Lista/lista.page.js";
 import { ListasPage } from "./src/pages/Listas/listas.page.js";
 import { LoginPage } from "./src/pages/Login/login.page.js";
-import { RegistrarPage } from "./src/pages/Registrar/registrar.page.js";
-
-import { PerfilPage } from "./src/pages/perfil/perfil.page.js";
+import { RegistrarPage } from "./src/pages/registrar/registrar.page.js";
+import { PerfilPage } from "./src/pages/Perfil/perfil.page.js";
 import { ConfiguracionPage } from "../src/pages/Configuracion/configuracion.page.js";
 import { PostPage } from "./src/pages/Post/post.page.js";
 

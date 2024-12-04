@@ -11,7 +11,7 @@ class UsuarioAvatarController {
             if (!avatar) {
                 next(new AppError('El campo avatar es requerido'))
             }
-            
+
             const usuarioAvatarData = { avatar }
             const usuarioAvatar = await UsuarioAvatarDAO.crearUsuarioAvatar(usuarioAvatarData);
 
@@ -59,16 +59,14 @@ class UsuarioAvatarController {
     static async actualizarUsuarioAvatar(req, res, next) {
         try {
             const id = req.params.id;
-
             const usuarioAvatarexists = await UsuarioAvatarDAO.obtenerUsuarioAvatarPorId(id);
-
             if (!usuarioAvatarexists) {
                 next(new AppError('Usuario avatar no encontrado', 404))
             }
-
             const usuarioAvatarData = req.body;
-
             const usuarioAvatar = await UsuarioAvatarDAO.actualizarUsuarioAvatarPorId(id, usuarioAvatarData)
+
+            UsuarioAvatarController.crearImagenAvatarBack(usuarioAvatarData.avatar, usuarioAvatar._id);
 
             if (!usuarioAvatar) {
                 next(new AppError('Usuario avatar no encontrado', 404))
@@ -98,7 +96,7 @@ class UsuarioAvatarController {
 
     static crearImagenAvatarBack(avatar, id) {
         console.log('Entre al metodo')
-        const base64Image = avatar; 
+        const base64Image = avatar;
 
         const buffer = Buffer.from(base64Image, 'base64');
 
@@ -106,7 +104,7 @@ class UsuarioAvatarController {
 
         console.log('Aqui ando todavia')
         if (!fs.existsSync(dirPath)) {
-         fs.mkdirSync(dirPath, { recursive: true });
+            fs.mkdirSync(dirPath, { recursive: true });
         }
 
         const nombreArchivo = `${id}.jpg`
@@ -117,6 +115,26 @@ class UsuarioAvatarController {
                 return;
             }
             console.log('Imagen avatar guardada con éxito:');
+        });
+    }
+
+    static borrarImagenAvatarBack(id) {
+        const dirPath = path.join(__dirname, '../img/UsuarioAvatar');
+        const filePath = path.join(dirPath, `${id}.jpg`);
+
+        fs.access(filePath, fs.constants.F_OK, (err) => {
+            if (err) {
+                console.log('El archivo no existe, no se necesita borrar.');
+                return;
+            }
+
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    console.error('Error al borrar la imagen avatar:', err);
+                    return;
+                }
+                console.log('Imagen avatar eliminada con éxito.');
+            });
         });
     }
 

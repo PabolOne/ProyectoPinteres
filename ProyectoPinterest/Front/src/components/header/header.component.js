@@ -1,15 +1,25 @@
+import { UsuarioService } from "../../services/usuario.service.js";
+
 export class HeaderComponent extends HTMLElement {
 	constructor() {
 		super();
+		this.idUsuario = null; // Inicializamos variables
+		this.userData = null;
 	}
 
-	connectedCallback() {
+	async connectedCallback() {
 		const shadow = this.attachShadow({ mode: "open" });
 		this.#addStyles(shadow);
+		await this.#cargarAvatar();
 		this.#render(shadow);
 	}
 
-	#render(shadow) {
+	async #render(shadow) {
+		if (!this.userData || !this.userData.avatar) {
+			console.error("Datos de usuario no disponibles o incompletos.");
+			return;
+		}
+
 		shadow.innerHTML += `
 		<header>
 			<nav class="navbar">
@@ -22,7 +32,7 @@ export class HeaderComponent extends HTMLElement {
 				<div class="search-bar">
 					<input type="text" placeholder="Buscar...">
 				</div>
-				<a href="/perfil"><img src="./imagen_salida.jpg" alt="Perfil" class="profile-icon"></a>
+				<a href="/perfil"><img src="${UsuarioService.getImageById(this.userData.avatar)}" alt="Perfil" class="profile-icon"></a>
 			</nav>
 		</header>
 	  `;
@@ -34,4 +44,19 @@ export class HeaderComponent extends HTMLElement {
 		link.setAttribute("href", "./src/components/header/header.component.css");
 		shadow.appendChild(link);
 	}
+
+	async #cargarAvatar() {
+		const token = localStorage.getItem("token");
+		if (!token) {
+			console.error("No se encontró un token en localStorage.");
+			return;
+		}
+
+		try {
+			this.idUsuario = await UsuarioService.getIdPorToken(token);
+			this.userData = await UsuarioService.getUsuarioPorId(this.idUsuario);
+		} catch (error) {
+			console.error("Error al obtener los datos del usuario:", error);
+		}
+	};
 }

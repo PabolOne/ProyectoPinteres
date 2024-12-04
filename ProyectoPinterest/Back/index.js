@@ -12,9 +12,6 @@ const usuarioAvatarRouter = require('./routes/usuarioAvatarRouter');
 const fs = require('fs');
 const path = require('path');
 
-
-
-
 // Conectar a la base de datos
 db.conectar();
 

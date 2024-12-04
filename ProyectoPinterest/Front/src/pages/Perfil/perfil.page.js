@@ -1,4 +1,6 @@
 import { PostService } from "../../services/post.service.js";
+import { UsuarioService } from "../../services/usuario.service.js";
+
 export class PerfilPage extends HTMLElement {
 
 	constructor() {
@@ -8,10 +10,11 @@ export class PerfilPage extends HTMLElement {
 
 	}
 
-	connectedCallback() {
+	async connectedCallback() {
 		this.#verificarToken();
 		this.#cargarPosts();
 		this.#agregaEstilo(this.shadow);
+		await this.#fetchDataUser(this.shadow);
 		this.#render(this.shadow);
 		this.#setupLogoutButton();
 	}
@@ -30,8 +33,8 @@ export class PerfilPage extends HTMLElement {
 		shadow.innerHTML += `
 		<div class="profile-container">
 			<div class="profile-header">
-				<img src="./imagen_salida.jpg" alt="Foto de perfil" class="profile-pic">
-				<h2 class="username">PabloOne</h2>
+				<img src="${UsuarioService.getImageById(this.userData.avatar)}" alt="Foto de perfil" class="profile-pic">
+				<h2 class="username">${this.userData.username}</h2>
 				<a href="/configuracion"><img class="settings-btn" src="../src/assets/images/Config.png"></a>
 				 
 			</div>
@@ -85,6 +88,20 @@ export class PerfilPage extends HTMLElement {
 				alert('Has cerrado sesión.');
 				window.location.href = '/';
 			});
+		}
+	}
+
+	async #fetchDataUser() {
+		const token = localStorage.getItem('token');
+		const idUsuario = await UsuarioService.getIdPorToken(token);
+
+		if (idUsuario) {
+			try {
+				console.log('Usuario Encontrado', idUsuario)
+				this.userData = await UsuarioService.getUsuarioPorId(idUsuario);
+			} catch (error) {
+				console.error("Error al obtener los datos del usuario:", error);
+			}
 		}
 	}
 	

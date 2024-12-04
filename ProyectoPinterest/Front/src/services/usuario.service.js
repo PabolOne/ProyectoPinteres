@@ -7,18 +7,19 @@ export class UsuarioService {
     static getImageById(id) {
         return `${API_URL}${URL_POST_IMAGEN}/${id}.jpg`;
     }
+
     static getAuthHeaders() {
         const token = localStorage.getItem('token');
         return {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` 
+            'Authorization': `Bearer ${token}`
         };
     }
+
     static getUsuarioPorId(id) {
         return fetch(`${API_URL}${URL_USUARIO}/${id}`, {
-            method: 'GET',
-            headers: this.getAuthHeaders()
-        }).then(response => response.json());
+            method: 'GET'
+        }).then(response => response.ok ? response.json() : []);
     }
     static async getIdPorToken(token) {
         try {
@@ -27,29 +28,29 @@ export class UsuarioService {
                 headers: this.getAuthHeaders(),
                 body: JSON.stringify({ token })
             });
-    
+
             if (!response.ok) {
                 throw new Error('Error al obtener el ID del usuario.');
             }
-    
+
             const data = await response.json();
-            return data.idUsuario; 
+            return data.idUsuario;
         } catch (error) {
             console.error('Error en getIdPorToken:', error);
             return null;
         }
     }
-    static async guardarPostLikeado(idUsuario,idPost){
+    static async guardarPostLikeado(idUsuario, idPost) {
         try {
             const response = await fetch(`${API_URL}${URL_USUARIO}/${idUsuario}/posts/${idPost}`, {
                 method: 'POST',
-                headers: this.getAuthHeaders()           
-             });
-    
+                headers: this.getAuthHeaders()
+            });
+
             if (!response.ok) {
                 throw new Error('Error al obtener el ID del usuario.');
             }
-    
+
             const data = await response.json();
             return data;
         } catch (error) {
@@ -88,13 +89,52 @@ export class UsuarioService {
         }
     }
     
-    
-       
-    
-    
-    
     static registrarUsuario(datosUsuario) {
 
     }
+
+    static async actualizarUsuarioAvatar(id, avatarBase64) {
+        try {
+            const response = await fetch(`http://localhost:3001/api/usuarioAvatar/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ avatar: avatarBase64 }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log('Usuario avatar actualizado:', data);
+        } catch (error) {
+            console.error('Error al actualizar el avatar del usuario:', error);
+        }
+    }
+
+    static async actualizarUsuario(id, usernameActualizado, nombreActualizado, correoActualizado, avatarActualizado, passwordActualizado) {
+        try {
+            const response = await fetch(`http://localhost:3001/api/usuarios/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username: usernameActualizado, nombre: nombreActualizado, correo: correoActualizado, avatar: avatarActualizado, password: passwordActualizado}),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log('Usuario avatar actualizado:', data);
+        } catch (error) {
+            console.error('Error al actualizar el avatar del usuario:', error);
+        }
+    }
+
+
 }
 
