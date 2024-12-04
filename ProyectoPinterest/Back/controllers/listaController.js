@@ -104,7 +104,31 @@ class ListaController {
             next(new AppError('Error al eliminar la lista', 500))
         }
     }
+    static async agregarPostLista(req, res, next) {
+        try {
+            const id = req.params.id;
+            const idPost = req.params.idPost;
+            const listaexists = await ListaDAO.obtenerListaPorId(id);
 
+            if (!listaexists) {
+                next(new AppError('Lista no encontrada', 404))
+            }
+
+            const listaData = listaexists;
+            if (!listaData.posts.includes(idPost)) {
+                listaData.posts.push(idPost); 
+            } 
+            const lista = await ListaDAO.actualizarListaPorId(id, listaData)
+
+            if (!lista) {
+                next(new AppError('Lista no encontrada', 404))
+            }
+
+            res.status(200).json(lista);
+        } catch (error) {
+            next(new AppError('Error al actualizar la lista', 500))
+        }
+    }
     static async obtenerListasPorUsuario(req, res, next) {
         try {
             const idUsuario = req.params.id;  // Obtener el idUsuario de los parámetros de la solicitud
