@@ -12,17 +12,22 @@ export class PerfilPage extends HTMLElement {
 
 	async connectedCallback() {
 		this.#verificarToken();
-		this.#cargarPosts();
+		await this.#fetchDataUser(); // Asegura que userData esté inicializado
+		await this.#cargarPosts(); // Carga los posts después de obtener userData
 		this.#agregaEstilo(this.shadow);
-		await this.#fetchDataUser(this.shadow);
 		this.#render(this.shadow);
 		this.#setupLogoutButton();
 	}
 
 	async #cargarPosts() {
+		if (!this.userData || !this.userData._id) {
+			console.error("Error: userData no está disponible.");
+			return;
+		}
+
 		try {
-			this.posts = await PostService.getPosts();
-			console.log("Posts cargados:", this.posts);
+			this.posts = await PostService.getPostsByIdUsuario(this.userData._id);
+			console.log("Posts cargados para el usuario:", this.posts);
 		} catch (error) {
 			console.error("Error al cargar los posts:", error);
 			this.posts = [];
@@ -39,16 +44,20 @@ export class PerfilPage extends HTMLElement {
 				 
 			</div>
 			<button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
-			<div class="card-container">
-				${this.posts.map(post => this.#renderCard(post)).join(``)}
-			</div>
+		</div>
+		<div class="card-container">
+			${this.posts.map(post => this.#renderCard(post)).join(``)}
 		</div>
 
 		`;
 	}
-	#renderCard(post)
-	{
-		return `<post-info  id="${post.id}" image=${post.image}></post-info>`;
+	#renderCard(post) {
+		const imageUrl = PostService.getImageById(post.contenido._id);
+		return `
+			<a href="/post/${post.contenido._id}">
+				<post-info id="${post.contenido._id}" image="${imageUrl}" alt="${post.contenido._id}"></post-info>
+			</a>
+		`;
 	}
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
@@ -58,18 +67,18 @@ export class PerfilPage extends HTMLElement {
 	}
 
 	#verificarToken() {
-		const token = localStorage.getItem('token'); 
-	
+		const token = localStorage.getItem('token');
+
 		if (!token) {
 			alert('No estás autenticado. Serás redirigido al inicio de sesión.');
-			window.location.href = '/'; 
+			window.location.href = '/';
 			return;
 		}
-	
+
 		try {
-			const payloadBase64 = token.split('.')[1]; 
-			const payload = JSON.parse(atob(payloadBase64)); 
-	
+			const payloadBase64 = token.split('.')[1];
+			const payload = JSON.parse(atob(payloadBase64));
+
 			console.log('ID del usuario:', payload.id);
 		} catch (error) {
 			console.error('Error al decodificar el token:', error);
@@ -84,7 +93,7 @@ export class PerfilPage extends HTMLElement {
 		if (logoutBtn) {
 			logoutBtn.addEventListener('click', () => {
 				localStorage.removeItem('token');
-				
+
 				alert('Has cerrado sesión.');
 				window.location.href = '/';
 			});
@@ -104,5 +113,5 @@ export class PerfilPage extends HTMLElement {
 			}
 		}
 	}
-	
+
 }

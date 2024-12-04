@@ -1,5 +1,6 @@
 const PostDAO = require('../dataAccess/PostDAO');
 const { AppError } = require('../utils/appError');
+const PostContenidoDAO = require('../dataAccess/PostContenidoDAO');
 
 
 class postController {
@@ -158,6 +159,25 @@ class postController {
         }
     }
 
-}
+    static async obtenerPostContenidosPorIdUsuario(req, res, next) {
+        try {
+            const { idUsuario } = req.params;
+            const limit = parseInt(req.query.limit, 10) || 10;
+    
+            console.log(idUsuario)
+            // Llama al DAO para obtener los posts del usuario con su contenido relacionado
+            const posts = await PostDAO.obtenerPostContenidosPorIdUsuario(idUsuario, limit);
+    
+            if (!posts || posts.length === 0) {
+                return next(new AppError('No se encontraron posts para este usuario', 404));
+            }
+    
+            res.status(200).json(posts);
+        } catch (error) {
+            next(new AppError('Error al obtener los posts contenidos por idUsuario', 500));
+        }
+    }
+
+} 
 
 module.exports = postController;

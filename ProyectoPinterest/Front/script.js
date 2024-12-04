@@ -10,6 +10,7 @@ import { RegistrarPage } from "./src/pages/registrar/registrar.page.js";
 import { PerfilPage } from "./src/pages/Perfil/perfil.page.js";
 import { ConfiguracionPage } from "../src/pages/Configuracion/configuracion.page.js";
 import { PostPage } from "./src/pages/Post/post.page.js";
+import { EditarPage } from "./src/pages/Editar/editar.page.js";
 
 document.addEventListener('DOMContentLoaded', function () {
     // Configuración de rutas

@@ -96,6 +96,16 @@ class PostDAO{
             throw error;
         }
     }
+
+    async obtenerPostContenidosPorIdUsuario(idUsuario, limit = 10) {
+        try {
+            return await Post.find({ idUsuario: idUsuario })
+                .populate('contenido') 
+                .limit(limit);
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = new PostDAO();
