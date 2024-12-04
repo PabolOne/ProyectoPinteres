@@ -4,6 +4,7 @@ const verificarToken = require('../utils/Token/auth')
 const PostController = require('../controllers/postController')
 const router = express.Router();
 const { validatePost } = require('../utils/validadorJSON');
+const postController = require('../controllers/postController');
 
 // Middleware para validar el cuerpo de la petición antes de crear un Post
 function validarPost(req, res, next) {
@@ -19,12 +20,12 @@ function validarPost(req, res, next) {
 
 router.get('/', PostController.obtenerPosts);
 router.get('/post/:id', PostController.obtenerPostPorId);
+router.get('/filtro/:filtro', PostController.obtenerPostPorFiltro);
 router.get('/:id', PostController.obtenerPostPorIdContenido);
-
-
 router.post('/', verificarToken, validarPost, PostController.crearPost);
 router.put('/:id', verificarToken, validarPost, PostController.actualizarPost);
 router.delete('/:id', verificarToken, PostController.eliminarPostPorId);
 router.post('/:idPostOriginal/posts/:idPost', PostController.agregarPost);
+router.get('/usuario/:idUsuario', PostController.obtenerPostContenidosPorIdUsuario); 
 
 module.exports = router;

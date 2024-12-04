@@ -2,6 +2,7 @@ const API_URL = 'http://localhost:3001/';
 const URL_POST = 'api/posts';
 const URL_POST_CONTENIDO = 'api/postContenido';
 const URL_POST_IMAGEN = 'api/imagenes';
+const URL_USUARIOID = '/usuario'
 
 export class PostService {
     static getAuthHeaders() {
@@ -20,7 +21,6 @@ export class PostService {
         }).then(response => response.json());
     }
     static getPostContenidoById(id) {
-
         return fetch(`${API_URL}${URL_POST}/${id}`, {
             method: 'GET',
             headers: this.getAuthHeaders()
@@ -76,8 +76,14 @@ export class PostService {
         return `${API_URL}${URL_POST_IMAGEN}/${id}.jpg`;
     }
 
-    static getPostsContenido() {
-        return fetch(`${API_URL}${URL_POST_CONTENIDO}`, {
+    static getPostsContenido(filtro = " ") {
+        console.log("filtro |",filtro,"|");
+        if(filtro==="")
+        {
+            filtro = "*";
+        }
+        console.log("filtro |",filtro,"|");
+        return fetch(`${API_URL}${URL_POST}/filtro/${filtro}`, {
             method: 'GET',
             headers: this.getAuthHeaders()
         })
@@ -90,6 +96,8 @@ export class PostService {
                 console.log(error);
             });
     }
+
+
     static async incrementarLikes(postId) {
         console.log(postId);
         return fetch(`${API_URL}${URL_POST}/${postId}/like`, {
@@ -166,7 +174,22 @@ export class PostService {
                 .catch(error => {
                     console.log(error);
                 });
-        
-        
     }
+
+    static getPostsByIdUsuario(idUsuario) {
+        return fetch(`${API_URL}${URL_POST}${URL_USUARIOID}/${idUsuario}`, {
+            method: 'GET',
+            headers: this.getAuthHeaders()
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Datos obtenidos de getPostsByIdUsuario:", data);
+                return data;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+
 }

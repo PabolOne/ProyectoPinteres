@@ -46,7 +46,15 @@ class PostDAO{
             throw error;
         }
     }
-
+    async obtenerPostPorFiltro(limit = 10, filtro = "") {
+        try {
+            console.log("ESTE ES EK FILTRO     :|" ,filtro,"|");
+            const query = filtro ? { tags: { $in: [filtro] } } : {}; // Filtrar por tags si se proporciona un filtro
+            return await Post.find(query).limit(limit);
+        } catch (error) {
+            throw error;
+        }
+    }
 
 
 
@@ -93,6 +101,16 @@ class PostDAO{
         try{
             return await Post.findByIdAndDelete(id);
         } catch (error){
+            throw error;
+        }
+    }
+
+    async obtenerPostContenidosPorIdUsuario(idUsuario, limit = 10) {
+        try {
+            return await Post.find({ idUsuario: idUsuario })
+                .populate('contenido') 
+                .limit(limit);
+        } catch (error) {
             throw error;
         }
     }

@@ -20,13 +20,16 @@ class PostContenidoDAO{
         }
     }
 
-    async obtenerPostContenidos(limit = 10){
-        try{
-            return await PostContenido.find().limit(limit);
-        } catch(error){
+    async obtenerPostContenidos(limit = 10, filtro = "") {
+        try {
+            console.log("ESTE ES EK FILTRO     :|" ,filtro,"|");
+            const query = filtro ? { tags: { $in: [filtro] } } : {}; // Filtrar por tags si se proporciona un filtro
+            return await PostContenido.find(query).limit(limit);
+        } catch (error) {
             throw error;
         }
     }
+
 
     async actualizarPostContenidoPorId(id, postContenidoData){
         try{

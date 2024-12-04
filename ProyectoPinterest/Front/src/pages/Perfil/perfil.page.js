@@ -1,4 +1,6 @@
 import { PostService } from "../../services/post.service.js";
+import { UsuarioService } from "../../services/usuario.service.js";
+
 export class PerfilPage extends HTMLElement {
 
 	constructor() {
@@ -8,18 +10,24 @@ export class PerfilPage extends HTMLElement {
 
 	}
 
-	connectedCallback() {
+	async connectedCallback() {
 		this.#verificarToken();
-		this.#cargarPosts();
+		await this.#fetchDataUser(); // Asegura que userData esté inicializado
+		await this.#cargarPosts(); // Carga los posts después de obtener userData
 		this.#agregaEstilo(this.shadow);
 		this.#render(this.shadow);
 		this.#setupLogoutButton();
 	}
 
 	async #cargarPosts() {
+		if (!this.userData || !this.userData._id) {
+			console.error("Error: userData no está disponible.");
+			return;
+		}
+
 		try {
-			this.posts = await PostService.getPosts();
-			console.log("Posts cargados:", this.posts);
+			this.posts = await PostService.getPostsByIdUsuario(this.userData._id);
+			console.log("Posts cargados para el usuario:", this.posts);
 		} catch (error) {
 			console.error("Error al cargar los posts:", error);
 			this.posts = [];
@@ -30,22 +38,27 @@ export class PerfilPage extends HTMLElement {
 		shadow.innerHTML += `
 		<div class="profile-container">
 			<div class="profile-header">
-				<img src="./imagen_salida.jpg" alt="Foto de perfil" class="profile-pic">
-				<h2 class="username">PabloOne</h2>
+				<img src="${UsuarioService.getImageById(this.userData.avatar)}" alt="Foto de perfil" class="profile-pic">
+				<h2 class="username">${this.userData.username}</h2>
 				<a href="/configuracion"><img class="settings-btn" src="../src/assets/images/Config.png"></a>
 				 
 			</div>
-			<button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
 			<div class="card-container">
-				${this.posts.map(post => this.#renderCard(post)).join(``)}
+			${this.posts.map(post => this.#renderCard(post)).join(``)}
 			</div>
+			<button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
 		</div>
+		
 
 		`;
 	}
-	#renderCard(post)
-	{
-		return `<post-info  id="${post.id}" image=${post.image}></post-info>`;
+	#renderCard(post) {
+		const imageUrl = PostService.getImageById(post.contenido._id);
+		return `
+			<a href="/post/${post.contenido._id}">
+				<post-info id="${post.contenido._id}" image="${imageUrl}" alt="${post.contenido._id}"></post-info>
+			</a>
+		`;
 	}
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
@@ -55,18 +68,18 @@ export class PerfilPage extends HTMLElement {
 	}
 
 	#verificarToken() {
-		const token = localStorage.getItem('token'); 
-	
+		const token = localStorage.getItem('token');
+
 		if (!token) {
 			alert('No estás autenticado. Serás redirigido al inicio de sesión.');
-			window.location.href = '/'; 
+			window.location.href = '/';
 			return;
 		}
-	
+
 		try {
-			const payloadBase64 = token.split('.')[1]; 
-			const payload = JSON.parse(atob(payloadBase64)); 
-	
+			const payloadBase64 = token.split('.')[1];
+			const payload = JSON.parse(atob(payloadBase64));
+
 			console.log('ID del usuario:', payload.id);
 		} catch (error) {
 			console.error('Error al decodificar el token:', error);
@@ -81,11 +94,25 @@ export class PerfilPage extends HTMLElement {
 		if (logoutBtn) {
 			logoutBtn.addEventListener('click', () => {
 				localStorage.removeItem('token');
-				
+
 				alert('Has cerrado sesión.');
 				window.location.href = '/';
 			});
 		}
 	}
-	
+
+	async #fetchDataUser() {
+		const token = localStorage.getItem('token');
+		const idUsuario = await UsuarioService.getIdPorToken(token);
+
+		if (idUsuario) {
+			try {
+				console.log('Usuario Encontrado', idUsuario)
+				this.userData = await UsuarioService.getUsuarioPorId(idUsuario);
+			} catch (error) {
+				console.error("Error al obtener los datos del usuario:", error);
+			}
+		}
+	}
+
 }

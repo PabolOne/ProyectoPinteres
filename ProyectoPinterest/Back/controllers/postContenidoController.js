@@ -42,10 +42,12 @@ class postContenidoController {
 
     static async obtenerPostContenidos(req, res, next) {
         try {
-
+            console.log("Falla aqui");
+            const filtro = req.params.filtro;
             const limit = req.query.limit || 16;
-            const postContenidos = await PostContenidoDAO.obtenerPostContenidos(limit);
-
+            
+            const postContenidos = await PostContenidoDAO.obtenerPostContenidos(limit,filtro);
+            console.log("Falla aca");
             if (!postContenidos) {
                 next(new AppError('Post contenidos no encontrados', 404))
             }
@@ -55,6 +57,7 @@ class postContenidoController {
             next(new AppError('Error al obtener los post contenido', 500))
         }
     }
+        
 
     static async actualizarPostContenido(req, res, next) {
         try {

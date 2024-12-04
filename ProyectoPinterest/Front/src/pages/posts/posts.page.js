@@ -8,13 +8,18 @@ export class PostsPage extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.#cargarPosts();
-	 	this.#render(this.shadow);
+		this.#cargarPosts(); // Cargar todos los posts inicialmente
+		this.#render(this.shadow);
 		this.#agregaEstilo(this.shadow);
+
+		// Escuchar eventos de búsqueda
+		window.addEventListener("search", (event) => {
+			this.#cargarPosts(event.detail.query);
+		});
 	}
 
-	async #cargarPosts() {
-		this.posts = await PostService.getPostsContenido();
+	async #cargarPosts(query = "") {
+		this.posts = await PostService.getPostsContenido(query); // Filtrar por query si está disponible
 		await this.#render(this.shadow);
 		this.#agregaEstilo(this.shadow);
 	}
@@ -24,22 +29,21 @@ export class PostsPage extends HTMLElement {
 		shadow.innerHTML = `
 		<section>
 			<section class="card-container">
-				${this.posts.map(post => this.#renderCard(post)).join(``)}
+				${this.posts.map(post => this.#renderCard(post)).join("")}
 			</section>
 		</section>
 		`;
 	}
 
 	#renderCard(post) {
-		const imageUrl = PostService.getImageById(post._id);
+		const imageUrl = PostService.getImageById(post.contenido);
 		return `
-			<a href="/post/${post._id}">
+			<a href="/post/${post.contenido}">
 				<post-info id="${post._id}" image="${imageUrl}" alt="${post._id}"></post-info>
 			</a>
 		`;
 	}
 	
-
 	#agregaEstilo(shadow) {
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
@@ -47,4 +51,3 @@ export class PostsPage extends HTMLElement {
 		shadow.appendChild(link);
 	}
 }
-

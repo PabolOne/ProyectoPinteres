@@ -172,11 +172,11 @@ export class PostPage extends HTMLElement {
 		console.log(post);
 		return `
 		<div class="comment">
-			<a><img src="${await UsuarioService.getImageById(usuarioPost.avatar)}" alt="${usuarioPost.username}" class="comment-avatar"><span> ${usuarioPost.username}</span></a>
+			<a ><img src="${await UsuarioService.getImageById(usuarioPost.avatar)}" alt="${usuarioPost.username}" class="comment-avatar"><span> ${usuarioPost.username}</span></a>
 			
 			
 			<span>${post.descripcion}</span>
-			${post.contenido ? `<img src="${await PostService.getImageById(post.contenido)}" alt="Imagen de comentario" class="comment-image">` : ''}
+			<a href="/post/${post.contenido}">${post.contenido ? `<img src="${await PostService.getImageById(post.contenido)}" alt="Imagen de comentario" class="comment-image">` : ''}</a>
 		</div>
 		`;
 	}

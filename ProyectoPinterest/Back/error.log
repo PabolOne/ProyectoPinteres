@@ -29,47 +29,209 @@
 {"level":"error","message":"Error al obtener el usuario "}
 {"level":"error","message":"Error al obtener el usuario "}
 {"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674fa1779fc1eb9e72369e4c.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674fa1779fc1eb9e72369e4c.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/listas//posts/674fbd40809f25db9ffe6b4e en el servicio web"}
-{"level":"error","message":"El campo descripcion es requerido"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/6750131b0d4224c4725f72fa.jpg en el servicio web"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
 {"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"No se encontró el post "}
-{"level":"error","message":"No se encontró el post "}
-{"level":"error","message":"No se encontró el post "}
-{"level":"error","message":"No se encontró el post "}
-{"level":"error","message":"No se encontró el post "}
-{"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/post/674fd66c5363f90a90b8c0ad en el servicio web"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
 {"level":"error","message":"Error al obtener el usuario "}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido en el servicio web"}
-{"level":"error","message":"Error al actualizar el post "}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts en el servicio web"}
-{"level":"error","message":"Error al actualizar el post contenido"}
-{"level":"error","message":"Error al actualizar el post contenido"}
-{"level":"error","message":"Error al actualizar el post contenido"}
-{"level":"error","message":"Error al actualizar el post contenido"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"Error al obtener los posts contenidos por idUsuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se encontraron posts para este usuario"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts,/usuario//67502aff2c8454f98cf115a2 en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts,/usuario//67502aff2c8454f98cf115a2 en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/usuario//67502aff2c8454f98cf115a2 en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/usuario//67502aff2c8454f98cf115a2 en el servicio web"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
 {"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
 {"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"Error al actualizar el post contenido"}
-{"level":"error","message":"Error al actualizar el post contenido"}
-{"level":"error","message":"Error al actualizar el post contenido"}
-{"level":"error","message":"request entity too large"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/hola en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/a en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/ en el servicio web"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/filtroa/asf en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/post/filtro/asf en el servicio web"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"Token inválido o error al decodificar."}
