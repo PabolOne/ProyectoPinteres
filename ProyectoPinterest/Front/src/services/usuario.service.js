@@ -68,7 +68,6 @@ export class UsuarioService {
                 return [];
             }
     
-            // Obtener todas las listas asociadas al usuario
             const listas = usuario.listas.map(lista => ({
                 id: lista._id,
                 nombre: lista.nombre,

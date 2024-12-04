@@ -24,7 +24,7 @@ export class UserService {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Token del usuario
+                'Authorization': `Bearer ${localStorage.getItem('token')}` 
             }
         })
         .then(response => {
@@ -43,9 +43,9 @@ export class UserService {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Token para autenticación
+                'Authorization': `Bearer ${localStorage.getItem('token')}` 
             },
-            body: JSON.stringify(userData) // Datos del usuario a actualizar
+            body: JSON.stringify(userData) 
         })
         .then(response => {
             if (!response.ok) {

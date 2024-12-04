@@ -73,26 +73,29 @@ class ListaController {
     static async actualizarLista(req, res, next) {
         try {
             const id = req.params.id;
-
-            const listaexists = await ListaDAO.obtenerListaPorId(id);
-
-            if (!listaexists) {
-                next(new AppError('Lista no encontrada', 404))
-            }
-
+    
             const listaData = req.body;
-
-            const lista = await ListaDAO.actualizarListaPorId(id, listaData)
-
-            if (!lista) {
-                next(new AppError('Lista no encontrada', 404))
+            if (!listaData.nombre || !listaData.descripcion) {
+                return next(new AppError('El nombre y la descripción son obligatorios', 400));
             }
-
+    
+            const listaexists = await ListaDAO.obtenerListaPorId(id);
+            if (!listaexists) {
+                return next(new AppError('Lista no encontrada', 404));
+            }
+    
+            const lista = await ListaDAO.actualizarListaPorId(id, listaData);
+            if (!lista) {
+                return next(new AppError('Error al actualizar la lista', 404));
+            }
+    
             res.status(200).json(lista);
         } catch (error) {
-            next(new AppError('Error al actualizar la lista', 500))
+
+            next(new AppError(`Error al actualizar la lista con ID: ${req.params.id}`, 500));
         }
     }
+    
 
     static async eliminarListaPorId(req, res, next) {
         try {
@@ -136,16 +139,15 @@ class ListaController {
     }
     static async obtenerListasPorUsuario(req, res, next) {
         try {
-            const idUsuario = req.params.id;  // Obtener el idUsuario de los parámetros de la solicitud
-            
-            // Llamar al DAO para obtener las listas del usuario
+            const idUsuario = req.params.id;  
+
             const listas = await ListaDAO.obtenerListasPorUsuario(idUsuario);
     
             if (!listas || listas.length === 0) {
                 return next(new AppError('No se encontraron listas para este usuario', 404));
             }
     
-            // Devolver las listas en la respuesta
+          
             res.status(200).json(listas);
         } catch (error) {
             next(new AppError('Error al obtener las listas del usuario', 500));

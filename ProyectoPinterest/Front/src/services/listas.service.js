@@ -128,6 +128,51 @@ export class ListasService{
 
     }
 
+    static async actualizarLista(idLista, nombre, descripcion) {
+        const bodyData = {
+            nombre: nombre,
+            descripcion: descripcion
+        };
+    
+        try {
+            const response = await fetch(`${API_URL}${URL_LISTA}/${idLista}`, {
+                method: 'PUT',
+                headers: this.getAuthHeaders(),
+                body: JSON.stringify(bodyData)  
+            });
+    
+            if (!response.ok) {
+                throw new Error('Error al actualizar la lista.');
+            }
+    
+            const updatedList = await response.json();
+            return updatedList;
+        } catch (error) {
+            console.error('Error al actualizar la lista:', error);
+            return null;
+        }
+    }
+    
+    static async eliminarLista(idLista) {
+        try {
+            const response = await fetch(`${API_URL}${URL_LISTA}/${idLista}`, {
+                method: 'DELETE',
+                headers: this.getAuthHeaders(),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Error al eliminar la lista.');
+            }
+    
+            const result = await response.json(); 
+            return result; 
+        } catch (error) {
+            console.error('Error al eliminar la lista:', error);
+            return null;
+        }
+    }
+    
+
     
 
 
