@@ -7,7 +7,7 @@ import { ListaPage } from "./src/pages/Lista/lista.page.js";
 import { ListasPage } from "./src/pages/Listas/listas.page.js";
 import { LoginPage } from "./src/pages/Login/login.page.js";
 import { RegistrarPage } from "./src/pages/Registrar/registrar.page.js";
-
+import { EditarPage } from "./src/pages/Editar/editar.page.js";
 import { PerfilPage } from "./src/pages/perfil/perfil.page.js";
 import { ConfiguracionPage } from "../src/pages/Configuracion/configuracion.page.js";
 import { PostPage } from "./src/pages/Post/post.page.js";
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     page('/perfil', () => showContent('perfil-page'));
     page('/post/:id', ctx => showPostPage(ctx.params.id)); 
     page('/crear/:id', ctx => showCreatePage(ctx.params.id)); 
+    page('/editar/:id', ctx => showEditarPage(ctx.params.id)); 
     page('/configuracion', () => showContent('configuracion-page'));
     page('/login', () => showContent('login-page'));
     page('/registrar', () => showContent('registrar-page'));
@@ -51,6 +52,10 @@ function showCreatePage(postId) {
     const contentContainer = document.getElementById('content');
     contentContainer.innerHTML = `<crear-page idPostOriginal="${postId}"></crear-page>`;
 }
+function showEditarPage(postId) {
+    const contentContainer = document.getElementById('content');
+    contentContainer.innerHTML = `<editar-page id="${postId}"></editar-page>`;
+}
 
 
 //Components
@@ -62,6 +67,7 @@ window.customElements.define('post-info', PostComponent);
 window.customElements.define('posts-page', PostsPage);
 window.customElements.define('post-page', PostPage);
 window.customElements.define('crear-page', CrearPage);
+window.customElements.define('editar-page', EditarPage);
 window.customElements.define('listas-page', ListasPage);
 window.customElements.define('lista-page', ListaPage);
 window.customElements.define('login-page', LoginPage);

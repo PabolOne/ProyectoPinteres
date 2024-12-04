@@ -29,3 +29,47 @@
 {"level":"error","message":"Error al obtener el usuario "}
 {"level":"error","message":"Error al obtener el usuario "}
 {"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674fa1779fc1eb9e72369e4c.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674fa1779fc1eb9e72369e4c.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/listas//posts/674fbd40809f25db9ffe6b4e en el servicio web"}
+{"level":"error","message":"El campo descripcion es requerido"}
+{"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"No se encontró el post "}
+{"level":"error","message":"No se encontró el post "}
+{"level":"error","message":"No se encontró el post "}
+{"level":"error","message":"No se encontró el post "}
+{"level":"error","message":"No se encontró el post "}
+{"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/post/674fd66c5363f90a90b8c0ad en el servicio web"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/avatares/undefined.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido en el servicio web"}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts en el servicio web"}
+{"level":"error","message":"Error al actualizar el post contenido"}
+{"level":"error","message":"Error al actualizar el post contenido"}
+{"level":"error","message":"Error al actualizar el post contenido"}
+{"level":"error","message":"Error al actualizar el post contenido"}
+{"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"Error al actualizar el post contenido"}
+{"level":"error","message":"Error al actualizar el post contenido"}
+{"level":"error","message":"Error al actualizar el post contenido"}
+{"level":"error","message":"request entity too large"}
