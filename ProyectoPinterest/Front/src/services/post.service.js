@@ -76,8 +76,14 @@ export class PostService {
         return `${API_URL}${URL_POST_IMAGEN}/${id}.jpg`;
     }
 
-    static getPostsContenido() {
-        return fetch(`${API_URL}${URL_POST_CONTENIDO}`, {
+    static getPostsContenido(filtro = " ") {
+        console.log("filtro |",filtro,"|");
+        if(filtro==="")
+        {
+            filtro = "*";
+        }
+        console.log("filtro |",filtro,"|");
+        return fetch(`${API_URL}${URL_POST}/filtro/${filtro}`, {
             method: 'GET',
             headers: this.getAuthHeaders()
         })
@@ -90,6 +96,7 @@ export class PostService {
                 console.log(error);
             });
     }
+
 
     static async incrementarLikes(postId) {
         console.log(postId);

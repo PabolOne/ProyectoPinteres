@@ -112,3 +112,126 @@
 {"level":"error","message":"Post  no encontrada"}
 {"level":"error","message":"Post  no encontrada"}
 {"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/hola en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/ en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/a en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/api/postContenido/filtro/ en el servicio web"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"Error al obtener el post contenido"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/postContenido/filtroa/asf en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/post/filtro/asf en el servicio web"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener los post contenido"}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"Token inválido o error al decodificar."}

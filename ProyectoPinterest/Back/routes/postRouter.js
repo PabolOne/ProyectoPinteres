@@ -20,6 +20,7 @@ function validarPost(req, res, next) {
 
 router.get('/', PostController.obtenerPosts);
 router.get('/post/:id', PostController.obtenerPostPorId);
+router.get('/filtro/:filtro', PostController.obtenerPostPorFiltro);
 router.get('/:id', PostController.obtenerPostPorIdContenido);
 router.post('/', verificarToken, validarPost, PostController.crearPost);
 router.put('/:id', verificarToken, validarPost, PostController.actualizarPost);

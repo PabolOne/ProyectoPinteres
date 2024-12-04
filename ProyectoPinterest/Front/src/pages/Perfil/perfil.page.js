@@ -43,11 +43,12 @@ export class PerfilPage extends HTMLElement {
 				<a href="/configuracion"><img class="settings-btn" src="../src/assets/images/Config.png"></a>
 				 
 			</div>
+			<div class="card-container">
+			${this.posts.map(post => this.#renderCard(post)).join(``)}
+			</div>
 			<button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
 		</div>
-		<div class="card-container">
-			${this.posts.map(post => this.#renderCard(post)).join(``)}
-		</div>
+		
 
 		`;
 	}

@@ -16,7 +16,7 @@ function validarPostContenido(req, res, next) {
     next();
 }
 
-router.get('/', PostContenidoController.obtenerPostContenidos);
+router.get('/filtro/:filtro', PostContenidoController.obtenerPostContenidos);
 router.get('/:id', PostContenidoController.obtenerPostContenidoPorId);
 router.post('/', validarPostContenido, PostContenidoController.crearPostContenido);
 router.put('/:id', validarPostContenido, PostContenidoController.actualizarPostContenido);

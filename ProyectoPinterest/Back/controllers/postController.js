@@ -49,6 +49,27 @@ class postController {
             next(new AppError('Error al obtener el post ', 500))
         }
     }
+    static async obtenerPostPorFiltro(req, res, next) {
+        try {
+            let filtro = req.params.filtro;
+            if(filtro === "*")
+            {
+                filtro = "";
+            }
+                        
+            const limit = req.query.limit || 16;
+            
+            const postContenidos = await PostDAO.obtenerPostPorFiltro(limit,filtro);
+            console.log("Falla aca");
+            if (!postContenidos) {
+                next(new AppError('Post contenidos no encontrados', 404))
+            }
+
+            res.status(200).json(postContenidos);
+        } catch (error) {
+            next(new AppError('Error al obtener los post contenido', 500))
+        }
+    }
     static async obtenerPosts(req, res, next) {
         try {
 

@@ -53,12 +53,12 @@ export class ConfiguracionPage extends HTMLElement {
 	
 		saveButton.addEventListener('click', async (event) => {
 			event.preventDefault();
-	
+		
 			const username = this.shadow.querySelector('#username').value;
 			const firstName = this.shadow.querySelector('#name').value;
 			const email = this.userData.correo;
 			const password = this.shadow.querySelector('#password').value;
-	
+		
 			try {
 				// Actualizar avatar (si se ha cambiado)
 				if (this.uploadAvatar) {
@@ -67,23 +67,27 @@ export class ConfiguracionPage extends HTMLElement {
 						this.userData.avatar = avatarResponse.avatar; // Actualiza el avatar localmente
 					}
 				}
-	
+		
 				// Actualizar información del usuario
 				await UsuarioService.actualizarUsuario(
 					this.userData._id,
 					username,
 					firstName,
 					email,
-					this.userData.avatar, // Asegúrate de que use el avatar actualizado
+					this.userData.avatar, // Usa el avatar actualizado
 					password
 				);
-	
+				
+				page('/configuracion');
+		
 				alert('Datos actualizados con éxito');
+				
 			} catch (error) {
 				console.error('Error al actualizar:', error);
 				alert(`Error: ${error.message}`);
 			}
 		});
+		
 	}
 
 	#renderCard() {

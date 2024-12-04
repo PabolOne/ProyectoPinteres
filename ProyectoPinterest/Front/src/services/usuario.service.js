@@ -127,7 +127,10 @@ export class UsuarioService {
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
-
+            const headerElement = document.querySelector('header-info');
+            headerElement.remove();
+            const newHeader = document.createElement('header-info');
+            document.body.insertBefore(newHeader, document.getElementById('content'));
             const data = await response.json();
             console.log('Usuario avatar actualizado:', data);
         } catch (error) {
