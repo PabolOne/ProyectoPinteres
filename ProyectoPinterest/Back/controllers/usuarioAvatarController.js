@@ -137,23 +137,6 @@ class UsuarioAvatarController {
             });
         });
     }
-    static async obtenerPostContenidosPorIdUsuario(req, res, next) {
-        try {
-            const { idUsuario } = req.params;
-            const limit = parseInt(req.query.limit, 10) || 10;
-    
-            // Llama al DAO para obtener los posts del usuario con su contenido relacionado
-            const posts = await PostContenidoDAO.obtenerPostContenidosPorIdUsuario(idUsuario, limit);
-    
-            if (!posts || posts.length === 0) {
-                return next(new AppError('No se encontraron posts para este usuario', 404));
-            }
-    
-            res.status(200).json(posts);
-        } catch (error) {
-            next(new AppError('Error al obtener los posts contenidos por idUsuario', 500));
-        }
-    }
 
 }
 

@@ -50,20 +50,34 @@ export class ConfiguracionPage extends HTMLElement {
 	#addEventListeners() {
 		const form = this.shadow.querySelector('#actualizarForm');
 		const saveButton = this.shadow.querySelector('.save-button');
-
+	
 		saveButton.addEventListener('click', async (event) => {
 			event.preventDefault();
-
+	
 			const username = this.shadow.querySelector('#username').value;
 			const firstName = this.shadow.querySelector('#name').value;
 			const email = this.userData.correo;
 			const password = this.shadow.querySelector('#password').value;
-			const avatar = this.userData.avatar;
-
+	
 			try {
-				console.log('avatar', this.userData.avatar);
-				console.log('avatar2', avatar);
-				UsuarioService.actualizarUsuario(this.userData._id, username, firstName, email, avatar, password);
+				// Actualizar avatar (si se ha cambiado)
+				if (this.uploadAvatar) {
+					const avatarResponse = await this.uploadAvatar();
+					if (avatarResponse && avatarResponse.avatar) {
+						this.userData.avatar = avatarResponse.avatar; // Actualiza el avatar localmente
+					}
+				}
+	
+				// Actualizar información del usuario
+				await UsuarioService.actualizarUsuario(
+					this.userData._id,
+					username,
+					firstName,
+					email,
+					this.userData.avatar, // Asegúrate de que use el avatar actualizado
+					password
+				);
+	
 				alert('Datos actualizados con éxito');
 			} catch (error) {
 				console.error('Error al actualizar:', error);
@@ -138,12 +152,12 @@ export class ConfiguracionPage extends HTMLElement {
 				dropArea.appendChild(img);
 
 				base64Image = event.target.result.split(',')[1];
+				console.log('base64Image:', base64Image); // Verifica que la imagen esté en Base64
 			};
 			reader.readAsDataURL(file);
 		}
 
 		this.uploadAvatar = function () {
-			console.log('base64Image:', base64Image); // Verifica que la imagen esté en Base64
 			return UsuarioService.actualizarUsuarioAvatar(this.userData.avatar, base64Image);
 		};
 	}
