@@ -4,6 +4,8 @@ const URL_LISTA = 'api/listas';
 const URL_USUARIO = 'api/usuarios';
 const URL_POST_CONTENIDO = 'api/postContenido';
 const URL_POST_IMAGEN = 'api/imagenes';
+import { PostService } from "./post.service.js";
+
 
 export class ListasService{
     static getPosts(){
@@ -22,12 +24,28 @@ export class ListasService{
             'Authorization': `Bearer ${token}` 
         };
     }
-    static getListaById(id) {
-        return fetch(`${API_URL}${URL_LISTA}/${id}`, {
-            method: 'GET',
-            headers: this.getAuthHeaders()
-        }).then(response => response.json());
+
+    
+    static async getListaById(id) {
+        try {
+            const response = await fetch(`${API_URL}${URL_LISTA}/${id}`, {
+                method: 'GET',
+                headers: this.getAuthHeaders()
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            console.log('Datos obtenidos de la lista:', data); // Inspeccionar estructura
+            return data;
+        } catch (error) {
+            console.error('Error al obtener la lista por ID:', error);
+            throw error;
+        }
     }
+    
 
 
     static async guardarPostEnLista(idPost, id) {
@@ -83,5 +101,35 @@ export class ListasService{
                 console.log(error);
             });
     }
+
+    static async obtenerPostDeLista(idLista){
+        const listaEncontrada = await this.getListaById(idLista);
+        if(!listaEncontrada){
+            console.error('Lista no encontrada');
+            return [];
+        }
+
+
+
+        if (!Array.isArray(listaEncontrada.posts)) {
+            console.error('Posts no es un array o está indefinido', listaEncontrada.posts);
+            return [];
+        }
+
+
+        for(let post of listaEncontrada.posts){
+            const postCompleto = await PostService.getPostById(post.id);  // Asegúrate de que 'id' sea el campo correcto en tu objeto
+            postsCompletos.push(postCompleto);
+        }
+
+        return posts; 
+
+        
+
+    }
+
+    
+
+
     
 }

@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     page('/lista', () => showContent('lista-page'));
     page('/perfil', () => showContent('perfil-page'));
     page('/post/:id', ctx => showPostPage(ctx.params.id)); 
+    page('/lista/:id', ctx => showListPage(ctx.params.id)); 
     page('/crear/:id', ctx => showCreatePage(ctx.params.id)); 
     page('/editar/:id', ctx => showEditarPage(ctx.params.id)); 
     page('/configuracion', () => showContent('configuracion-page'));
@@ -46,6 +47,11 @@ function showContent(contentId) {
 function showPostPage(postId) {
     const contentContainer = document.getElementById('content');
     contentContainer.innerHTML = `<post-page postId="${postId}"></post-page>`;
+}
+
+function showListPage(listId){
+    const contentContainer = document.getElementById('content');
+    contentContainer.innerHTML = `<lista-page listId="${listId}"></lista-page>`;
 }
 
 function showCreatePage(postId) {

@@ -1,58 +1,77 @@
 import { PostService } from "../../services/post.service.js";
+import { ListasService } from "../../services/listas.service.js";
+
 export class ListaPage extends HTMLElement {
 
 	constructor() {
 		super();
 		this.shadow = this.attachShadow({ mode: "open" });
+		this.listId = this.getAttribute('listId'); 
+		this.listaData = null;
 		this.posts = [];
 	}
 
-	connectedCallback() {
-		this.#cargarPosts();
+	async connectedCallback() {
+		await this.#cargarPosts();
 		this.#agregaEstilo(this.shadow);
-		this.#render(this.shadow);
 		this.#setupModal();
+
 	}
 
 	async #cargarPosts() {
 		
-		this.posts = await PostService.getPosts();
+			// Obtén los posts asociados a la lista
+			console.log('ID DE LA LISTA SELECCIONADA', this.listId)
+			this.listaData = await ListasService.getListaById(this.listId);
+			console.log('DATA ',this.listaData.posts)
+			await this.#render(this.shadow);
+			this.#agregaEstilo(this.shadow);
 	}
 
-	#render(shadow) {
-		shadow.innerHTML += `
+	async #render(shadow) {
+		this.#agregaEstilo(this.shadow);
+		shadow.innerHTML = `
 		<section>
 			<div class="tittle">
-				Hola chavales
-				<img class="icon" src="./src/assets/images/delete.png">
-				<button class="icon-button" id="openModalBtn">
-					<img class="icon" src="./src/assets/images/edit.png" alt="Editar">
-				</button>
+				<div class="button-container">
+					<img class="icon" src="../src/assets/images/delete.png">
+					<button class="icon-button" id="openModalBtn">
+						<img class="icon" src="../src/assets/images/edit.png" alt="Editar">
+					</button>
+				</div>
 			</div>
 			<div id="myModal" class="modal">
-            <!-- Contenido del Modal -->
-            <div class="modal-content">
-			<div class="modal-header">
-				<span id="closeBtn" class="close">&times;</span>
-				<h2>Editar Lista</h2>
-				<img src="./src/assets/images/Logo.png" alt="Logo" class="logo-pequeno">
+				<!-- Contenido del Modal -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span id="closeBtn" class="close">&times;</span>
+						<h2>Editar Lista</h2>
+						<img src="../src/assets/images/Logo.png" alt="Logo" class="logo-pequeno">
+					</div>
+					<label for="listName">Nombre</label>
+					<input type="text" id="listName" placeholder="Nombre de la lista">
+					<label for="listDescription">Descripción</label>
+					<textarea id="listDescription" placeholder="Descripción"></textarea>
+					<button>Guardar Cambios</button>
+				</div>
 			</div>
-				<label for="listName">Nombre</label>
-				<input type="text" id="listName" placeholder="Nombre de la lista">
-				<label for="listDescription">Descripción</label>
-				<textarea id="listDescription" placeholder="Descripción"></textarea>
-				<button>Guardar Cambios</button>
-            </div>
-        	</div>
 			<div class="card-container">
-				${this.posts.map(post => this.#renderCard(post)).join(``)}
+				${this.listaData.posts.map(post => this.#renderCard(post)).join(``)}
 			</div>
 		</section>
 		`;
 	}
-	#renderCard(post)
+	
+	 #renderCard(post)
 	{
-		return `<post-info id="${post.id}" image=${post.image}></post-info>`;
+		console.log('POST', post)
+		const imageURL = PostService.getImageById(post);
+		return `
+			<a href="/post/${post}">
+				<post-info id="${post}" image="${imageURL}" alt="${post}"></post-info>
+			</a>
+		`;
+
 	}
 
 	#agregaEstilo(shadow) {
@@ -67,19 +86,19 @@ export class ListaPage extends HTMLElement {
 		const btn = this.shadow.getElementById("openModalBtn");
 		const span = this.shadow.getElementById("closeBtn");
 	
-		btn.onclick = (event) => {
-		  event.preventDefault(); 
-		  modal.style.display = "block";
-		}
-	
-		span.onclick = () => {
-		  modal.style.display = "none";
-		}
-	
-		window.onclick = (event) => {
-		  if (event.target === modal) {
+		btn.addEventListener("click", (event) => {
+			event.preventDefault();
+			modal.style.display = "block";
+		});
+
+		span.addEventListener("click", () => {
 			modal.style.display = "none";
-		  }
-		}
+		});
+
+		window.addEventListener("click", (event) => {
+			if (event.target === modal) {
+				modal.style.display = "none";
+			}
+		});
 	}
 }

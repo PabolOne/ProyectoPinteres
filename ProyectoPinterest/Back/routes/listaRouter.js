@@ -18,7 +18,7 @@ function validarLista(req, res, next) {
 
 router.get('/', ListaController.obtenerListas);
 router.get('/:id', ListaController.obtenerListaPorId);
-
+router.get('/:id/posts/listaPost', ListaController.obtenerPostsDeLista);
 router.post('/', validarLista, ListaController.crearLista);
 router.put('/:id', validarLista, ListaController.actualizarLista);
 router.delete('/:id', ListaController.eliminarListaPorId);

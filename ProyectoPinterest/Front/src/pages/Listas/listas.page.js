@@ -22,7 +22,6 @@ export class ListasPage extends HTMLElement {
 	#render(shadow) {
 		shadow.innerHTML += `
 		<section>
-			<a href="/lista">
 			<div class="list-container">
 				<div class="list-card"">
 					<div class="collage">
@@ -63,6 +62,7 @@ export class ListasPage extends HTMLElement {
 			
 			this.listas.forEach(lista => {
 				listasContainer.innerHTML += `
+				<a href="/lista/${lista.id}" class="list-link">
 				<div class="list-card">
 					<h3>${lista.nombre}</h3>
 					<p>${lista.descripcion}</p>
@@ -82,52 +82,24 @@ export class ListasPage extends HTMLElement {
 
 		}
 		
-		/*
-		// Método para obtener las listas del usuario
-		async #obtenerListas() {
-			const token = localStorage.getItem('token');
-			if (!token) return; // Si no hay token, no hacemos nada
-	
-			//const decodedToken = jwt_decode(token);  // Decodificar el token
-			//const idUsuario = decodedToken.id;  // Obtener el idUsuario del token
-	
-			try {
-				const response = await fetch(`http://localhost:3001/api/listas/`, {
-					headers: {
-						"Authorization": `Bearer ${token}`
-					}
-				});
-	
-				if (!response.ok) {
-					throw new Error("Error al obtener las listas");
-				}
-	
-				const listas = await response.json();
-				this.listas = listas;  // Almacenar las listas obtenidas en el arreglo
-				this.#renderListas(this.shadow);  // Renderizar las listas en el DOM
-			} catch (error) {
-				console.error("Error al obtener las listas", error);
-				alert("Hubo un error al cargar las listas.");
-			}
-		}
-		*/
 
 
-	#renderCard() {
-		const post1 = this.posts[0];
-		const post2 = this.posts[0];
-		const post3 = this.posts[2];
-		return `<post-info class="img-large" id="${post1.id}" image=${post1.image}></post-info>
-				<post-info class="img-small" id="${post2.id}" image=${post2.image}></post-info>
-				<post-info class="img-small" id="${post3.id}" image=${post3.image}></post-info>
-				`;
+
+		#renderCard() {
+			const post1 = this.posts[0];
+			const post2 = this.posts[0];
+			const post3 = this.posts[2];
+			return `<post-info class="img-large" id="${post1.id}" image=${post1.image}></post-info>
+					<post-info class="img-small" id="${post2.id}" image=${post2.image}></post-info>
+					<post-info class="img-small" id="${post3.id}" image=${post3.image}></post-info>
+					`;
 
 	}
-	#agregaEstilo(shadow) {
-		let link = document.createElement("link");
-		link.setAttribute("rel", "stylesheet");
-		link.setAttribute("href", "../src/pages/listas/listas.page.css");
-		shadow.appendChild(link);
+		#agregaEstilo(shadow) {
+			let link = document.createElement("link");
+			link.setAttribute("rel", "stylesheet");
+			link.setAttribute("href", "../src/pages/listas/listas.page.css");
+			shadow.appendChild(link);
 	}
 
 	#setupModal() {

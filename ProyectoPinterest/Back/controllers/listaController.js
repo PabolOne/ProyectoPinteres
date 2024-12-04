@@ -1,6 +1,7 @@
 const ListaDAO = require('../dataAccess/ListaDAO');
 const { AppError } = require('../utils/appError');
 const usuarioController = require('./usuarioController');
+const mongoose = require('mongoose');
 
 
 class ListaController {
@@ -37,15 +38,17 @@ class ListaController {
     static async obtenerListaPorId(req, res, next) {
         try {
             const id = req.params.id;
+
             const lista = await ListaDAO.obtenerListaPorId(id);
 
             if (!lista) {
                 next(new AppError('Lista no encontrada', 404))
             }
 
-            res.status(200).json(lista);
+
+            res.json(lista);
         } catch (error) {
-            next(new AppError('Error al obtener la lista', 500))
+            next(new AppError('Error al obtener la lista', error))
         }
     }
 
@@ -147,6 +150,18 @@ class ListaController {
         } catch (error) {
             next(new AppError('Error al obtener las listas del usuario', 500));
         }
+    }
+
+    static async obtenerPostsDeLista(req, res, next){
+        const id = req.params.id;
+
+        const listaexists = await ListaDAO.obtenerListaPorId(id);
+
+        if (!listaexists) {
+            next(new AppError('Lista no encontrada', 404))
+        }
+
+        
     }
     
 

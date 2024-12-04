@@ -67,6 +67,13 @@ section {
     transition: color 0.3s;
 }
 
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; 
+}
+
 .close:hover {
     color: #000;
 }
