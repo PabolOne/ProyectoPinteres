@@ -1,6 +1,6 @@
 .post-container {
     display: flex;
-    flex-direction: column; /* Cambiar disposición a columna */
+    flex-direction: column; 
     background-color: #f8f6f2;
     padding: 20px;
     border-radius: 10px;
@@ -11,22 +11,19 @@
     margin-bottom: 20px;
 }
 
-/* Sección de la imagen */
 .post-image {
-    display: flex; /* Usar flexbox para centrar */
-    justify-content: center; /* Centrar horizontalmente */
-    margin-bottom: 20px; /* Añadir espacio debajo de la imagen */
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 20px; 
 }
 
-/* Ajustar la imagen */
 .post-image img {
     
-    width: 50%; /* Hacer que la imagen use todo el ancho de su contenedor */
+    width: 50%; 
     border-radius: 10px;
     object-fit: cover;
 }
 
-/* Controles debajo de la imagen */
 .controls {
     display: flex;
     justify-content: space-between;
@@ -92,7 +89,8 @@
 
 .comment {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: left;
     gap: 10px;
 }
 
@@ -130,3 +128,27 @@
     width: 20px;
     height: 20px;
 }
+#like-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #like-button:focus {
+    outline: none; 
+  }
+  
+  #like-button img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  #like-button:hover img {
+    transform: scale(1.1); 
+    transition: transform 0.2s ease-in-out;
+  }
+  

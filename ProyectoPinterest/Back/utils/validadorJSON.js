@@ -8,7 +8,6 @@ addFormats(ajv); // Agrega soporte para formatos como "date-time"
 const listaSchema = {
     type: 'object',
     properties: {
-        idUsuario: { type: 'string' }, 
         posts: {
             type: 'array',
             items: { type: 'string' }
@@ -16,14 +15,13 @@ const listaSchema = {
         nombre: { type: 'string', minLength: 1 },
         descripcion: { type: 'string' }
     },
-    required: ['idUsuario', 'nombre'],
+    required: [ 'nombre'],
     additionalProperties: false
 };
 
 const postSchema = {
     type: 'object',
     properties: {
-        idPostOriginal: { type: 'string', pattern: '^[0-9a-fA-F]{24}$' },
         idUsuario: { type: 'string', pattern: '^[0-9a-fA-F]{24}$' },
         posts: {
             type: 'array',

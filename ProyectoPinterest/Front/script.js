@@ -10,7 +10,8 @@ import { RegistrarPage } from "./src/pages/Registrar/registrar.page.js";
 
 import { PerfilPage } from "./src/pages/perfil/perfil.page.js";
 import { ConfiguracionPage } from "../src/pages/Configuracion/configuracion.page.js";
-import { PostPage } from "./src/pages/post/post.page.js";
+import { PostPage } from "./src/pages/Post/post.page.js";
+
 document.addEventListener('DOMContentLoaded', function () {
     // Configuración de rutas
     page('/', () => showContent('login-page'));
@@ -19,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
     page('/listas', () => showContent('listas-page'));
     page('/lista', () => showContent('lista-page'));
     page('/perfil', () => showContent('perfil-page'));
-    page('/post/:id', ctx => showPostPage(ctx.params.id)); // Ruta dinámica
+    page('/post/:id', ctx => showPostPage(ctx.params.id)); 
+    page('/crear/:id', ctx => showCreatePage(ctx.params.id)); 
     page('/configuracion', () => showContent('configuracion-page'));
     page('/login', () => showContent('login-page'));
     page('/registrar', () => showContent('registrar-page'));
@@ -45,6 +47,10 @@ function showPostPage(postId) {
     contentContainer.innerHTML = `<post-page postId="${postId}"></post-page>`;
 }
 
+function showCreatePage(postId) {
+    const contentContainer = document.getElementById('content');
+    contentContainer.innerHTML = `<crear-page idPostOriginal="${postId}"></crear-page>`;
+}
 
 
 //Components

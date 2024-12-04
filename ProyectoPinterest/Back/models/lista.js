@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 
 const listaSchema = new mongoose.Schema({
     
-    idUsuario:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Usuario',
-        required: true
-    },
     posts: [{
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Post'  

@@ -11,7 +11,6 @@ class postController {
 
                 return next(new AppError('El campo Usuario es requerido', 400));
             }
-    
             const postData = { idPostOriginal, idUsuario, posts,descripcion, contenido, tags, fechaHora, likes };
             const post = await PostDAO.crearPost(postData);
             
@@ -66,7 +65,31 @@ class postController {
             next(new AppError('Error al obtener los post ', 500))
         }
     }
+    static async agregarPost(req, res, next) {
+        try {
 
+            const {idPostOriginal,idPost} = req.params;
+            console.log("MINIMO ENTRA",idPostOriginal,"-----",idPost);
+
+            const postData = await PostDAO.obtenerPostPorId(idPostOriginal);
+
+            if (!postData) {
+                next(new AppError('Post  no encontrado', 404))
+            }
+
+            postData.posts.push(idPost);
+            console.log("Estos son los posts",postData);
+            const post = await PostDAO.actualizarPostPorId(idPostOriginal, postData);
+
+            if (!post) {
+                next(new AppError('Post  no encontrado', 404))
+            }
+
+            res.status(200).json(post);
+        } catch (error) {
+            next(new AppError('Error al actualizar el post ', 500))
+        }
+    }
     static async actualizarPost(req, res, next) {
         try {
             const id = req.params.id;

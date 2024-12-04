@@ -24,4 +24,6 @@ router.get('/:id', PostController.obtenerPostPorIdContenido);
 router.post('/', verificarToken, validarPost, PostController.crearPost);
 router.put('/:id', verificarToken, validarPost, PostController.actualizarPost);
 router.delete('/:id', verificarToken, PostController.eliminarPostPorId);
+router.post('/:idPostOriginal/posts/:idPost', PostController.agregarPost);
+
 module.exports = router;

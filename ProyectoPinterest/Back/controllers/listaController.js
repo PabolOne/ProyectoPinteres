@@ -5,11 +5,8 @@ const { AppError } = require('../utils/appError');
 class ListaController {
     static async crearLista(req, res, next) {
         try {
-            const { idUsuario, posts, nombre, descripcion } = req.body;
+            const {posts, nombre, descripcion } = req.body;
 
-            if (!idUsuario) {
-                next(new AppError('El campo idUsuario es requerido'))
-            }
             if (!nombre) {
                 next(new AppError('El campo nombre es requerido'))
             }
@@ -17,7 +14,7 @@ class ListaController {
                 next(new AppError('El campo descripcion es requerido'))
             }
             
-            const listaData = { idUsuario, posts, nombre, descripcion }
+            const listaData = { posts, nombre, descripcion }
             const lista = await ListaDAO.crearLista(listaData);
             res.status(201).json(lista);
         } catch (error) {
@@ -57,7 +54,31 @@ class ListaController {
             next(new AppError('Error al obtener las listas', 500))
         }
     }
+    static async agregarPostLista(req, res, next) {
+        try {
+            const id = req.params.id;
+            const idPost = req.params.idPost;
+            const listaexists = await ListaDAO.obtenerListaPorId(id);
 
+            if (!listaexists) {
+                next(new AppError('Lista no encontrada', 404))
+            }
+
+            const listaData = listaexists;
+            if (!listaData.posts.includes(idPost)) {
+                listaData.posts.push(idPost); 
+            } 
+            const lista = await ListaDAO.actualizarListaPorId(id, listaData)
+
+            if (!lista) {
+                next(new AppError('Lista no encontrada', 404))
+            }
+
+            res.status(200).json(lista);
+        } catch (error) {
+            next(new AppError('Error al actualizar la lista', 500))
+        }
+    }
     static async actualizarLista(req, res, next) {
         try {
             const id = req.params.id;

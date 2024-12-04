@@ -7,8 +7,9 @@ export class CrearPage extends HTMLElement {
 	constructor() {
 		super();
 		this.shadow = this.attachShadow({ mode: "open" });
-		
+		this.idPostOriginal = this.getAttribute('idPostOriginal'); 
 
+		
 	}
 	connectedCallback() {
 		
@@ -22,7 +23,7 @@ export class CrearPage extends HTMLElement {
 		shadow.innerHTML += `
 		<div class="create-container" id="dropContainer">
 			<div class="upload-box" id="dropArea">
-				<img class="upload-icon" src = "./src/assets/images/Subir.png">
+				<img class="upload-icon" src = "../src/assets/images/Subir.png">
 			</div>
 			<div class="form-container">
 				<label for="description">Descripción</label>
@@ -46,28 +47,23 @@ export class CrearPage extends HTMLElement {
 		const dropArea = shadow.getElementById('dropArea');
 		const saveButton = shadow.getElementById('saveButton');
 		let currentFile = null;
-		if (!dropArea ) {
+	
+		if (!dropArea) {
 			console.error('No se pudieron encontrar uno o más elementos necesarios.');
 			return;
 		}
 	
-		const filesArray = [];
-	
-		dropArea.addEventListener('dragover', handleDragOver);
-		dropArea.addEventListener('drop', handleDrop);
-		
-		saveButton.addEventListener('click', publicar.bind(this));
-	
-		function handleDragOver(event) {
+		// Usar funciones flecha para mantener el contexto
+		const handleDragOver = (event) => {
 			event.preventDefault();
 			dropArea.classList.add('drag-over');
-		}
+		};
 	
-		function handleDrop(event) {
+		const handleDrop = (event) => {
 			event.preventDefault();
 			dropArea.classList.remove('drag-over');
 			const files = event.dataTransfer.files;
-		
+	
 			if (files.length > 0) {
 				const file = files[0];
 				if (file.type.startsWith('image/')) {
@@ -76,16 +72,16 @@ export class CrearPage extends HTMLElement {
 					alert('Por favor, arrastra un archivo de imagen.');
 				}
 			}
-		}
-		
-		function displayFile(file) {
+		};
+	
+		const displayFile = (file) => {
 			if (!file.type.startsWith('image/')) {
 				alert('Por favor, arrastra un archivo de imagen.');
 				return;
 			}
 	
 			const reader = new FileReader();
-			reader.onload = function (event) {
+			reader.onload = (event) => {
 				const img = document.createElement('img');
 				img.src = event.target.result;
 				img.alt = file.name;
@@ -93,35 +89,31 @@ export class CrearPage extends HTMLElement {
 				img.style.maxHeight = '100%';
 				img.style.objectFit = 'cover';
 	
-				dropArea.innerHTML = ''; 
-				dropArea.appendChild(img); 
+				dropArea.innerHTML = '';
+				dropArea.appendChild(img);
 				currentFile = file;
 			};
 			reader.readAsDataURL(file);
-		}
+		};
 	
-		
-		dropArea.addEventListener('dragover', handleDragOver);
-		dropArea.addEventListener('drop', handleDrop);
-		
-		
-	
-		function publicar() {
+		const publicar = () => {
 			if (!currentFile) {
 				alert('No se ha agregado ninguna imagen.');
 				return;
 			}
-		
+	
 			const description = String(shadow.getElementById('description').value);
 			const tagsInput = shadow.getElementById('tags').value;
-		
-			const tags = tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag);
-		
+	
+			const tags = tagsInput.split(',').map((tag) => tag.trim()).filter((tag) => tag);
+	
 			if (tags.length === 0) {
 				alert('Por favor, añade al menos un tag.');
 				return;
 			}
-		
+	
+			console.log("Esto es el post original", this.idPostOriginal);
+	
 			const reader = new FileReader();
 			reader.onload = (event) => {
 				const base64Content = event.target.result.split(',')[1];
@@ -129,35 +121,40 @@ export class CrearPage extends HTMLElement {
 					alert('No se pudo identificar al usuario. Intenta iniciar sesión nuevamente.');
 					return;
 				}
-		
+				
+	
 				PostService.createPostContenido(base64Content, this.idUsuario, description, tags)
-					.then(idContenido => {
+					.then((idContenido) => {
 						console.log('ID del contenido creado:', idContenido);
+						if(!!this.idPostOriginal)
+						{
+							PostService.agregarPost(this.idPostOriginal,idContenido);
+						}
+						
 						limpiarCampos();
 					})
-					.catch(error => {
+					.catch((error) => {
 						console.error('Error al crear el contenido:', error);
 					});
 			};
-		
+	
 			reader.readAsDataURL(currentFile);
-		}
-		
-		
-		function limpiarCampos() {
-			
+		};
+	
+		const limpiarCampos = () => {
 			shadow.getElementById('description').value = '';
-			
 			shadow.getElementById('tags').value = '';
-			
 			dropArea.innerHTML = `
-				<img class="upload-icon" src = "./src/assets/images/Subir.png">
+				<img class="upload-icon" src="../src/assets/images/Subir.png">
 			`;
-			currentFile = null; 
-		}
-		
-		
+			currentFile = null;
+		};
+	
+		dropArea.addEventListener('dragover', handleDragOver);
+		dropArea.addEventListener('drop', handleDrop);
+		saveButton.addEventListener('click', publicar);
 	}
+	
 
 
 	async #verificarToken() {

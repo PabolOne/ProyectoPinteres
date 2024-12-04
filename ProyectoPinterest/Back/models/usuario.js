@@ -25,7 +25,11 @@ const usuarioSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    listas: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Lista'  
+    }]
 });
 
 module.exports = mongoose.model('Usuario', usuarioSchema);

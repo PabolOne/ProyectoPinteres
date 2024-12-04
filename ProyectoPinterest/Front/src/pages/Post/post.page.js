@@ -1,5 +1,6 @@
 import { PostService } from "../../services/post.service.js";
 import { UsuarioService } from "../../services/usuario.service.js";
+import { ListasService } from "../../services/listas.service.js";
 export class PostPage extends HTMLElement {
 	constructor() {
 		super();
@@ -13,12 +14,15 @@ export class PostPage extends HTMLElement {
 	async connectedCallback() {
 		await this.#fetchPostData();
 		await this.#fetchPostUser();
-		this.#render();
+		await this.#render();
 		this.#agregaEstilo(this.shadow);
 	
 		const likeButton = this.shadow.getElementById('like-button');
 		likeButton.disabled = false; 
 		likeButton.addEventListener('click', this.#incrementarLikes.bind(this));
+		const saveButton = this.shadow.getElementById('save-button');
+		saveButton.addEventListener('click', this.#mostrarOpcionesGuardar.bind(this));
+
 	}
 	
 	async #incrementarLikes() {
@@ -54,77 +58,207 @@ export class PostPage extends HTMLElement {
 			try {
 				console.log(this.idUsuario)
 				this.userData = await UsuarioService.getUsuarioPorId(this.idUsuario);
+				
 			} catch (error) {
 				console.error("Error al obtener los datos del usuario:", error);
 			}
 		}
 	}
-	#render() {
+	async #render() {
 		if (!this.postData) {
 			this.shadow.innerHTML = `<p>Error: No se encontró información para el post.</p>`;
 			return;
 		}
-		console.log(this.postData);
-		const { contenido, fechaHora, likes, descripcion,posts } = this.postData; 
+	
+		const { contenido, fechaHora, likes, descripcion } = this.postData;
+		const { posts } = this.postData;
 		const imageUrlPost = PostService.getImageById(contenido);
-		
-
-		console.log(imageUrlPost);
+	
+		const tiempoDiferencia = this.#calcularDiferenciaTiempo(fechaHora);
+	
+		const commentsHtml = await Promise.all(posts.map(post => this.#renderComment(post)));
+	
 		this.shadow.innerHTML = `
 		<div class="post-container">
+		
+		${this.#renderUsuario()}
+		<p class="post-caption">${descripcion}</p>
 			<div class="post-image">
 				<img class="post-img" src="${imageUrlPost}" alt="Publicación">
 			</div>
-			<div class="controls">
-				<button class="prev">&lt;</button>
-				<button class="play">&#9654;</button>
-				<button class="next">&gt;</button>
-			</div>
 			<div class="post-info">
-					<span class="time"><i><img class="post-icons" src="../src/assets/images/time.png"></i> ${fechaHora}</span>
-					<span class="likes">
-						
-						<span id="like-count">${likes}</span>
-						<button id="like-button"><i><img class="post-icons" src="../src/assets/images/like.png"></i> </button>
-					</span>
-
-					<button class="save-button">Guardar</button>
-				</div>
+				<span class="time">
+					<i><img class="post-icons" src="../src/assets/images/time.png"></i> ${tiempoDiferencia}
+				</span>
+				<span class="likes">
+					
+					<button id="like-button"><i><img class="post-icons" src="../src/assets/images/like.png"></i> </button>
+					<span id="like-count">${likes}</span>
+				</span>
+				<button class="save-button" id="save-button">Guardar</button>
+			</div>
 			<div class="post-details">
-				${this.#renderUsuario()}
-				<p class="post-caption">${descripcion}</p>
-				<div class="comments"></div>
-				<button class="respond-button">Responder</button>
+				<div class="comments">
+					${commentsHtml.join('')}
+				</div>
+				<a href="/crear/${this.postData._id}" ><button class="respond-button">Responder</button></a>
 			</div>
 		</div>
 		`;
-
 	}
+	
+	
+	#calcularDiferenciaTiempo(fechaHora) {
+		const fechaPublicacion = new Date(fechaHora);
+		const ahora = new Date();
+		const diferenciaSegundos = Math.floor((ahora - fechaPublicacion) / 1000);
+	
+		if (diferenciaSegundos < 60) {
+			return `${diferenciaSegundos} segundos atrás`;
+		} else if (diferenciaSegundos < 3600) {
+			const minutos = Math.floor(diferenciaSegundos / 60);
+			return `${minutos} minutos atrás`;
+		} else if (diferenciaSegundos < 86400) {
+			const horas = Math.floor(diferenciaSegundos / 3600);
+			return `${horas} horas atrás`;
+		} else {
+			const dias = Math.floor(diferenciaSegundos / 86400);
+			return `${dias} días atrás`;
+		}
+	}
+	
 
-	#renderComment(comment) {
-
+	async #renderComment(comment) {
+		const post = await PostService.getPostById(comment);
+		const usuarioPost = await UsuarioService.getUsuarioPorId(post.idUsuario);
+		console.log(post);
 		return `
 		<div class="comment">
-			<img src="${comment.avatar}" alt="${comment.username}" class="comment-avatar">
-			<span>${comment.username}</span>
-			${comment.image ? `<img src="${comment.image}" alt="Imagen de comentario" class="comment-image">` : ''}
+			<a><img src="${await UsuarioService.getImageById(usuarioPost.avatar)}" alt="${usuarioPost.username}" class="comment-avatar"><span> ${usuarioPost.username}</span></a>
+			
+			
+			<span>${post.descripcion}</span>
+			${post.contenido ? `<img src="${await PostService.getImageById(post.contenido)}" alt="Imagen de comentario" class="comment-image">` : ''}
 		</div>
 		`;
 	}
 	#renderUsuario() {
+		console.log(UsuarioService.getImageById(this.userData.avatar));
 		return `
 		<div class="usuario">
-			<img src="https://www.tiendalabarata.com.mx/web/image/product.product/17329/image_1024/Coca%20Cola%20Vidrio%20Retornable%201.25%20L?unique=72c830a" alt="${this.userData.username}" class="comment-avatar">
+			<img src="${UsuarioService.getImageById(this.userData.avatar)}" alt="${this.userData.username}" class="comment-avatar">
 			<span>${this.userData.username}</span>
 		</div>
 		`;
 	}
 	#agregaEstilo(shadow) {
+		let style = document.createElement("style");
+		style.textContent = `
+			#like-button {
+				background: none;
+				border: none;
+				padding: 0;
+				cursor: pointer;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			#like-button:focus {
+				outline: none;
+			}
+			
+			#like-button img {
+				width: 24px;
+				height: 24px;
+			}
+			
+			#like-button:hover img {
+				transform: scale(1.1);
+				transition: transform 0.2s ease-in-out;
+			}
+		`;
+		style.textContent += `
+			.modal {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.5);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				z-index: 1000;
+			}
+
+			.modal-content {
+				background: white;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				text-align: center;
+			}
+
+			.modal-content h3 {
+				margin-bottom: 15px;
+			}
+
+			.modal-content select {
+				margin-bottom: 15px;
+				width: 100%;
+				padding: 8px;
+			}
+
+			.modal-content button {
+				margin: 5px;
+				padding: 10px 20px;
+				cursor: pointer;
+			}
+		`;
+
+		shadow.appendChild(style);
+	
 		let link = document.createElement("link");
 		link.setAttribute("rel", "stylesheet");
-
 		link.setAttribute("href", "/src/pages/post/post.page.css");
-
+	
 		shadow.appendChild(link);
 	}
+	async #mostrarOpcionesGuardar() {
+		const modal = document.createElement('div');
+		modal.classList.add('modal');
+	
+		const listas = await UsuarioService.getListasUsuario(this.idUsuario);
+	
+		modal.innerHTML = `
+			<div class="modal-content">
+				<h3>Guardar en lista</h3>
+				<select id="listas-combobox">
+					${listas.map(lista => `<option value="${lista.id}">${lista.nombre}</option>`).join('')}
+				</select>
+				<button id="guardar-en-lista">Guardar</button>
+				<button id="cerrar-modal">Cancelar</button>
+			</div>
+		`;
+	
+		this.shadow.appendChild(modal);
+	
+		const cerrarModal = () => modal.remove();
+		modal.querySelector('#cerrar-modal').addEventListener('click', cerrarModal);
+	
+		modal.querySelector('#guardar-en-lista').addEventListener('click', async () => {
+			const listaSeleccionada = this.shadow.getElementById('listas-combobox').value;
+			try {
+				await ListasService.guardarPostEnLista(this.postId, listaSeleccionada);
+				alert('Post guardado con éxito');
+			} catch (error) {
+				console.error('Error al guardar el post en la lista:', error);
+				alert('No se pudo guardar el post. Intenta nuevamente.');
+			}
+			cerrarModal();
+		});
+	}
+	
+	
 }

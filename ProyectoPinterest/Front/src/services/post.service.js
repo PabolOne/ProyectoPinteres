@@ -32,7 +32,25 @@ export class PostService {
                 console.log(error);
             });
     }
-
+    
+    static async agregarPost(idPostOriginal,idPost){
+        try {
+            const response = await fetch(`${API_URL}${URL_POST}/${idPostOriginal}/posts/${idPost}`, {
+                method: 'POST',
+                headers: this.getAuthHeaders()           
+             });
+    
+            if (!response.ok) {
+                throw new Error('Error al obtener el ID del post.');
+            }
+    
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error en el post:', error);
+            return null;
+        }
+    }
     static getImageById(id) {
         return `${API_URL}${URL_POST_IMAGEN}/${id}.jpg`;
     }
@@ -67,7 +85,6 @@ export class PostService {
     }
     
     static async createPostContenido(contenido, idUsuario, descripcion, tags) {
-        console.log("Esto estoy mandando",idUsuario);
         return fetch(`${API_URL}${URL_POST_CONTENIDO}`, {
             method: 'POST',
             headers: this.getAuthHeaders(),
@@ -85,16 +102,18 @@ export class PostService {
     }
 
     static async createPost(idUsuario, contenido, descripcion, tags) {
+            
+            return fetch(`${API_URL}${URL_POST}`, {
+                method: 'POST',
+                headers: this.getAuthHeaders(),
+                body: JSON.stringify({ idUsuario, contenido, descripcion, tags })
+            })
+                .then(response => response.json())
+                .then(data => data)
+                .catch(error => {
+                    console.log(error);
+                });
         
-        return fetch(`${API_URL}${URL_POST}`, {
-            method: 'POST',
-            headers: this.getAuthHeaders(),
-            body: JSON.stringify({ idUsuario, contenido, descripcion, tags })
-        })
-            .then(response => response.json())
-            .then(data => data)
-            .catch(error => {
-                console.log(error);
-            });
+        
     }
 }

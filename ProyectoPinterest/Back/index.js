@@ -40,6 +40,8 @@ app.use('/api/usuarios', usuarioRouter);
 app.use('/api/postContenido', postContenidoRouter);
 app.use('/api/usuarioAvatar', usuarioAvatarRouter);
 app.use('/api/imagenes', express.static(path.join(__dirname, './img/PostContenido')));
+app.use('/api/avatares', express.static(path.join(__dirname, './img/UsuarioAvatar')));
+
 
 app.get('/', (req, res) => {
     res.send('Servidor de Backend');

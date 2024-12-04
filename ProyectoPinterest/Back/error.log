@@ -1,154 +1,31 @@
-{"level":"error","message":"Error al obtener producto"}
-{"level":"error","message":"Lo campos nombre, precio y cantidad son requeridos"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e811032f136d5d5664102.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e822932f136d5d5664108.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e82a432f136d5d5664111.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e82ab32f136d5d5664113.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e823c32f136d5d566410b.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e829b32f136d5d566410f.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e82b732f136d5d5664116.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e832d32f136d5d5664125.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e834332f136d5d5664128.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e811032f136d5d5664102.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e822932f136d5d5664108.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e823c32f136d5d566410b.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e829b32f136d5d566410f.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e82a432f136d5d5664111.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e82ab32f136d5d5664113.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e834332f136d5d5664128.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e832d32f136d5d5664125.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e82b732f136d5d5664116.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e811032f136d5d5664102.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e822932f136d5d5664108.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e823c32f136d5d566410b.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e82a432f136d5d5664111.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e82ab32f136d5d5664113.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e829b32f136d5d566410f.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e82b732f136d5d5664116.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e834332f136d5d5664128.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/673e832d32f136d5d5664125.jpg en el servicio web"}
-{"level":"error","message":"request entity too large"}
-{"level":"error","message":"Acceso no autorizado"}
-{"level":"error","message":"request entity too large"}
-{"level":"error","message":"Acceso no autorizado"}
-{"level":"error","message":"request entity too large"}
-{"level":"error","message":"Acceso no autorizado"}
-{"level":"error","message":"request entity too large"}
-{"level":"error","message":"Acceso no autorizado"}
-{"level":"error","message":"request entity too large"}
-{"level":"error","message":"Acceso no autorizado"}
-{"level":"error","message":"Acceso no autorizado"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e939bacec5e9b3cfddbd1.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e939bacec5e9b3cfddbd1.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e939bacec5e9b3cfddbd1.jpg en el servicio web"}
 {"level":"error","message":"No se pudo acceder a la ruta: /favicon.ico en el servicio web"}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"No se pudo acceder a la ruta: /favicon.ico en el servicio web"}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"Error al obtener el post "}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674a8e4df1395704d3254254 en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/undefined.jpg en el servicio web"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"jwtDecode is not a function"}
-{"level":"error","message":"jwtDecode is not a function"}
-{"level":"error","message":"jwtDecode is not a function"}
-{"level":"error","message":"Error al obtener el usuario "}
-{"level":"error","message":"Error al obtener el usuario "}
-{"level":"error","message":"jwtDecode is not a function"}
-{"level":"error","message":"jwtDecode is not a function"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e939bacec5e9b3cfddbd1.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e939bacec5e9b3cfddbd1.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e939bacec5e9b3cfddbd1.jpg en el servicio web"}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e939bacec5e9b3cfddbd1.jpg en el servicio web"}
 {"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"Usuario  no encontrada"}
-{"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"Post  no encontrada"}
-{"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/li en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2 en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2/like en el servicio web"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674e515af9af86b6154bbdd2 en el servicio web"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Post  no encontrado"}
-{"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"Error al actualizar el post "}
-{"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/usuarios/673e77590144473be5b1dcc3/posts/674e515af9af86b6154bbdd4 en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/usuarios/673e77590144473be5b1dcc3/posts/674e515af9af86b6154bbdd4 en el servicio web"}
-{"level":"error","message":"Token inválido o error al decodificar."}
-{"level":"error","message":"request entity too large"}
 {"level":"error","message":"Error al actualizar el usuario "}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e515af9af86b6154bbdd2.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e7c83da6f9ae5c12b10b6.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e515af9af86b6154bbdd2.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e7c83da6f9ae5c12b10b6.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e7c83da6f9ae5c12b10b6.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e515af9af86b6154bbdd2.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e515af9af86b6154bbdd2.jpg en el servicio web"}
-{"level":"error","message":"No se pudo acceder a la ruta: /api/imagenes/674e7c83da6f9ae5c12b10b6.jpg en el servicio web"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Post  no encontrada"}
+{"level":"error","message":"Token inválido o error al decodificar."}
+{"level":"error","message":"No se pudo acceder a la ruta: /api/posts/674eb1769436d5c036a06831/posts/674ebd249b7cad26f84a7478 en el servicio web"}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al actualizar el post "}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"Error al obtener el usuario "}
+{"level":"error","message":"Token inválido o error al decodificar."}

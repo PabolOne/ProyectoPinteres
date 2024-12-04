@@ -1,8 +1,12 @@
 const API_URL = 'http://localhost:3001/';
 const URL_USUARIO = 'api/usuarios';
-const URL_POST_IMAGEN = 'api/imagenes';
+const URL_POST_IMAGEN = 'api/avatares';
+import { ListasService } from "./listas.service.js";
 
 export class UsuarioService {
+    static getImageById(id) {
+        return `${API_URL}${URL_POST_IMAGEN}/${id}.jpg`;
+    }
     static getAuthHeaders() {
         const token = localStorage.getItem('token');
         return {
@@ -53,6 +57,41 @@ export class UsuarioService {
             return null;
         }
     }
+    
+    static async getListasUsuario(idUsuario) {
+        try {
+            const usuario = await this.getUsuarioPorId(idUsuario);
+            
+            if (!usuario || !usuario.listas) {
+                console.error('Usuario no encontrado o no tiene listas asociadas.');
+                return [];
+            }
+    
+            // Obtener todas las listas asociadas al usuario
+            const listas = [];
+            for (const listaId of usuario.listas) {
+                const lista = await ListasService.getListaById(listaId);
+                if (lista) {
+                    listas.push({
+                        id: lista._id,
+                        nombre: lista.nombre,
+                        descripcion: lista.descripcion || '',
+                        posts: lista.posts || [],
+                    });
+                }
+            }
+    
+            return listas;
+        } catch (error) {
+            console.error('Error al obtener listas del usuario:', error);
+            throw error;
+        }
+    }
+    
+    
+       
+    
+    
     
     static registrarUsuario(datosUsuario) {
 

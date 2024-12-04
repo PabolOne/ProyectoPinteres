@@ -18,8 +18,10 @@ function validarLista(req, res, next) {
 
 router.get('/', ListaController.obtenerListas);
 router.get('/:id', ListaController.obtenerListaPorId);
+
 router.post('/', validarLista, ListaController.crearLista);
 router.put('/:id', validarLista, ListaController.actualizarLista);
 router.delete('/:id', ListaController.eliminarListaPorId);
+router.post('/:id/posts/:idPost', ListaController.agregarPostLista);
 
 module.exports = router;
