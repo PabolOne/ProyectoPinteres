@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     page('/perfil', () => showContent('perfil-page'));
     page('/post/:id', ctx => showPostPage(ctx.params.id)); 
     page('/crear/:id', ctx => showCreatePage(ctx.params.id)); 
+    page('/editar/:id', ctx => showEditarPage(ctx.params.id)); 
     page('/configuracion', () => showContent('configuracion-page'));
     page('/login', () => showContent('login-page'));
     page('/registrar', () => showContent('registrar-page'));
@@ -50,6 +51,10 @@ function showCreatePage(postId) {
     const contentContainer = document.getElementById('content');
     contentContainer.innerHTML = `<crear-page idPostOriginal="${postId}"></crear-page>`;
 }
+function showEditarPage(postId) {
+    const contentContainer = document.getElementById('content');
+    contentContainer.innerHTML = `<editar-page id="${postId}"></editar-page>`;
+}
 
 
 //Components
@@ -61,6 +66,7 @@ window.customElements.define('post-info', PostComponent);
 window.customElements.define('posts-page', PostsPage);
 window.customElements.define('post-page', PostPage);
 window.customElements.define('crear-page', CrearPage);
+window.customElements.define('editar-page', EditarPage);
 window.customElements.define('listas-page', ListasPage);
 window.customElements.define('lista-page', ListaPage);
 window.customElements.define('login-page', LoginPage);

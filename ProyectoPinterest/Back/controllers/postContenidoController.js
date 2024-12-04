@@ -67,15 +67,16 @@ class postContenidoController {
             }
 
             const postContenidoData = req.body;
-
+            
             const postContenido = await PostContenidoDAO.actualizarPostContenidoPorId(id, postContenidoData)
-
+            postContenidoController.crearImagenBack(postContenidoData.contenido, postContenido._id);
             if (!postContenido) {
                 next(new AppError('Post contenido no encontrado', 404))
             }
 
             res.status(200).json(postContenido);
         } catch (error) {
+            console.log("el error",error);
             next(new AppError('Error al actualizar el post contenido', 500))
         }
     }
@@ -83,19 +84,32 @@ class postContenidoController {
     static async eliminarPostContenidoPorId(req, res, next) {
         try {
             const id = req.params.id;
-
-            const postContenido = await PostContenidoDAO.eliminarPostContenidoPorId(id);
-
+    
+            const postContenido = await PostContenidoDAO.obtenerPostContenidoPorId(id);
+    
             if (!postContenido) {
                 next(new AppError('No se encontró el post contenido', 404));
+                return;
             }
-
+    
+            const dirPath = path.join(__dirname, '../img/PostContenido');
+            const filePath = path.join(dirPath, `${id}.jpg`);
+    
+            if (fs.existsSync(filePath)) {
+                fs.unlinkSync(filePath);
+                console.log('Imagen eliminada con éxito:', filePath);
+            } else {
+                console.warn('No se encontró la imagen asociada para eliminar:', filePath);
+            }
+    
+            await PostContenidoDAO.eliminarPostContenidoPorId(id);
+    
             res.status(200).json({ mensaje: 'Post contenido eliminado correctamente' });
         } catch (error) {
-            next(new AppError('Error al eliminar el post contenido', 500))
+            next(new AppError('Error al eliminar el post contenido', 500));
         }
     }
-
+    
     static crearImagenBack(contenido, id) {
         
         const base64Image = contenido; 

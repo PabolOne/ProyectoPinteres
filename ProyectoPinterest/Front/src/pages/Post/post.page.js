@@ -45,7 +45,7 @@ export class PostPage extends HTMLElement {
 		if (this.postId) {
 			try {
 				console.log(this.postId)
-				this.postData = await PostService.getPostById(this.postId); 
+				this.postData = await PostService.getPostContenidoById(this.postId); 
 				 this.idUsuario = this.postData.idUsuario;
 				
 			} catch (error) {
@@ -78,33 +78,71 @@ export class PostPage extends HTMLElement {
 	
 		const commentsHtml = await Promise.all(posts.map(post => this.#renderComment(post)));
 	
+		const token = localStorage.getItem('token');
+		const currentUserId = await UsuarioService.getIdPorToken(token);
+	
+		const ownerButtonEditsHtml = currentUserId === this.idUsuario ? `
+			
+				<a href="/editar/${this.postData._id}"><button  class="save-button" id="edit-button">Editar</button>	</a>		
+		` : '';
+		const ownerButtonsDeleteHtml = currentUserId === this.idUsuario ? `
+							<button class="save-button" id="delete-button">Eliminar</button>
+			
+		` : '';
 		this.shadow.innerHTML = `
-		<div class="post-container">
-		
-		${this.#renderUsuario()}
-		<p class="post-caption">${descripcion}</p>
-			<div class="post-image">
-				<img class="post-img" src="${imageUrlPost}" alt="Publicación">
-			</div>
-			<div class="post-info">
-				<span class="time">
-					<i><img class="post-icons" src="../src/assets/images/time.png"></i> ${tiempoDiferencia}
-				</span>
-				<span class="likes">
-					
-					<button id="like-button"><i><img class="post-icons" src="../src/assets/images/like.png"></i> </button>
-					<span id="like-count">${likes}</span>
-				</span>
-				<button class="save-button" id="save-button">Guardar</button>
-			</div>
-			<div class="post-details">
-				<div class="comments">
-					${commentsHtml.join('')}
+			<div class="post-container">
+				${this.#renderUsuario()}
+				<p class="post-caption">${descripcion}</p>
+				
+				<div class="post-image">
+					<img class="post-img" src="${imageUrlPost}" alt="Publicación">
 				</div>
-				<a href="/crear/${this.postData._id}" ><button class="respond-button">Responder</button></a>
+				<div class="post-info">
+				
+					<span class="time">
+						<i><img class="post-icons" src="../src/assets/images/time.png"></i> ${tiempoDiferencia}
+					</span>
+					<span class="likes">
+						<button id="like-button"><i><img class="post-icons" src="../src/assets/images/like.png"></i> </button>
+						<span id="like-count">${likes}</span>
+					</span>
+					${ownerButtonEditsHtml}
+					${ownerButtonsDeleteHtml}
+					
+					<button class="save-button" id="save-button">Guardar</button>
+				</div>
+				
+				<div class="post-details">
+					<div class="comments">
+						${commentsHtml.join('')}
+					</div>
+					<a href="/crear/${this.postData._id}"><button class="respond-button">Responder</button></a>
+				</div>
 			</div>
-		</div>
 		`;
+	
+		if (currentUserId === this.idUsuario) {
+			const deleteButton = this.shadow.getElementById('delete-button');
+	
+			deleteButton.addEventListener('click', this.#eliminarPost.bind(this));
+		}
+	}
+	
+	
+	async #eliminarPost() {
+		console.log("ESTO QUIERO ELIMINAR",this.postData._id);
+		if (confirm('¿Estás seguro de que quieres eliminar esta publicación?')) {
+			try {
+				
+				await PostService.deletePostById(this.postData._id);
+				await PostService.deletePostContenidoById(this.postId);
+				alert('Publicación eliminada con éxito.');
+				window.location.href = '/'; // Refrescar la página o redirigir
+			} catch (error) {
+				console.error('Error al eliminar la publicación:', error);
+				alert('No se pudo eliminar la publicación. Intenta nuevamente.');
+			}
+		}
 	}
 	
 	
@@ -129,7 +167,7 @@ export class PostPage extends HTMLElement {
 	
 
 	async #renderComment(comment) {
-		const post = await PostService.getPostById(comment);
+		const post = await PostService.getPostContenidoById(comment);
 		const usuarioPost = await UsuarioService.getUsuarioPorId(post.idUsuario);
 		console.log(post);
 		return `
