@@ -16,7 +16,6 @@ class postController {
             
             res.status(201).json(post);
         } catch (error) {
-            console.log(error);
             next(new AppError('Error al crear post', 500)); 
     }
     }
@@ -26,7 +25,6 @@ class postController {
         try {
             const id = req.params.id;
             const post = await PostDAO.obtenerPostPorId(id);
-
             if (!post) {
                 next(new AppError('Post  no encontrada', 404))
             }
@@ -69,8 +67,6 @@ class postController {
         try {
 
             const {idPostOriginal,idPost} = req.params;
-            console.log("MINIMO ENTRA",idPostOriginal,"-----",idPost);
-
             const postData = await PostDAO.obtenerPostPorId(idPostOriginal);
 
             if (!postData) {

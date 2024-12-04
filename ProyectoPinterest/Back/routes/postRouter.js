@@ -18,6 +18,7 @@ function validarPost(req, res, next) {
 }
 
 router.get('/', PostController.obtenerPosts);
+router.get('/post/:id', PostController.obtenerPostPorId);
 router.get('/:id', PostController.obtenerPostPorIdContenido);
 
 

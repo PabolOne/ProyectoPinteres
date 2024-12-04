@@ -151,4 +151,20 @@
     transform: scale(1.1); 
     transition: transform 0.2s ease-in-out;
   }
-  
+  .owner-buttons {
+    margin-top: 10px;
+}
+
+.owner-buttons {
+        padding: 8px 12px;
+        background-color: #2e2e2e;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    
+}
+
+.owner-buttons :hover {
+    background-color: #444;
+}

@@ -12,12 +12,33 @@ export class PostService {
         };
     }
     static getPostById(id) {
+        console.log("ID DEL POST SEGUN ESTO",id);
+
+        return fetch(`${API_URL}${URL_POST}/post/${id}`, {
+            method: 'GET',
+            headers: this.getAuthHeaders()
+        }).then(response => response.json());
+    }
+    static getPostContenidoById(id) {
+
         return fetch(`${API_URL}${URL_POST}/${id}`, {
             method: 'GET',
             headers: this.getAuthHeaders()
         }).then(response => response.json());
     }
-    
+
+    static deletePostById(id) {
+        return fetch(`${API_URL}${URL_POST}/${id}`, {
+            method: 'DELETE',
+            headers: this.getAuthHeaders()
+        }).then(response => response.json());
+    }
+    static deletePostContenidoById(id) {
+        return fetch(`${API_URL}${URL_POST_CONTENIDO}/${id}`, {
+            method: 'DELETE',
+            headers: this.getAuthHeaders()
+        }).then(response => response.json());
+    }
     static getPosts() {
         return fetch(`${API_URL}${URL_POST}`, {
             method: 'GET',
@@ -105,6 +126,38 @@ export class PostService {
             
             return fetch(`${API_URL}${URL_POST}`, {
                 method: 'POST',
+                headers: this.getAuthHeaders(),
+                body: JSON.stringify({ idUsuario, contenido, descripcion, tags })
+            })
+                .then(response => response.json())
+                .then(data => data)
+                .catch(error => {
+                    console.log(error);
+                });
+        
+        
+    }
+    static async updatePostContenido(contenido, idUsuario, descripcion, tags,idPost,idPostContenido) {
+        return fetch(`${API_URL}${URL_POST_CONTENIDO}/${idPostContenido}`, {
+            method: 'PUT',
+            headers: this.getAuthHeaders(),
+            body: JSON.stringify({ contenido })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data._id);
+                this.updatePost(idUsuario, String(data._id), descripcion, tags,idPost);
+                return data._id;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    static async updatePost(idUsuario, contenido, descripcion, tags,idPost) {
+            
+            return fetch(`${API_URL}${URL_POST}/${idPost}`, {
+                method: 'PUT',
                 headers: this.getAuthHeaders(),
                 body: JSON.stringify({ idUsuario, contenido, descripcion, tags })
             })
