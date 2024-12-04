@@ -1,6 +1,4 @@
 import { ListasService } from "../../services/listas.service.js";
-//import jwt_decode from 'jwt-decode';
-
 
 export class ListasPage extends HTMLElement {
 
@@ -16,8 +14,8 @@ export class ListasPage extends HTMLElement {
 		this.#agregaEstilo(this.shadow);
 		this.#render(this.shadow);
 		this.#setupModal();
+		this.#obtenerListas(); 
 		this.#setupFormulario();
-		//this.#obtenerListas(); 
 	}
 
 	#render(shadow) {
@@ -33,6 +31,7 @@ export class ListasPage extends HTMLElement {
 					<h3>Caras</h3>
 					<p>163 fotos</p>
 				</div>
+			</div>
 			</a>
 			<button id="openModalBtn" class="create-list-button">Crear Lista</button>
 		<div id="myModal" class="modal">
@@ -56,11 +55,11 @@ export class ListasPage extends HTMLElement {
 		//this.#renderListas(shadow);
 	}
 
-	/*
+	
 		// Función para renderizar las listas del usuario
 		#renderListas(shadow) {
 			const listasContainer = shadow.querySelector('.list-container');
-			listasContainer.innerHTML = '';  // Limpiar el contenedor antes de añadir las listas
+			
 			this.listas.forEach(lista => {
 				listasContainer.innerHTML += `
 				<div class="list-card">
@@ -70,9 +69,45 @@ export class ListasPage extends HTMLElement {
 				`;
 			});
 		}
-	*/
+
+		#obtenerListas() {
+			const token = localStorage.getItem('token');
+			if (!token) return; // Si no hay token, no hacemos nada
+		
+			try {
+				const decodedToken = decodeJWT(token); // Decodificar el token manualmente
+				const idUsuario = decodedToken.id;    // Acceder al ID del usuario
+		
+				console.log('ID del Usuario:', idUsuario);
+		
+				fetch(`http://localhost:3001/api/listas/`, {
+					headers: {
+						"Authorization": `Bearer ${token}` // Enviar token en la cabecera
+					}
+				})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error("Error al obtener las listas");
+					}
+					return response.json();
+				})
+				.then(listas => {
+					this.listas = listas; // Guardar las listas
+					this.#renderListas(this.shadow); // Renderizarlas en el DOM
+				})
+				.catch(error => {
+					console.error("Error al obtener las listas", error);
+					alert("Hubo un error al cargar las listas.");
+				});
+			} catch (error) {
+				console.error("Error al decodificar el token", error);
+				alert("Token inválido o corrupto.");
+			}
+		}
+		
+		/*
 		// Método para obtener las listas del usuario
-	/*	async #obtenerListas() {
+		async #obtenerListas() {
 			const token = localStorage.getItem('token');
 			if (!token) return; // Si no hay token, no hacemos nada
 	
@@ -98,7 +133,8 @@ export class ListasPage extends HTMLElement {
 				alert("Hubo un error al cargar las listas.");
 			}
 		}
-*/
+		*/
+
 
 	#renderCard() {
 		const post1 = this.posts[0];
@@ -135,7 +171,7 @@ export class ListasPage extends HTMLElement {
 			if (event.target === modal) {
 				modal.style.display = "none";
 			}
-		},0);
+		});
 	}
 
 	#verificarToken() {
@@ -190,7 +226,21 @@ export class ListasPage extends HTMLElement {
 	
 		return response.json();
 	}
+
+	
 	
 
 
+}
+
+function decodeJWT(token) {
+    const base64Url = token.split('.')[1]; // Obtiene la parte del payload
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Reemplaza caracteres para formato Base64
+    const jsonPayload = decodeURIComponent(
+        atob(base64)
+            .split('')
+            .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+            .join('')
+    );
+    return JSON.parse(jsonPayload); // Retorna el payload como objeto JSON
 }
