@@ -8,17 +8,18 @@ export class PostsPage extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.#cargarPosts(); 
+		this.#cargarPosts(); // Cargar todos los posts inicialmente
 		this.#render(this.shadow);
 		this.#agregaEstilo(this.shadow);
 
+		// Escuchar eventos de búsqueda
 		window.addEventListener("search", (event) => {
 			this.#cargarPosts(event.detail.query);
 		});
 	}
 
 	async #cargarPosts(query = "") {
-		this.posts = await PostService.getPostsContenido(query); 
+		this.posts = await PostService.getPostsContenido(query);
 		await this.#render(this.shadow);
 		this.#agregaEstilo(this.shadow);
 	}

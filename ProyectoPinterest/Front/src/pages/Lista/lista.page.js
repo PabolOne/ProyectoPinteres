@@ -19,11 +19,7 @@ export class ListaPage extends HTMLElement {
 	}
 
 	async #cargarPosts() {
-		
-			
-			console.log('ID DE LA LISTA SELECCIONADA', this.listId)
 			this.listaData = await ListasService.getListaById(this.listId);
-			console.log('DATA ',this.listaData.posts)
 			await this.#render(this.shadow);
 			this.#agregaEstilo(this.shadow);
 	}

@@ -23,14 +23,7 @@ export class ListasPage extends HTMLElement {
 		shadow.innerHTML += `
 		<section>
 			<div class="list-container">
-				<div class="list-card"">
-					<div class="collage">
-						${this.#renderCard()}
-						
-					</div>
-					<h3>Caras</h3>
-					<p>163 fotos</p>
-				</div>
+				
 			</div>
 			</a>
 			<button id="openModalBtn" class="create-list-button">Crear Lista</button>
@@ -51,7 +44,7 @@ export class ListasPage extends HTMLElement {
         </div>
 		</section>
 		`;
-
+		
 	}
 
 	

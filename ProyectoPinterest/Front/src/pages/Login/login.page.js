@@ -32,9 +32,6 @@ export class LoginPage extends HTMLElement {
 				</div>
 				<button type="submit">Iniciar sesión</button>
                 			
-			<p class="forgot-password">
-				<a href="/forgot-password">¿Olvidaste tu contraseña?</a>
-			</p>
 			
 			<p class="signup-text">
 				¿Aún no tienes una cuenta en Illustrate It? 

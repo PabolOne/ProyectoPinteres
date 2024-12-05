@@ -266,8 +266,9 @@ export class PostPage extends HTMLElement {
 	async #mostrarOpcionesGuardar() {
 		const modal = document.createElement('div');
 		modal.classList.add('modal');
-	
-		const listas = await UsuarioService.getListasUsuario(this.idUsuario);
+		const token = localStorage.getItem('token');
+		const idUsuarioActual = await UsuarioService.getIdPorToken(token);
+		const listas = await UsuarioService.getListasUsuario(idUsuarioActual);
 	
 		modal.innerHTML = `
 			<div class="modal-content">

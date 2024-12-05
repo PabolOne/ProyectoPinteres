@@ -112,7 +112,7 @@ export class RegistrarPage extends HTMLElement {
 				if (data.status === 'success') {
 					localStorage.setItem('token', data.token);
 					alert('Registro exitoso');
-					page('/posts');
+					page('/');
 				} else {
 					throw new Error(data.message || 'Error en el registro');
 				}

@@ -68,12 +68,19 @@ export class UsuarioService {
                 return [];
             }
     
-            const listas = usuario.listas.map(lista => ({
-                id: lista._id,
-                nombre: lista.nombre,
-                descripcion: lista.descripcion || '',
-                posts: lista.posts || [],
-            }));
+            // Obtener todas las listas asociadas al usuario
+            const listas = [];
+            for (const listaId of usuario.listas) {
+                const lista = await ListasService.getListaById(listaId);
+                if (lista) {
+                    listas.push({
+                        id: lista._id,
+                        nombre: lista.nombre,
+                        descripcion: lista.descripcion || '',
+                        posts: lista.posts || [],
+                    });
+                }
+            }
     
             return listas;
         } catch (error) {
@@ -120,10 +127,6 @@ export class UsuarioService {
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
-            const headerElement = document.querySelector('header-info');
-            headerElement.remove();
-            const newHeader = document.createElement('header-info');
-            document.body.insertBefore(newHeader, document.getElementById('content'));
             const data = await response.json();
             console.log('Usuario avatar actualizado:', data);
         } catch (error) {

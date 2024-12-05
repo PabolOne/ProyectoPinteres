@@ -35,23 +35,25 @@ export class PerfilPage extends HTMLElement {
 	}
 
 	#render(shadow) {
+		const postsContent = this.posts.length > 0
+			? this.posts.map(post => this.#renderCard(post)).join(``)
+			: `<p class="no-posts-message">No hay publicaciones disponibles.</p>`;
+	
 		shadow.innerHTML += `
 		<div class="profile-container">
 			<div class="profile-header">
 				<img src="${UsuarioService.getImageById(this.userData.avatar)}" alt="Foto de perfil" class="profile-pic">
 				<h2 class="username">${this.userData.username}</h2>
 				<a href="/configuracion"><img class="settings-btn" src="../src/assets/images/Config.png"></a>
-				 
 			</div>
 			<div class="card-container">
-			${this.posts.map(post => this.#renderCard(post)).join(``)}
+				${postsContent}
 			</div>
 			<button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
 		</div>
-		
-
 		`;
 	}
+	
 	#renderCard(post) {
 		const imageUrl = PostService.getImageById(post.contenido._id);
 		return `
