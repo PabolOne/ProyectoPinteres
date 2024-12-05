@@ -19,12 +19,9 @@ export class ListaPage extends HTMLElement {
 	}
 
 	async #cargarPosts() {
-<<<<<<< HEAD
-=======
 		
 			// Obtén los posts asociados a la lista
 			console.log('ID DE LA LISTA SELECCIONADA', this.listId)
->>>>>>> parent of 6eeb926 (Función de Eliminar y Modificar lista)
 			this.listaData = await ListasService.getListaById(this.listId);
 			await this.#render(this.shadow);
 			this.#agregaEstilo(this.shadow);

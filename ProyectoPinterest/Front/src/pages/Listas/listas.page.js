@@ -44,12 +44,7 @@ export class ListasPage extends HTMLElement {
         </div>
 		</section>
 		`;
-<<<<<<< HEAD
 		
-=======
-
-		//this.#renderListas(shadow);
->>>>>>> parent of 6eeb926 (Función de Eliminar y Modificar lista)
 	}
 
 	

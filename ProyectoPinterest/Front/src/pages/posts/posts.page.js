@@ -19,11 +19,7 @@ export class PostsPage extends HTMLElement {
 	}
 
 	async #cargarPosts(query = "") {
-<<<<<<< HEAD
-		this.posts = await PostService.getPostsContenido(query);
-=======
 		this.posts = await PostService.getPostsContenido(query); // Filtrar por query si está disponible
->>>>>>> parent of 6eeb926 (Función de Eliminar y Modificar lista)
 		await this.#render(this.shadow);
 		this.#agregaEstilo(this.shadow);
 	}

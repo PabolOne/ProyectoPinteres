@@ -69,27 +69,12 @@ export class UsuarioService {
             }
     
             // Obtener todas las listas asociadas al usuario
-<<<<<<< HEAD
-            const listas = [];
-            for (const listaId of usuario.listas) {
-                const lista = await ListasService.getListaById(listaId);
-                if (lista) {
-                    listas.push({
-                        id: lista._id,
-                        nombre: lista.nombre,
-                        descripcion: lista.descripcion || '',
-                        posts: lista.posts || [],
-                    });
-                }
-            }
-=======
             const listas = usuario.listas.map(lista => ({
                 id: lista._id,
                 nombre: lista.nombre,
                 descripcion: lista.descripcion || '',
                 posts: lista.posts || [],
             }));
->>>>>>> parent of 6eeb926 (Función de Eliminar y Modificar lista)
     
             return listas;
         } catch (error) {
