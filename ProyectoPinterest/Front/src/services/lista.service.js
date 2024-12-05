@@ -9,8 +9,6 @@ class ListaService {
     static registrarLista(datosLista) {
 
     }
-
-    
 }
 
 module.exports = ListaService;

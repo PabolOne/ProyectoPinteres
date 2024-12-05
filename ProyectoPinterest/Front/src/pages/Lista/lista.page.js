@@ -19,6 +19,12 @@ export class ListaPage extends HTMLElement {
 	}
 
 	async #cargarPosts() {
+<<<<<<< HEAD
+=======
+		
+			// Obtén los posts asociados a la lista
+			console.log('ID DE LA LISTA SELECCIONADA', this.listId)
+>>>>>>> parent of 6eeb926 (Función de Eliminar y Modificar lista)
 			this.listaData = await ListasService.getListaById(this.listId);
 			await this.#render(this.shadow);
 			this.#agregaEstilo(this.shadow);
@@ -30,7 +36,7 @@ export class ListaPage extends HTMLElement {
 		<section>
 			<div class="tittle">
 				<div class="button-container">
-					<img class="icon" src="../src/assets/images/delete.png" id="deleteButton">
+					<img class="icon" src="../src/assets/images/delete.png">
 					<button class="icon-button" id="openModalBtn">
 						<img class="icon" src="../src/assets/images/edit.png" alt="Editar">
 					</button>
@@ -48,7 +54,7 @@ export class ListaPage extends HTMLElement {
 					<input type="text" id="listName" placeholder="Nombre de la lista">
 					<label for="listDescription">Descripción</label>
 					<textarea id="listDescription" placeholder="Descripción"></textarea>
-					<button id="saveButton">Guardar Cambios</button>
+					<button>Guardar Cambios</button>
 				</div>
 			</div>
 			<div class="card-container">
@@ -81,9 +87,7 @@ export class ListaPage extends HTMLElement {
 		const modal = this.shadow.getElementById("myModal");
 		const btn = this.shadow.getElementById("openModalBtn");
 		const span = this.shadow.getElementById("closeBtn");
-		const saveButton = this.shadow.getElementById("saveButton"); 
-		const deleteButton = this.shadow.getElementById("deleteButton");
-
+	
 		btn.addEventListener("click", (event) => {
 			event.preventDefault();
 			modal.style.display = "block";
@@ -96,51 +100,6 @@ export class ListaPage extends HTMLElement {
 		window.addEventListener("click", (event) => {
 			if (event.target === modal) {
 				modal.style.display = "none";
-			}
-		});
-
-		saveButton.addEventListener("click", async (event) => {
-			event.preventDefault();
-			const listName = this.shadow.getElementById("listName").value;
-			const listDescription = this.shadow.getElementById("listDescription").value;
-	
-			try {
-				const updatedList = await ListasService.actualizarLista(this.listId, listName, listDescription);
-	
-				if (updatedList) {
-					console.log("Lista actualizada:", updatedList);
-					modal.style.display = "none";  
-					page("/listas"); 
-				} else {
-					console.error("Error al actualizar la lista");
-				}
-			} catch (error) {
-				console.error("Error en la actualización de la lista:", error);
-			}
-		});
-
-		deleteButton.addEventListener("click", async (event) => {
-			event.preventDefault();
-
-
-			 const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar esta lista? Esta acción no se puede deshacer.");
-
-			 if (confirmDelete) {
-				try {
-					const deletedList = await ListasService.eliminarLista(this.listId);
-					
-					if (deletedList) {
-						console.log("Lista eliminada:", deletedList);
-			
-						page("/listas"); 
-					} else {
-						console.error("Error al eliminar la lista");
-					}
-				} catch (error) {
-					console.error("Error al eliminar la lista:", error);
-				}
-			} else {
-				console.log("Eliminación cancelada por el usuario.");
 			}
 		});
 	}

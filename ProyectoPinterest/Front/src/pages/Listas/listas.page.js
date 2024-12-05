@@ -44,10 +44,16 @@ export class ListasPage extends HTMLElement {
         </div>
 		</section>
 		`;
+<<<<<<< HEAD
 		
+=======
+
+		//this.#renderListas(shadow);
+>>>>>>> parent of 6eeb926 (Función de Eliminar y Modificar lista)
 	}
 
 	
+		// Función para renderizar las listas del usuario
 		async #renderListas(shadow) {
 			const listasContainer = shadow.querySelector('.list-container');
 			
@@ -166,12 +172,11 @@ export class ListasPage extends HTMLElement {
 			},
 			body: JSON.stringify(data) 
 		});
-		page('/listas');
+	
 		if (!response.ok) {
 			throw new Error("Error al crear la lista");
 		}
 	
-		
 		return response.json();
 	}
 
@@ -182,13 +187,13 @@ export class ListasPage extends HTMLElement {
 }
 
 function decodeJWT(token) {
-    const base64Url = token.split('.')[1]; 
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); 
+    const base64Url = token.split('.')[1]; // Obtiene la parte del payload
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Reemplaza caracteres para formato Base64
     const jsonPayload = decodeURIComponent(
         atob(base64)
             .split('')
             .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
             .join('')
     );
-    return JSON.parse(jsonPayload); 
+    return JSON.parse(jsonPayload); // Retorna el payload como objeto JSON
 }
